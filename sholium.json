@@ -1,0 +1,18 @@
+{
+  "id": "sholium",
+  "name": "Sholium",
+  "author": [
+    "GreenKookie"
+  ],
+  "description": "Made with Joker Forge by jaychw.\n\nWhat if bloonalatro was way more unbalanced, funnier and stupider? Behold the Sholium.\nThis mod was crafted to be stupidly unbalanced and have really dumb joker effects or something idk ._.  \nThe numbers in the parentheses are the specific btd6 versions that the joker effects are referring to.\nOther things you might stumple upon including inside jokes, self insert and much more.\nHave fun i guess",
+  "prefix": "sholium",
+  "main_file": "main.lua",
+  "version": "1.3.5",
+  "priority": 2025,
+  "badge_colour": "666665",
+  "badge_text_colour": "FFFFFF",
+  "dependencies": [
+    "Talisman (>=2.3.1)",
+    "Steamodded (>=1.0.0~BETA-0726a)"
+  ]
+}
