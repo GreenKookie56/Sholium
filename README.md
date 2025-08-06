@@ -1,10 +1,10 @@
 # Welcome to Sholium!
 
-an unbalanced jokerforge mod made by GreenKookie
+an unbalanced jokerforge mod made by GreenKookie.
 
 download latest version from release!
 
-note: this mod requires Steamodded and Talisman to work
+note: this mod requires Steamodded and Talisman to work.
 
 # What is this mod about?
 this is a bloons (mainly btd6) related mod about everything I found funny/interesting and decided to add into the game, which includes:
