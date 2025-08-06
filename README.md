@@ -2,6 +2,8 @@
 
 an unbalanced jokerforge mod made by GreenKookie
 
+download latest version from release!
+
 note: this mod requires Steamodded and Talisman to work
 
 # What is this mod about?
