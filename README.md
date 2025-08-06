@@ -1,6 +1,8 @@
 # Welcome to Sholium!
 
-this is a mod about everything I found funny/interesting and decided to add into the game, which includes:
+note: this mod requires Steamodded and Talisman to work
+
+this is a bloons (mainly btd6) related mod about everything I found funny/interesting and decided to add into the game, which includes:
 - stupidly broken/unbalanced cards compared to vanilla
 - unfunny inside jokes
 - arts that I drew for a few hours (Some needs to at least look cool/funny, some are just me having nothing to do and deciding to waste 2 hours on a 69x91)
