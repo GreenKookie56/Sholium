@@ -1,5 +1,7 @@
 # Welcome to Sholium!
 
+an unbalanced jokerforge mod made by GreenKookie
+
 note: this mod requires Steamodded and Talisman to work
 
 # What is this mod about?
