@@ -12,7 +12,7 @@ note: this mod requires Steamodded and Talisman to work.
 this is a bloons (mainly btd6) related mod about everything I found funny/interesting and decided to add into the game, which includes:
 - stupidly broken/unbalanced cards compared to vanilla
 - unfunny inside jokes
-- arts that I drew for a few hours (Some needs to at least look cool/funny, some are just me having nothing to do and deciding to waste 2 hours on a 69x91)
+- arts that I drew for a few hours (Some were made just to be funny, some were just me having nothing to do and deciding to waste 2 hours on a 69x91)
 - towers in btd6 old versions that absolutely peaked/sucked during that period
 
 # I prefer vanilla balance but i still want to see bloons content...
