@@ -9,7 +9,7 @@ download latest version from release!
 note: this mod requires Steamodded and Talisman to work.
 
 # What is this mod about?
-this is a bloons (mainly btd6) related mod about everything I found funny/interesting and decided to add into the game, which includes:
+this is a btd6/plague inc related mod about everything I found funny/interesting and decided to add into the game, which includes:
 - stupidly broken/unbalanced cards compared to vanilla
 - unfunny inside jokes
 - arts that I drew for a few hours (Some were made just to be funny, some were just me having nothing to do and deciding to waste 2 hours on a 69x91)
