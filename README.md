@@ -12,8 +12,8 @@ note: this mod requires Steamodded and Talisman to work
 this is a btd6/plague inc related mod about everything I found funny/interesting and decided to add into the game, which includes:
 - stupidly broken/unbalanced ideas
 - unfunny inside jokes
-- arts that I drew for a few hours (Some were made just to be funny, some were just me having nothing to do and deciding to waste 2 hours on a 69x91)
-- towers in btd6 old versions that absolutely peaked/sucked during that period
+- arts that I drew (Some were made just to be funny, some were just me having nothing to do and deciding to waste 2 hours on a 69x91)
+- towers in btd6 old versions that absolutely peaked/sucked during the period
 - plagues that demonstrate their playstyle in the plague inc game
 - decks but jokers, have nothing to do with deck effects and instead have something to do with deck-related numbers, extremely expensive and only appears in shop
 
