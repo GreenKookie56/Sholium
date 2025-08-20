@@ -2,7 +2,7 @@
 
 <img width="1920" height="1080" alt="sholium bg" src="https://github.com/user-attachments/assets/5fbffa77-7a2c-4242-81c7-ce962d3f8e99" />
 
-an unbalanced jokerforge mod made by GreenKookie.
+an EXTREMELY unbalanced jokerforge mod made by GreenKookie.
 
 download latest version from release!
 
@@ -17,6 +17,10 @@ this is a btd6/plague inc related mod about everything I found funny/interesting
 
 # I prefer vanilla balance but i still want to see bloons content...
 Check out Bloonalatro if you're interested in vanilla-balance bloons content! -> https://github.com/Amphiapple/Bloonlatro
+
+# I don't like the current state of balance where almost everything is a free win...
+Check out this branch -> https://github.com/GreenKookie56/Sholium/tree/moderate
+or play release versions before 1.5.0!
 
 special thanks:
 - bloonalatro community, who came up with the sholatro idea
