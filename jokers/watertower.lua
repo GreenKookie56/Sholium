@@ -56,7 +56,7 @@ end)() then
         end
         if context.cardarea == G.jokers and context.joker_main  then
                 return {
-                    Xmult = card.ability.extra.mult
+                    mult = card.ability.extra.mult
                 }
         end
     end
