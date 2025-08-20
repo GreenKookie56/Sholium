@@ -1,5 +1,5 @@
 SMODS.Joker{ --Glaive Lord (v44)
-    key = "glaivelordv44",
+    key = "glaivelord",
     config = {
         extra = {
             chips = 0,
