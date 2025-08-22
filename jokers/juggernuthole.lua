@@ -1,0 +1,42 @@
+SMODS.Joker{ --Jugger nut Hole
+    key = "juggernuthole",
+    config = {
+        extra = {
+            repetitions = 100
+        }
+    },
+    loc_txt = {
+        ['name'] = 'Jugger nut Hole',
+        ['text'] = {
+            [1] = 'If played hand contains',
+            [2] = '{C:attention}Five of a Kind{} or {C:attention}Flush House{},',
+            [3] = '{C:attention}Retrigger{} all played cards {C:attention}100{} times'
+        },
+        ['unlock'] = {
+            [1] = ''
+        }
+    },
+    pos = {
+        x = 4,
+        y = 5
+    },
+    cost = 20,
+    rarity = 4,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+
+    calculate = function(self, card, context)
+        if context.repetition and context.cardarea == G.play  then
+            if (next(context.poker_hands["Five of a Kind"]) or next(context.poker_hands["Flush House"])) then
+                return {
+                    repetitions = card.ability.extra.repetitions,
+                    message = localize('k_again_ex')
+                }
+            end
+        end
+    end
+}
