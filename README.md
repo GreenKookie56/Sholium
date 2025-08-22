@@ -19,6 +19,7 @@ Check out Bloonalatro if you're interested in vanilla-balance bloons content! ->
 
 # I don't like the current state of balance where almost everything is a free win...
 Check out this branch -> https://github.com/GreenKookie56/Sholium/tree/moderate
+or Check out this mod -> https://github.com/GreenKookie56/Midlium
 or play release versions before 1.5.0
 
 special thanks:
