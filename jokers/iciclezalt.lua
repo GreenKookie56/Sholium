@@ -50,5 +50,5 @@ G.FUNCS.check_for_buy_space = function(card)
     if card.config.center.key == "j_sholium_iciclezalt" then -- ignore slot limit when bought
         return true
     end
-    return check_for_buy_space_ref()
+    return check_for_buy_space_ref(card)
 end
