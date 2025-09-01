@@ -17,6 +17,5 @@ this is a btd6/plague inc related mod about everything I found funny/interesting
 Check out Bloonalatro if you're interested in vanilla-balance bloons content! -> https://github.com/Amphiapple/Bloonlatro
 
 # Special thanks!
-- bloonalatro community, who came up with the sholatro idea
 - 1.2m^2 Fungus Room, iciclez_, i_am_mee and murpgod for playtesting & contributing ideas
-- jokerforge community and the goat jaydchw, who made the revolutionary balatro mod maker
+- jokerforge community and the goat jaydchw, for making the revolutionary balatro mod maker
