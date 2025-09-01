@@ -1,6 +1,4 @@
-
-SMODS.Joker{ 
---A deck
+SMODS.Joker{ --A deck
     key = "adeck",
     config = {
         extra = {
@@ -50,4 +48,5 @@ SMODS.Joker{
                 }
         end
     end
+
 }
