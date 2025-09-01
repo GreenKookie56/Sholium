@@ -1,5 +1,4 @@
-SMODS.Joker{ 
---Adasaurus
+SMODS.Joker{ --Adasaurus
     key = "adasaurus",
     config = {
         extra = {
