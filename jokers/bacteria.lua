@@ -52,7 +52,7 @@ SMODS.Joker{ --Bacteria
                         }
                 }
         end
-        if context.setting_blind and not context.blueprint or context.forcetrigger then
+        if context.setting_blind and not context.blueprint then
                 return {
                     func = function()
                 local target_joker = nil
