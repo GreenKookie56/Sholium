@@ -53,5 +53,6 @@ SMODS.Joker{ --Carrier Flagship
             return {
                 x_chips = card.ability.extra.chips
             }
+        end
     end
 }
