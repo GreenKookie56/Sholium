@@ -14,7 +14,7 @@ this is a btd6/plague inc related mod about everything I found funny/interesting
 - plagues that demonstrate their playstyle in the plague inc game
 
 # I prefer vanilla balance but i still want to see bloons content...
-Check out [Bloonalatro](https://github.com/Amphiapple/Bloonlatro) for vanilla+ gameplay
+Check out [Bloonalatro](https://github.com/Amphiapple/Bloonlatro) for vanilla+ playstyle 
 
 # Special thanks!
 - 1.2m^2 Fungus Room, iciclez_, i_am_mee and murpgod for playtesting & contributing ideas
