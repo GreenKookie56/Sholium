@@ -45,8 +45,8 @@ return {
 				text = {
 					"{C:blue}+#1#{}籌碼",
 					"{C:red}+#2#{}倍率",
-                                        "選擇{C:attention}盲注{}時複製這張牌",
-                                        "{C:inactive}(移除{}{C:dark_edition}負片{}，{C:inactive}必須有空間){}",
+                    "選擇{C:attention}盲注{}時複製這張牌",
+                    "{C:inactive}(移除{}{C:dark_edition}負片{}，{C:inactive}必須有空間){}",
 				},
 			},
 			j_sholium_barracuda = {
@@ -104,7 +104,7 @@ return {
 				text = {
 					"重骰時獲得{X:red,C:white}X#2#{}倍率",
 					"回合結束時重製",
-                                        "{C:inactive}(目前{}{X:red,C:white}X#1#{}{C:inactive}倍率){}",
+                    "{C:inactive}(目前{}{X:red,C:white}X#1#{}{C:inactive}倍率){}",
 				},
 			},
 			j_sholium_buchi = {
@@ -112,7 +112,7 @@ return {
 				text = {
 					"{X:legendary,C:white}^#1#{}倍率",
 					"出牌時此數值減少{X:legendary,C:white}#3#{}",
-                                        "減少至{X:legendary,C:white}0{}以下時永久設為{X:legendary,C:white}^3.57{}倍率",
+                    "減少至{X:legendary,C:white}0{}以下時永久設為{X:legendary,C:white}^3.57{}倍率",
 				},
 			},
 			j_sholium_carrierflagship = {
@@ -120,7 +120,7 @@ return {
 				text = {
 					"打出的{C:clubs}梅花{}被計分時",
 					"有{C:green}#2#/#3#{}機率{X:blue,C:white}X#1#{}籌碼",
-                                        "{C:inactive}let's go gambing!{}",
+                    "{C:inactive}let's go gambing!{}",
 				},
 			},
 			j_sholium_chocolatebarquotes = {
