@@ -27,7 +27,7 @@ SMODS.Joker{ --Orca (v36.0-36.1)
         h = 95 * 1
     },
     cost = 7,
-    rarity = 2,
+    rarity = 1,
     blueprint_compat = true,
     demicoloncompat = true,
     eternal_compat = false,
