@@ -1,3 +1,7 @@
+if Cryptid then
+  SMODS.load_mod_config(SMODS.Mods.Cryptid)
+end
+
 SMODS.Rarity {
     key = "peculiar",
     pools = {
