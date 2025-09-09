@@ -26,7 +26,6 @@ SMODS.Joker{ --Iciclez_ alt
     cost = 2,
     rarity = 1,
     blueprint_compat = true,
-    demicoloncompat = true,
     eternal_compat = true,
     perishable_compat = true,
     unlocked = true,
@@ -34,7 +33,7 @@ SMODS.Joker{ --Iciclez_ alt
     atlas = 'CustomJokers',
 
     calculate = function(self, card, context)
-        if context.cardarea == G.jokers and context.joker_main or context.forcetrigger then
+        if context.cardarea == G.jokers and context.joker_main  then
                 return {
                     Xmult = card.ability.extra.Xmult
                 }
@@ -58,13 +57,12 @@ G.FUNCS.check_for_buy_space = function(card)
     return check_for_buy_space_ref(card)
 end
 
-local can_select_card_old = G.FUNCS.can_select_card
+local can_select_card_ref = G.FUNCS.can_select_card
 G.FUNCS.can_select_card = function(e)
-	if e.config.ref_table.config.center.key == "j__sholium_iciclezalt" then
-        e.config.colour = G.C.GREEN
-        e.config.button = 'use_card'
-    else
-        local ret = can_select_card_old(e)
-        return ret
-    end
+	if e.config.ref_table.config.center.key == "j_sholium_iciclezalt" then
+		e.config.colour = G.C.GREEN
+		e.config.button = "use_card"
+	else
+		can_select_card_ref(e)
+	end
 end
