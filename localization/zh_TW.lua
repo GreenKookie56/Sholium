@@ -378,8 +378,7 @@ return {
 			j_sholium_virus = {
 				name = "病毒",
 				text = {
-					"回合結束時，",
-					"{C:green}#2#/#3#{}機率產生一張{C:rare}稀有{}小丑",
+					"回合結束時產生一張{C:rare}稀有{}小丑",
 				},
 			},
 			j_sholium_watertower = {
