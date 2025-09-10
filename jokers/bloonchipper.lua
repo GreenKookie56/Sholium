@@ -29,6 +29,7 @@ SMODS.Joker{ --Bloonchipper
     cost = 6,
     rarity = 2,
     blueprint_compat = true,
+    demicoloncompat = true,
     eternal_compat = true,
     perishable_compat = false,
     unlocked = true,
@@ -52,6 +53,16 @@ SMODS.Joker{ --Bloonchipper
         if context.setting_blind  then
                 return {
                     func = function()
+                card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = "+"..tostring(card.ability.extra.discard).." Discard", colour = G.C.ORANGE})
+                G.GAME.current_round.discards_left = G.GAME.current_round.discards_left + card.ability.extra.discard
+                return true
+            end
+                }
+        end
+        if context.forcetrigger then
+          return {
+            func = function()
+                card.ability.extra.discard = (card.ability.extra.discard) + card.ability.extra.discardmod    
                 card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = "+"..tostring(card.ability.extra.discard).." Discard", colour = G.C.ORANGE})
                 G.GAME.current_round.discards_left = G.GAME.current_round.discards_left + card.ability.extra.discard
                 return true
