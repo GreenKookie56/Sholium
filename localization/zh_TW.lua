@@ -73,8 +73,8 @@ return {
 			j_sholium_bloonchipper = {
 				name = "氣球吸塵器",
 				text = {
-					"進入盲注時，{C:red}+#1#{}棄牌",
-					"擊敗Boss盲注時，{C:red}+#2#{}棄牌數",
+					"進入{C:attention}盲注{}時，{C:red}+#1#{}棄牌次數",
+					"每個{C:attention}底注{}棄牌數量{C:red}+#2#{}",
 				},
 			},
 			j_sholium_bossfarmingguide = {
