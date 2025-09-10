@@ -73,8 +73,8 @@ return {
 			j_sholium_bloonchipper = {
 				name = "氣球吸塵器",
 				text = {
-					"進入盲注時，{C:red}+#1#{}棄牌",
-					"擊敗Boss盲注時，{C:green}#4#/#5#{}機率{C:red}+#2#{}棄牌數",
+					"進入{C:attention}盲注{}時，{C:red}+#1#{}棄牌次數",
+					"每個{C:attention}底注{}棄牌數量{C:red}+#2#{}",
 				},
 			},
 			j_sholium_bossfarmingguide = {
@@ -157,7 +157,7 @@ return {
 			j_sholium_ezili = {
 				name = "巫毒法師",
 				text = {
-					"若盲注為{C:attention}Boss盲注{}，",
+					"若為{C:attention}大盲注{}或{C:attention}Boss盲注{}，",
 					"{C:purple}平衡{}{C:blue}籌碼{}和{C:red}倍率{}",
 				},
 			},
@@ -378,7 +378,8 @@ return {
 			j_sholium_virus = {
 				name = "病毒",
 				text = {
-					"回合結束時產生一張{C:rare}稀有{}小丑",
+					"回合結束時，",
+					"產生一張{C:rare}稀有{}小丑",
 				},
 			},
 			j_sholium_watertower = {
