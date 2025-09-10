@@ -25,6 +25,7 @@ SMODS.Joker{ --Ezili
     cost = 7,
     rarity = 3,
     blueprint_compat = true,
+    demicoloncompat = true,
     eternal_compat = true,
     perishable_compat = true,
     unlocked = true,
@@ -39,6 +40,12 @@ SMODS.Joker{ --Ezili
                     message = "Hex"
                 }
             end
+        end
+        if context.forcetrigger then
+            return {
+                balance = true,
+                message = "Hex"
+            }
         end
     end
 }
