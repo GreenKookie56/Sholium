@@ -16,8 +16,8 @@ SMODS.Joker{ --Gold Seal
         }
     },
     pos = {
-        x = 5,
-        y = 2
+        x = 3,
+        y = 5
     },
     display_size = {
         w = 71 * 1, 
