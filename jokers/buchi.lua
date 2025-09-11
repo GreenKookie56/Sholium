@@ -25,8 +25,8 @@ SMODS.Joker{ --Buchi
         }
     },
     pos = {
-        x = 1,
-        y = 5
+        x = 2,
+        y = 4
     },
     display_size = {
         w = 71 * 1, 
