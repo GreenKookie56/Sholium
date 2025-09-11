@@ -1,5 +1,5 @@
 SMODS.Joker{ --Purple Seal
-    key = "purpleseal",
+    key = "sealpurple",
     config = {
         extra = {
             Tarot = 0
@@ -17,8 +17,8 @@ SMODS.Joker{ --Purple Seal
         }
     },
     pos = {
-        x = 2,
-        y = 4
+        x = 1,
+        y = 5
     },
     display_size = {
         w = 71 * 1, 
