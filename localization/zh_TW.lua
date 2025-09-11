@@ -342,7 +342,7 @@ return {
 				name = "綠色法皇",
 				text = {
 					"{C:attention}-1{}手牌大小",
-					"回合結束時產生上個牌型的星球牌",
+					"回合結束時產生上個{C:attention}牌型{}的{C:planet}星球牌{}",
 					"{C:inactive}不是，這不是綠色的吧...{}",
 				},
 			},
