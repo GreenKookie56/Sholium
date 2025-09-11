@@ -1,5 +1,5 @@
 SMODS.Joker{ --Purple Seal
-    key = "purpleseal",
+    key = "sealpurple",
     config = {
         extra = {
             Tarot = 0
