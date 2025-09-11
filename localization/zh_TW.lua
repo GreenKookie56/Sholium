@@ -317,7 +317,7 @@ return {
 					"回合結束時{C:dark_edition}+1{}小丑牌欄位",
  				},
 			},
-			j_sholium_purpleseal = {
+			j_sholium_sealpurple = {
 				name = "紫色隱者",
 				text = {
 					"{C:attention}-1{}手牌大小",
@@ -330,7 +330,7 @@ return {
 					"{C:blue}+43{}籌碼",
  				},
 			},
-			j_sholium_sdpeculiar = {
+			j_sholium_simultaneousdivergence = {
 				name = "共時性",
 				text = {
 					"若計分的牌中包含{C:clubs}梅花{}及",
