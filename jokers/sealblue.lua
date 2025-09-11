@@ -8,7 +8,7 @@ SMODS.Joker{ --Blue Seal
         ['name'] = 'Blue Seal',
         ['text'] = {
             [1] = '{C:attention}-1{} Hand size',
-            [2] = 'Creates the {C:planet}Planet{} card',
+            [2] = 'Creates the {C:planet}Planet{} card of',
             [3] = 'last played {C:attention}poker hand{}',
             [4] = 'at end of round'
         },
