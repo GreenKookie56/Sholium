@@ -324,6 +324,28 @@ return {
 					"棄牌時隨機產生一張{C:tarot}塔羅牌{}",
 				},
 			},
+			j_sholium_sealred = {
+				name = "紅色魔術師",
+				text = {
+					"{C:attention}-1{}手牌大小",
+					"重新觸發所有打出的牌",
+				},
+			},
+			j_sholium_sealgold = {
+				name = "白金之星",
+				text = {
+					"{C:attention}-1{}手牌大小",
+					"出牌時獲得{C:gold}$3{}",
+				},
+			},
+			j_sholium_sealblue = {
+				name = "綠色法皇",
+				text = {
+					"{C:attention}-1{}手牌大小",
+					"回合結束時產生上個牌型的星球牌",
+					"{C:inactive}不是，這不是綠色的吧...{}",
+				},
+			},
 			j_sholium_rosalia = {
 				name = "小橘子(v43)",
 				text = {
