@@ -330,7 +330,7 @@ return {
 					"{C:blue}+43{}籌碼",
  				},
 			},
-			j_sholium_simultaneousdivergence = {
+			j_sholium_sdpeculiar = {
 				name = "共時性",
 				text = {
 					"若計分的牌中包含{C:clubs}梅花{}及",
