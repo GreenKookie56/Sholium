@@ -1,7 +1,7 @@
 if Talisman then
 
 SMODS.Joker{ --Simultaneous Divergence
-    key = "simultaneousdivergence",
+    key = "sdpeculiar",
     config = {
         extra = {
             mult = 1,
