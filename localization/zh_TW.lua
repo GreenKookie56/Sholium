@@ -266,6 +266,7 @@ return {
 				text = {
 					"每張打出的{C:attention}7{}",
 					"給予{X:red,C:white}X#1#{}倍率",
+					"{C:inactive,s:0.8}1張7倍率X2，2張X3，以此類推{}",
 				},
 			},			
 			j_sholium_orca = {
