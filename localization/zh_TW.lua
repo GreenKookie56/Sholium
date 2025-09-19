@@ -264,7 +264,7 @@ return {
 			j_sholium_normaldistribution = {
 				name = "常態分佈",
 				text = {
-					"每張打出的7",
+					"每張打出的{C:attention}7{}",
 					"給予{X:red,C:white}X#1#{}倍率",
 				},
 			},			
