@@ -8,7 +8,7 @@ SMODS.Joker{ --Normal distribution
     loc_txt = {
         ['name'] = 'Normal distribution',
         ['text'] = {
-            [1] = '{X:red,C:white}X1{} Mult for each {C:attention}7{}',
+            [1] = '{X:red,C:white}X#1#{} Mult for each {C:attention}7{}',
             [2] = 'contained in played hand',
         },
         ['unlock'] = {
