@@ -265,7 +265,7 @@ return {
 				name = "常態分佈",
 				text = {
 					"每張打出的7",
-					"給予{X:red,C:white}X1{}倍率",
+					"給予{X:red,C:white}X#1#{}倍率",
 				},
 			},			
 			j_sholium_orca = {
