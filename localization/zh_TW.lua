@@ -261,6 +261,13 @@ return {
 					"給予{X:legendary,C:white}^#1#{}倍率",
 				},
 			},
+			j_sholium_normaldistribution = {
+				name = "常態分佈",
+				text = {
+					"每張打出的7",
+					"給予{X:red,C:white}X1{}倍率",
+				},
+			},			
 			j_sholium_orca = {
 				name = "逆戟鯨(v36.0-36.1)",
 				text = {
@@ -352,6 +359,15 @@ return {
 					"{C:blue}+43{}籌碼",
  				},
 			},
+			j_sholium_rotationmatrix = {
+				name = "旋轉矩陣",
+				text = {
+					"使用{C:planet}行星牌{}時產生一張{C:tarot}塔羅牌{}",
+					"使用{C:tarot}塔羅牌{}時產生一張{C:spectral}幻靈牌{}",
+					"使用{C:spectral}幻靈牌{}時產生一張{C:planet}行星牌{}",
+					"{C:inactive,s:0.6}(逆時針旋轉120度){}"
+ 				},
+			},			
 			j_sholium_simultaneousdivergence = {
 				name = "共時性",
 				text = {
