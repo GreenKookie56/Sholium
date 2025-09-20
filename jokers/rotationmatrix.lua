@@ -36,7 +36,10 @@ SMODS.Joker{ --Rotation Matrix
     unlocked = true,
     discovered = true,
     atlas = 'CustomJokers',
-
+    soul_pos = {
+        x = 7,
+        y = 5
+    },
     calculate = function(self, card, context)
         if context.using_consumeable  then
             if context.consumeable and context.consumeable.ability.set == 'Tarot' then
