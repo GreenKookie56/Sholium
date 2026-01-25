@@ -52,7 +52,7 @@ SMODS.Consumable {
                     return true
                 end
             }))
-            update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { level = '+'..tostring(3) })
+            update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { level = '+'..tostring(1) })
             delay(1.3)
             
             local hand_pool = {}
@@ -60,7 +60,7 @@ SMODS.Consumable {
                 table.insert(hand_pool, hand_key)
             end
             local random_hand = pseudorandom_element(hand_pool, 'random_hand_levelup')
-            level_up_hand(card, random_hand, true, 3)
+            level_up_hand(card, random_hand, true, 1)
             
             update_hand_text({sound = 'button', volume = 0.7, pitch = 1.1, delay = 0}, 
                 {handname=localize(random_hand, 'poker_hands'), 
@@ -101,7 +101,7 @@ SMODS.Consumable {
                     return true
                 end
             }))
-            update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { level = '+'..tostring(3) })
+            update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { level = '+'..tostring(1) })
             delay(1.3)
             
             local hand_pool = {}
@@ -109,7 +109,7 @@ SMODS.Consumable {
                 table.insert(hand_pool, hand_key)
             end
             local random_hand = pseudorandom_element(hand_pool, 'random_hand_levelup')
-            level_up_hand(card, random_hand, true, 3)
+            level_up_hand(card, random_hand, true, 1)
             
             update_hand_text({sound = 'button', volume = 0.7, pitch = 1.1, delay = 0}, 
                 {handname=localize(random_hand, 'poker_hands'), 
@@ -150,7 +150,7 @@ SMODS.Consumable {
                     return true
                 end
             }))
-            update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { level = '+'..tostring(3) })
+            update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { level = '+'..tostring(1) })
             delay(1.3)
             
             local hand_pool = {}
@@ -158,7 +158,7 @@ SMODS.Consumable {
                 table.insert(hand_pool, hand_key)
             end
             local random_hand = pseudorandom_element(hand_pool, 'random_hand_levelup')
-            level_up_hand(card, random_hand, true, 3)
+            level_up_hand(card, random_hand, true, 1)
             
             update_hand_text({sound = 'button', volume = 0.7, pitch = 1.1, delay = 0}, 
                 {handname=localize(random_hand, 'poker_hands'), 
