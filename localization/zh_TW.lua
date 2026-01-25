@@ -1,3 +1,30 @@
+if Talisman then
+	return {
+		descriptions = {
+                Spectral = {
+			c_sholium_sholium = {
+				name = "Shol理元素",
+				text = {
+					"賦予{C:dark_edition}黑色牌堆{}效果",
+					"並召喚{C:dark_edition,E:1}超激稀有{}級別的小丑",
+				},
+			},
+               },
+		}
+	}
+else
+	return {
+		descriptions = {
+		        Spectral = {
+			c_sholium_sholium = {
+				name = "Shol理元素",
+				text = {
+					"賦予{C:dark_edition}黑色牌堆{}效果",
+				},
+			},
+               },
+		}
+	}
 return {
 	descriptions = {
                 Planet = {
@@ -13,25 +40,6 @@ return {
 				name = "餛飩之劍",
 				text = {
 					"賦予至多{C:attention}2{}張牌隨機{C:enhanced}強化{}，{C:attention}封蠟章{}",
-				},
-			},
-               },
-		if Talisman then
-                Spectral = {
-			c_sholium_sholium = {
-				name = "Shol理元素",
-				text = {
-					"賦予{C:dark_edition}黑色牌堆{}效果",
-					"並召喚{C:dark_edition,E:1}超激稀有{}級別的小丑",
-				},
-			},
-               },
-		else
-		        Spectral = {
-			c_sholium_sholium = {
-				name = "Shol理元素",
-				text = {
-					"賦予{C:dark_edition}黑色牌堆{}效果",
 				},
 			},
                },
