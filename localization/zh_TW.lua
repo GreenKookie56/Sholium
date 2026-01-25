@@ -25,6 +25,7 @@ else
                },
 		}
 	}
+end
 return {
 	descriptions = {
                 Planet = {
