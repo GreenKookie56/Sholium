@@ -2,7 +2,7 @@ SMODS.Joker{ --Bacteria
     key = "bacteria",
     config = {
         extra = {
-            c = 10,
+            c = 20,
             m = 2,
             respect = 0
         }
