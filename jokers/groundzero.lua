@@ -1,3 +1,7 @@
+if not next(SMODS.find_mod("Cryptid")) then
+  return nil
+end
+
 SMODS.Joker{ --Ground Zero (v18-29)
     key = "groundzero",
     config = {
