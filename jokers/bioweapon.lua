@@ -3,7 +3,7 @@ SMODS.Joker{ --Bioweapon
     config = {
         extra = {
             mult = 1,
-            mod = 0.2
+            mod = 0.3
         }
     },
     loc_txt = {
