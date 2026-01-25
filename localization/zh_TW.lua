@@ -426,7 +426,8 @@ return {
 				text = {
 					"這張小丑獲得{C:red}+#2#{}倍率",
 					"若打出的牌型為{C:attention}最常打出{}的牌型",
-					"{C:inactive}(目前{}{C:red}+#1#{}{C:inactive}倍率){}",
+					"累積倍率超過{C:attention}80{}時{C:red}爆炸{}",
+					"{C:inactive}(目前{}{C:red}+#1#{}{C:inactive}倍率){}"
 				},
 			},
                },
