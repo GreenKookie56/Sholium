@@ -3,7 +3,7 @@
 <img width="1920" height="1080" alt="sholium bg" src="https://github.com/user-attachments/assets/5fbffa77-7a2c-4242-81c7-ce962d3f8e99" />
 
 an unbalanced GreenKookie mod
-requires [Steamodded](https://github.com/Steamodded/smods/releases/latest), consider downloading [Talisman](https://github.com/SpectralPack/Talisman/releases/latest) for a more bizarre experience
+requires [Steamodded](https://github.com/Steamodded/smods/releases/latest), consider downloading [Talisman](https://github.com/SpectralPack/Talisman/releases/latest) or perhaps even [Cryptid](https://github.com/SpectralPack/Cryptid/releases/latest) for a more bizarre experience
 
 # What is this mod about?
 this is a btd6/plague inc related mod about everything I found funny/interesting and decided to add into the game, which includes:
