@@ -1,3 +1,4 @@
+if Talisman then
 SMODS.Joker{ --Clubism
     key = "clubism",
     config = {
@@ -66,3 +67,4 @@ SMODS.Joker{ --Clubism
         end
     end
 }
+end
