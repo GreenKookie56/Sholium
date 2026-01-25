@@ -99,4 +99,3 @@ SMODS.Joker{ --Flash
         end
     end
 }
-end
