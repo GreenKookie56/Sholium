@@ -1,3 +1,4 @@
+
 SMODS.Joker{ --Water Tower
     key = "watertower",
     config = {
@@ -12,7 +13,8 @@ SMODS.Joker{ --Water Tower
             [1] = 'This Joker gains {C:red}+#2#{} Mult if',
             [2] = 'played hand is your',
             [3] = '{C:attention}most played{} Poker Hand',
-            [4] = '{C:inactive}(Currently{} {C:red}+#1#{} {C:inactive}Mult){}'
+            [4] = '{C:red}self-destructs{} when Mult exceeds {C:attention}80{}',
+            [5] = '{C:inactive}(Currently{} {C:red}+#1#{} {C:inactive}Mult){}'
         },
         ['unlock'] = {
             [1] = ''
@@ -30,44 +32,66 @@ SMODS.Joker{ --Water Tower
     rarity = 2,
     blueprint_compat = true,
     demicoloncompat = true,
-    eternal_compat = true,
+    eternal_compat = false,
     perishable_compat = false,
     unlocked = true,
     discovered = true,
     atlas = 'CustomJokers',
-
+    
     loc_vars = function(self, info_queue, card)
+        
         return {vars = {card.ability.extra.mult, card.ability.extra.multmod}}
     end,
-
+    
     calculate = function(self, card, context)
         if context.before and context.cardarea == G.jokers  and not context.blueprint then
             if (function()
-    local current_played = G.GAME.hands[context.scoring_name].played or 0
-    for handname, values in pairs(G.GAME.hands) do
-        if handname ~= context.scoring_name and values.played > current_played and values.visible then
-            return false
-        end
-    end
-    return true
-end)() then
+                local current_played = G.GAME.hands[context.scoring_name].played or 0
+                for handname, values in pairs(G.GAME.hands) do
+                    if handname ~= context.scoring_name and values.played > current_played and values.visible then
+                        return false
+                    end
+                end
+                return true
+            end)() then
                 return {
                     func = function()
-                    card.ability.extra.mult = (card.ability.extra.mult) + card.ability.extra.multmod
-                    return true
-                end
+                        card.ability.extra.mult = (card.ability.extra.mult) + card.ability.extra.multmod
+                        return true
+                    end
                 }
             end
         end
         if context.cardarea == G.jokers and context.joker_main  then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
+        if context.after and context.cardarea == G.jokers  and not context.blueprint then
+            if to_big((card.ability.extra.mult or 0)) > to_big(80) then
                 return {
-                    mult = card.ability.extra.mult
+                    func = function()
+                        local target_joker = card
+                        
+                        if target_joker then
+                            target_joker.getting_sliced = true
+                            G.E_MANAGER:add_event(Event({
+                                func = function()
+                                    target_joker:start_dissolve({G.C.RED}, nil, 1.6)
+                                    return true
+                                end
+                            }))
+                            card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = "Destroyed!", colour = G.C.RED})
+                        end
+                        return true
+                    end
                 }
+            end
         end
         if context.forcetrigger then
             local mult_value = card.ability.extra.mult
             card.ability.extra.mult = (card.ability.extra.mult) + card.ability.extra.multmod
-            return {
+             return {
                 mult = mult_value
             }
         end
