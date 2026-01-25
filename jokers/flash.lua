@@ -1,4 +1,7 @@
-if Talisman then
+if not next(SMODS.find_mod("Cryptid")) then
+  return nil
+end
+
 SMODS.Joker{ --Flash
     key = "flash",
     config = {
