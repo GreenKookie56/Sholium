@@ -5,8 +5,8 @@ SMODS.Consumable {
     loc_txt = {
         name = 'Amphication',
         text = {
-        [1] = 'Randomizes {C:enhanced}Enhancement{}, {C:attention}Seal{} and',
-        [2] = '{C:dark_edition}Edition{} of up to {C:attention}2{} selected cards',
+        [1] = 'Randomizes {C:enhanced}Enhancement{} and {C:attention}Seal{}',
+        [2] = 'of up to {C:attention}2{} selected cards',
         [3] = '{s:0.4,C:inactive}beast handler range 60 -> 50{}'
     }
     },
@@ -67,18 +67,6 @@ SMODS.Consumable {
                         local seal_pool = {'Gold', 'Red', 'Blue', 'Purple'}
                         local random_seal = pseudorandom_element(seal_pool, 'random_seal')
                         G.hand.highlighted[i]:set_seal(random_seal, nil, true)
-                        return true
-                    end
-                }))
-            end
-            for i = 1, #G.hand.highlighted do
-                G.E_MANAGER:add_event(Event({
-                    trigger = 'after',
-                    delay = 0.1,
-                    func = function()
-                        local edition = poll_edition('random_edition', nil, true, true, 
-                            { 'e_polychrome', 'e_holo', 'e_foil' })
-                        G.hand.highlighted[i]:set_edition(edition, true)
                         return true
                     end
                 }))
