@@ -2,6 +2,7 @@ if Cryptid then
   SMODS.load_mod_config(SMODS.Mods.Cryptid)
 end
 
+if Talisman then
 SMODS.Rarity {
     key = "peculiar",
     pools = {
@@ -21,3 +22,4 @@ SMODS.Rarity {
         return weight
     end,
 }
+end
