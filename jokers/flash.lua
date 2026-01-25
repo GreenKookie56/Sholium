@@ -1,3 +1,4 @@
+if Talisman then
 SMODS.Joker{ --Flash
     key = "flash",
     config = {
@@ -95,3 +96,4 @@ SMODS.Joker{ --Flash
         end
     end
 }
+end
