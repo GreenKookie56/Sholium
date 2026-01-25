@@ -1,31 +1,3 @@
-if Talisman then
-	return {
-		descriptions = {
-                Spectral = {
-			c_sholium_sholium = {
-				name = "Shol理元素",
-				text = {
-					"賦予{C:dark_edition}黑色牌堆{}效果",
-					"並召喚{C:dark_edition,E:1}超激稀有{}級別的小丑",
-				},
-			},
-               },
-		}
-	}
-else
-	return {
-		descriptions = {
-		        Spectral = {
-			c_sholium_sholium = {
-				name = "Shol理元素",
-				text = {
-					"賦予{C:dark_edition}黑色牌堆{}效果",
-				},
-			},
-               },
-		}
-	}
-end
 return {
 	descriptions = {
                 Planet = {
@@ -452,3 +424,31 @@ return {
                },
         },
 }
+if Talisman then
+	return {
+		descriptions = {
+                Spectral = {
+			c_sholium_sholium = {
+				name = "Shol理元素",
+				text = {
+					"賦予{C:dark_edition}黑色牌堆{}效果",
+					"並召喚{C:dark_edition,E:1}超激稀有{}級別的小丑",
+				},
+			},
+               },
+		}
+	}
+else
+	return {
+		descriptions = {
+		        Spectral = {
+			c_sholium_sholium = {
+				name = "Shol理元素",
+				text = {
+					"賦予{C:dark_edition}黑色牌堆{}效果",
+				},
+			},
+               },
+		}
+	}
+end
