@@ -24,7 +24,7 @@ SMODS.Joker{ --Red Seal
         h = 95 * 1
     },
     cost = 6,
-    rarity = 1,
+    rarity = 2,
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,

@@ -1,3 +1,5 @@
+if Talisman then
+
 SMODS.Joker{ --The Pudding
     key = "thepudding",
     config = {
@@ -90,3 +92,4 @@ end)()) then
         end
     end
 }
+end

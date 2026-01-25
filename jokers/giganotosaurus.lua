@@ -3,14 +3,14 @@ SMODS.Joker{ --Giganotosaurus
     config = {
         extra = {
             hands = 2,
-            Xmult = 10,
+            Xmult = 6,
             round = 0
         }
     },
     loc_txt = {
         ['name'] = 'Giganotosaurus',
         ['text'] = {
-            [1] = '{X:red,C:white}X10{} Mult',
+            [1] = '{X:red,C:white}X6{} Mult',
             [2] = '{C:blue}-2{} hands',
             [3] = 'when a hand is played'
         },
