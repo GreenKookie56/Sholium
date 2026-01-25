@@ -3,7 +3,7 @@ SMODS.Joker{ --Glaive Lord (v48+)
     config = {
         extra = {
             chips = 0,
-            chipsmod = 6,
+            chipsmod = 3,
             first = 1
         }
     },
