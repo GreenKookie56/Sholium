@@ -2,14 +2,14 @@ SMODS.Joker{ --Barracuda
     key = "barracuda",
     config = {
         extra = {
-            repetitions = 1
+            repetitions = 2
         }
     },
     loc_txt = {
         ['name'] = 'Barracuda',
         ['text'] = {
             [1] = 'Retrigger each played',
-            [2] = '{C:attention}6, 7, 8, 9 or 10{}'
+            [2] = '{C:attention}6, 7, 8, 9 or 10{} {C:dark_edition}twice{}'
         },
         ['unlock'] = {
             [1] = ''
