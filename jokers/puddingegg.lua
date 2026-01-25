@@ -1,3 +1,5 @@
+if Talisman then
+
 SMODS.Joker{ --Pudding Egg
     key = "puddingegg",
     config = {
