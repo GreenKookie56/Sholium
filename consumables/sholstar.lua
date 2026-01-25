@@ -3,12 +3,13 @@ SMODS.Consumable {
     set = 'Planet',
     pos = { x = 1, y = 0 },
     config = { extra = {
-        levels = 1
+        levels = 3
     } },
     loc_txt = {
         name = 'S O L',
         text = {
-        [1] = 'Upgrade {C:attention}3{} {C:purple}Random{} {C:attention}Poker Hands{}'
+        [1] = 'Upgrade {C:attention}3{} {C:purple}Random{} {C:attention}Poker Hands{}',
+        [2] = 'by {C:attention}3{} levels'
     }
     },
     cost = 3,
