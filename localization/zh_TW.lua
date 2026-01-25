@@ -4,7 +4,7 @@ return {
 			c_sholium_sholstar = {
 				name = "S O L",
 				text = {
-					"隨機升級{C:attention}3{}個牌型{C:attention}3{}個等級",
+					"隨機升級{C:attention}3{}個牌型",
 				},
 			},
                },
@@ -12,7 +12,7 @@ return {
 			c_sholium_amphication = {
 				name = "餛飩之劍",
 				text = {
-					"賦予至多{C:attention}2{}張牌隨機{C:enhanced}強化{}，{C:attention}封蠟章{}及{C:dark_edition}版本{}",
+					"賦予至多{C:attention}2{}張牌隨機{C:enhanced}強化{}，{C:attention}封蠟章{}",
 				},
 			},
                },
@@ -53,7 +53,7 @@ return {
 				name = "梭魚",
 				text = {
 					"重新觸發打出的",
-					"{C:attention}6,7,8,9,10{} {C:dark_edition}兩次{}",
+					"{C:attention}6,7,8,9,10{}",
 				},
 			},
 			j_sholium_bez = {
