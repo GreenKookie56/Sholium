@@ -5,11 +5,11 @@ end
 SMODS.Joker{ --Taisho
 	key = "taisho",
 	rarity = 3,
-	cost = 10,
+	cost = 9,
   loc_txt = {
         ['name'] = 'Taisho',
         ['text'] = {
-            [1] = '{C:red}Force-triggers{} the Joker to the right',
+            [1] = '{C:attention}Force-trigger{} the Joker to the right',
             [2] = 'for the last hand of the round'
         },
         ['unlock'] = {
