@@ -33,7 +33,7 @@ SMODS.Joker{ --Buchi
         h = 95 * 1
     },
     cost = 6,
-    rarity = "cry_epic",
+    rarity = 3,
     blueprint_compat = true,
     demicoloncompat = true,
     eternal_compat = false,
