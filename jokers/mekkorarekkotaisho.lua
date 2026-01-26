@@ -23,6 +23,7 @@ SMODS.Joker{ --Taisho
 	pos = { x = 8, y = 5 },
   atlas = 'CustomJokers',
 	calculate = function(self, card, context)
+	-- Thanks cryptid mod devs you're awesome
 		if context.joker_main and G.GAME.current_round.hands_left <= 0 and not context.blueprint then
 			for i = 1, #G.jokers.cards do
 				if G.jokers.cards[i] == card then
