@@ -98,7 +98,7 @@ return {
                     "{C:inactive}(目前{}{X:red,C:white}X#1#{}{C:inactive}倍率){}",
 				},
 			},
-			j_sholium_buchi = {
+			j_sholium_mekkorarekkobuchi = {
 				name = "斑斑",
 				text = {
 					"{X:legendary,C:white}^#1#{}倍率",
@@ -384,7 +384,7 @@ return {
 					"{C:blue}+#1#{}出牌次數並{X:blue,C:white}X#2#{}籌碼",
 				},
 			},
-			j_sholium_taisho = {
+			j_sholium_mekkorarekkotaisho = {
 				name = "大翔",
 				text = {
 					"最後一次出牌時",
