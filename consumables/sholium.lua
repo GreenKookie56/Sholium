@@ -17,13 +17,14 @@ SMODS.Consumable {
         [3] = 'and spawn a {C:attention}Joker{} with',
         [4] = '{C:dark_edition,E:1}Peculiar{} rarity'
     }
-            }
+            },
       ['zh_TW'] = {
 		name = "Shol理元素",
         text = {
 			"賦予{C:dark_edition}黑色牌堆{}效果",
 			"並召喚{C:dark_edition,E:1}超激稀有{}級別的小丑"
-        },
+			},
+		},
     },
     cost = 4,
     unlocked = true,
