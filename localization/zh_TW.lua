@@ -1,4 +1,5 @@
-descriptions = {
+return {
+   descriptions = {
                 Planet = {
 			c_sholium_sholstar = {
 				name = "S O L",
@@ -421,4 +422,5 @@ descriptions = {
 				},
 			},
                },
+	},
 }
