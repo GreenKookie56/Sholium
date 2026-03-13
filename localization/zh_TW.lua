@@ -384,6 +384,13 @@ return {
 					"{C:blue}+#1#{}出牌次數並{X:blue,C:white}X#2#{}籌碼",
 				},
 			},
+			j_sholium_taisho = {
+				name = "大翔",
+				text = {
+					"最後一次出牌時",
+					"{C:attention}強制觸發{}右邊的小丑",
+				},
+			},
 			j_sholium_theblazingsun = {
 				name = "熾熱太陽",
 				text = {
