@@ -245,6 +245,13 @@ return {
 					"購買任意一張牌時獲得{C:gold}$2{}",
 				},
 			},
+			j_sholium_nahuatljoker = {
+				name = "納瓦特爾小丑",
+				text = {
+					"若打出剛好{C:attention}3{}張牌",
+					"其中所有{C:attention}得分{}的牌{C:attention}-1{}點數",
+				},
+			},
 			j_sholium_neuraxworm = {
 				name = "Neurax 蠕蟲",
 				text = {
@@ -287,6 +294,21 @@ return {
 				text = {
 					"{C:attention}+100{}卡牌選擇上限",
 					"{C:inactive}big monke{}",
+				},
+			},
+			j_sholium_piglin = {
+				name = "豬布林",
+				text = {
+					"若打出的牌包含{C:gold}黃金牌{}",
+					"產生一張{C:tarot}塔羅牌{}",
+				},
+			},
+			j_sholium_piglinbrute = {
+				name = "豬布林蠻兵",
+				text = {
+					"若打出的牌型包含{C:attention}同花順{}",
+					"這張小丑獲得{X:red,C:white}X#2#{}倍率",
+					"{C:inactive}(目前{}{X:red,C:white}X#1#{}{C:inactive}倍率){}",
 				},
 			},
 			j_sholium_popandawe = {
@@ -351,6 +373,13 @@ return {
 					"{C:blue}+43{}籌碼",
  				},
 			},
+			j_sholium_rosegoldjoker = {
+				name = "玫瑰金小丑",
+				text = {
+					"{C:dark_edition}+1{}小丑牌欄位",
+					"{C:attention}+1{}消耗牌欄位",
+ 				},
+			},
 			j_sholium_rotationmatrix = {
 				name = "旋轉矩陣",
 				text = {
@@ -410,6 +439,16 @@ return {
 				text = {
 					"若打出的牌包含{C:clubs}梅花{}和{C:attention}7{}",
 					"產生一個{C:dark_edition}負片{}{C:spectral,E:1}Shol理元素{}",
+				},
+			},
+			j_sholium_trickytracks = {
+				name = "棘手路徑",
+				text = {
+					"若打出的牌型為{C:attention}三條{}，",
+					"{X:red,C:white}X倍率{}成長一次",
+					"成長速率取決於當前{X:red,C:white}X倍率{}",
+					"與{X:red,C:white}X3{}倍率的距離",
+					"{C:inactive}(當前{}{X:red,C:white}X#1#{}{C:inactive}倍率，下次成長{}{X:red,C:white}+#2#{}{C:inactive}){}"
 				},
 			},
 			j_sholium_virus = {
