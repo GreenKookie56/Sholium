@@ -55,7 +55,7 @@ SMODS.Joker{ --Rose Gold Joker
 
 local check_for_buy_space_ref = G.FUNCS.check_for_buy_space
 G.FUNCS.check_for_buy_space = function(card)
-    if card.config.center.key == "j_sholextra_rosegoldjoker" then -- ignore slot limit when bought
+    if card.config.center.key == "j_sholium_rosegoldjoker" then -- ignore slot limit when bought
         return true
     end
     return check_for_buy_space_ref(card)
@@ -63,7 +63,7 @@ end
 
 local can_select_card_ref = G.FUNCS.can_select_card
 G.FUNCS.can_select_card = function(e)
-    	if e.config.ref_table.config.center.key == "j_sholextra_rosegoldjoker" then
+    	if e.config.ref_table.config.center.key == "j_sholium_rosegoldjoker" then
         		e.config.colour = G.C.GREEN
         		e.config.button = "use_card"
     	else
