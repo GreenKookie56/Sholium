@@ -91,9 +91,7 @@ SMODS.Consumable {
         name = 'Sholium',
         text = {
         [1] = 'Apply {C:dark_edition}Black Deck{}',
-        [2] = 'to your run',
-        [3] = 'and spawn a {C:attention}Joker{} with',
-        [4] = '{C:dark_edition,E:1}Peculiar{} rarity'
+        [2] = 'to your run'
             }
         },
       ['zh_TW'] = {
