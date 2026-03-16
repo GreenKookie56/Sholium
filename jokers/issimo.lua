@@ -3,7 +3,7 @@ SMODS.Joker{ --Issimo
     config = {
         extra = {
             ante = 1,
-            cash = 35
+            cash = 50
         }
     },
     loc_txt = {

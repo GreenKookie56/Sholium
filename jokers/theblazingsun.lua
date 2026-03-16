@@ -3,14 +3,14 @@ SMODS.Joker{ --The Blazing Sun (v49)
     config = {
         extra = {
             Remaining = 4,
-            mult = 55
         }
     },
     loc_txt = {
         ['name'] = 'The Blazing Sun (v49)',
         ['text'] = {
-            [1] = '{C:red}+55{} Mult every {C:attention}5{} hands played',
-            [2] = '{C:inactive}#1# remaining{}'
+            [1] = '{C:red}+55{} Mult every {C:attention}5th{} hand',
+            [2] = '{C:blue}+12{} Chips otherwise',
+            [3] = '{C:inactive}#1# remaining{}'
         },
         ['unlock'] = {
             [1] = ''
@@ -43,15 +43,18 @@ SMODS.Joker{ --The Blazing Sun (v49)
             if (card.ability.extra.Remaining or 0) <= 0 then
                 card.ability.extra.Remaining = 4
                 return {
-                    mult = card.ability.extra.mult
+                    mult = 55
                 }
             else
                 card.ability.extra.Remaining = math.max(0, (card.ability.extra.Remaining) - 1)
+                return {
+                    chips = 12
+                }
             end
         end
         if context.forcetrigger then
             return {
-                mult = card.ability.extra.mult
+                mult = 55
             }
         end
     end

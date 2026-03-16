@@ -4,17 +4,16 @@ SMODS.Joker{ --Water Tower
     config = {
         extra = {
             mult = 0,
-            multmod = 3
+            multmod = 2
         }
     },
     loc_txt = {
         ['name'] = 'Water Tower',
         ['text'] = {
             [1] = 'This Joker gains {C:red}+#2#{} Mult if',
-            [2] = 'played hand is your',
+            [2] = 'played hand is not your',
             [3] = '{C:attention}most played{} Poker Hand',
-            [4] = '{C:red}self-destructs{} when Mult exceeds {C:attention}80{}',
-            [5] = '{C:inactive}(Currently{} {C:red}+#1#{} {C:inactive}Mult){}'
+            [4] = '{C:inactive}(Currently{} {C:red}+#1#{} {C:inactive}Mult){}'
         },
         ['unlock'] = {
             [1] = ''
@@ -48,13 +47,14 @@ SMODS.Joker{ --Water Tower
             if (function()
                 local current_played = G.GAME.hands[context.scoring_name].played or 0
                 for handname, values in pairs(G.GAME.hands) do
-                    if handname ~= context.scoring_name and values.played > current_played and values.visible then
-                        return false
+                    if handname ~= context.scoring_name and values.played >= current_played and values.visible then
+                        return true
                     end
                 end
-                return true
+                return false
             end)() then
                 return {
+                    message = "Upgrade!",
                     func = function()
                         card.ability.extra.mult = (card.ability.extra.mult) + card.ability.extra.multmod
                         return true
@@ -66,27 +66,6 @@ SMODS.Joker{ --Water Tower
             return {
                 mult = card.ability.extra.mult
             }
-        end
-        if context.after and context.cardarea == G.jokers  and not context.blueprint then
-            if to_big((card.ability.extra.mult or 0)) > to_big(80) then
-                return {
-                    func = function()
-                        local target_joker = card
-                        
-                        if target_joker then
-                            target_joker.getting_sliced = true
-                            G.E_MANAGER:add_event(Event({
-                                func = function()
-                                    target_joker:start_dissolve({G.C.RED}, nil, 1.6)
-                                    return true
-                                end
-                            }))
-                            card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = "Destroyed!", colour = G.C.RED})
-                        end
-                        return true
-                    end
-                }
-            end
         end
         if context.forcetrigger then
             local mult_value = card.ability.extra.mult
