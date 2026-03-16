@@ -31,7 +31,7 @@ SMODS.Joker{ --Boss Farming Guide
         h = 95 * 1
     },
     cost = 11,
-    rarity = "cry_epic",
+    rarity = 3,
     blueprint_compat = false,
     demicoloncompat = true,
     eternal_compat = true,
