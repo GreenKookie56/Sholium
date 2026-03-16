@@ -1,16 +1,16 @@
-SMODS.Joker{ --Pop and Awe (v39)
+SMODS.Joker{ --Pop and Awe
     key = "popandawe",
     config = {
         extra = {
             chips = -8,
-            xchips = 4
+            xchips = 3
         }
     },
     loc_txt = {
-        ['name'] = 'Pop and Awe (v39)',
+        ['name'] = 'Pop and Awe',
         ['text'] = {
             [1] = '{C:blue}-8{} Chips',
-            [2] = '{X:blue,C:white}X4{} Chips'
+            [2] = '{X:blue,C:white}X3{} Chips'
         },
         ['unlock'] = {
             [1] = ''
