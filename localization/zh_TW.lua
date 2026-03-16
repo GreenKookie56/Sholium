@@ -426,6 +426,7 @@ return {
 				text = {
 					"第{C:attention}5{}次出牌{C:red}+55{}倍率",
 					"非第5次出牌{C:blue}+12{}籌碼",
+					"{C:inactive}剩餘#1#次{}",
 				},
 			},
 			j_sholium_thefungus = {
