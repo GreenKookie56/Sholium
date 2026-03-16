@@ -4,7 +4,7 @@ SMODS.Joker{ --Piglin Brute
     config = {
         extra = {
             mult = 1,
-            scale = 1
+            scale = 4
         }
     },
     loc_txt = {
