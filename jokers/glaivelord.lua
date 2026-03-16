@@ -1,4 +1,4 @@
-SMODS.Joker{ --Glaive Lord (v48+)
+SMODS.Joker{ --Glaive Lord
     key = "glaivelord",
     config = {
         extra = {
@@ -8,7 +8,7 @@ SMODS.Joker{ --Glaive Lord (v48+)
         }
     },
     loc_txt = {
-        ['name'] = 'Glaive Lord (v48+)',
+        ['name'] = 'Glaive Lord',
         ['text'] = {
             [1] = 'This Joker gains {C:blue}+#2#{} Chips',
             [2] = 'for each {C:attention}non-first{} scored card',
