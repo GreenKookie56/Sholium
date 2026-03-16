@@ -26,7 +26,7 @@ SMODS.Joker{ --Piglin
     },
     cost = 6,
     rarity = 1,
-    blueprint_compat = true,
+    blueprint_compat = false,
     demicoloncompat = true,
     eternal_compat = true,
     perishable_compat = true,
