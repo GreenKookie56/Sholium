@@ -63,7 +63,7 @@ local card_set_cost_ref = Card.set_cost
 function Card:set_cost()
     card_set_cost_ref(self)
     
-    if next(SMODS.find_card("j_sholextra_nanovirus")) then
+    if next(SMODS.find_card("j_sholium_nanovirus")) then
         if (self.ability.set == 'Joker' or self.ability.set == 'Tarot' or self.ability.set == 'Planet' or self.ability.set == 'Spectral' or self.ability.set == 'Enhanced' or self.ability.set == 'Booster' or self.ability.set == 'Voucher') then
             self.cost = math.max(0, self.cost - (1))
         end
