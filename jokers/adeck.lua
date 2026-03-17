@@ -24,8 +24,8 @@ SMODS.Joker{ --A deck
         w = 71 * 1, 
         h = 95 * 1
     },
-    cost = 26,
-    rarity = 1,
+    cost = 16,
+    rarity = 2,
     blueprint_compat = true,
     demicoloncompat = true,
     eternal_compat = true,
