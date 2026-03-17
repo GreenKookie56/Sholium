@@ -3,8 +3,8 @@ SMODS.Joker{ --Bioweapon
     key = "bioweapon",
     config = {
         extra = {
-            minusmod = 2,
-            timesmod = 0.4,
+            minusmod = 1.5,
+            timesmod = 0.5,
             minus = 0,
             times = 1
         }
