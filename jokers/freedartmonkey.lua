@@ -3,7 +3,7 @@ SMODS.Joker{ --Free Dart Monkey
     config = {
         extra = {
             chips = 30,
-            mult = 3,
+            mult = 2,
             cash = 1
         }
     },
