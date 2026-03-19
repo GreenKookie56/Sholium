@@ -8,7 +8,6 @@ SMODS.Joker{ --Ezili
         ['name'] = 'Ezili',
         ['text'] = {
             [1] = '{C:purple}Balances{} {C:blue}Chips{} and {C:red}Mult{}',
-            [2] = 'on {C:attention}Big Blind{} and {C:attention}Boss Blind{}'
         },
         ['unlock'] = {
             [1] = ''
@@ -34,12 +33,10 @@ SMODS.Joker{ --Ezili
 
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main  then
-            if (G.GAME.blind.boss or G.GAME.blind:get_type() == 'Big') then
-                return {
-                    balance = true,
-                    message = "Hex"
-                }
-            end
+            return {
+                balance = true,
+                message = "Hex"
+            }
         end
         if context.forcetrigger then
             return {
