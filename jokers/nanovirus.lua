@@ -24,7 +24,7 @@ SMODS.Joker{ --Nano-virus
         w = 71 * 1, 
         h = 95 * 1
     },
-    cost = 6,
+    cost = 4,
     rarity = 1,
     blueprint_compat = false,
     eternal_compat = true,
