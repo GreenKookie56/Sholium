@@ -22,6 +22,13 @@ SMODS.Atlas({
     atlas_table = "ASSET_ATLAS"
 }):register()
 
+SMODS.current_mod.optional_features = function()
+    return {
+        post_trigger = true,
+        retrigger_joker = true
+    }
+end
+
 local NFS = require("nativefs")
 to_big = to_big or function(a) return a end
 lenient_bignum = lenient_bignum or function(a) return a end
