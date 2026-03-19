@@ -132,7 +132,7 @@ return {
 				},
 			},
 			j_sholium_clubism = {
-				name = "藍月光",
+				name = "梅花精神",
 				text = {
 					"打出的{C:clubs}梅花{}被計分時，{X:red,C:white}X#1#{}倍率",
 					"然後將{X:red,C:white}X倍率{}數值提升{X:red,C:white}+#2#{}",
@@ -148,7 +148,6 @@ return {
 			j_sholium_ezili = {
 				name = "巫毒法師",
 				text = {
-					"若為{C:attention}大盲注{}或{C:attention}Boss盲注{}，",
 					"{C:purple}平衡{}{C:blue}籌碼{}和{C:red}倍率{}",
 				},
 			},
@@ -452,6 +451,13 @@ return {
 					"成長速率取決於當前{X:red,C:white}X倍率{}",
 					"與{X:red,C:white}X3{}倍率的距離",
 					"{C:inactive}(當前{}{X:red,C:white}X#1#{}{C:inactive}倍率，下次成長{}{X:red,C:white}+#2#{}{C:inactive}){}"
+				},
+			},
+			j_sholextra_tt5bug = {
+				name = "量子糾纏(v38)",
+				text = {
+					"{C:attention}左邊{}的小丑結算時",
+					"{C:attention}強制觸發右邊{}的小丑",
 				},
 			},
 			j_sholium_virus = {
