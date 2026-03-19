@@ -7,7 +7,7 @@ SMODS.Joker{ --Ezili
     loc_txt = {
         ['name'] = 'Ezili',
         ['text'] = {
-            [1] = '{C:purple}Balances{} {C:blue}Chips{} and {C:red}Mult{}',
+            [1] = '{C:purple}Balance{} {C:blue}Chips{} and {C:red}Mult{}',
         },
         ['unlock'] = {
             [1] = ''
