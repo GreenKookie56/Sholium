@@ -3,7 +3,7 @@ SMODS.Joker{ --Brickell
     config = {
         extra = {
             Mult = 1,
-            increasement = 1
+            increasement = 2
         }
     },
     loc_txt = {
