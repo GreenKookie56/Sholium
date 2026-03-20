@@ -57,12 +57,12 @@ SMODS.Joker{ --Megalodon
             if SMODS.get_enhancements(context.other_card)["m_mult"] == true then
                 card.ability.extra.mult = (card.ability.extra.mult) + card.ability.extra.scale
                 return {
-                    message = "Upgrade!"
+                    message = localize('k_upgrade_ex')
                 }
             elseif SMODS.get_enhancements(context.other_card)["m_bonus"] == true then
                 card.ability.extra.chips = (card.ability.extra.chips) + card.ability.extra.scale
                 return {
-                    message = "Upgrade!"
+                    message = localize('k_upgrade_ex')
                 }
             end
         end

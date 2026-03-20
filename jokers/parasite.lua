@@ -52,7 +52,7 @@ SMODS.Joker{ --Parasite
                     card.ability.extra.mult = (card.ability.extra.mult) + card.ability.extra.mod
                     return true
                 end,
-                    message = "Upgrade!"
+                    message = localize('k_upgrade_ex')
                 }
             end
         end

@@ -73,7 +73,7 @@ SMODS.Joker{ --Tricky tracks
                         card.ability.extra.mult = lenient_bignum(card.ability.extra.mult) + lenient_bignum(card.ability.extra.scale)
                         return true
                 end,
-                message = "Upgrade!",
+                message = localize('k_upgrade_ex'),
                 extra = {
                     func = function()
                         card.ability.extra.scale = lenient_bignum(math.abs(3 - card.ability.extra.mult) * 0.1 + 0.1)

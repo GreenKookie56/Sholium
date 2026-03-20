@@ -51,7 +51,7 @@ SMODS.Joker{ --Brickell
                     card.ability.extra.Mult = (card.ability.extra.Mult) + card.ability.extra.increasement
                     return true
                 end,
-                    message = "Upgrade!"
+                    message = localize('k_upgrade_ex')
                 }
         end
         if context.end_of_round and context.game_over == false and context.main_eval  and not context.blueprint then

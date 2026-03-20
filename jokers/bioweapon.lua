@@ -59,7 +59,7 @@ SMODS.Joker{ --Bioweapon
                     card.ability.extra.minus = lenient_bignum(card.ability.extra.minus - card.ability.extra.minusmod)
                     return true
                 end,
-                message = "Upgrade!",
+                message = localize('k_upgrade_ex'),
                 extra = {
                     func = function()
                         card.ability.extra.times = lenient_bignum(card.ability.extra.times + card.ability.extra.timesmod)

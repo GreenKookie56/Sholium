@@ -50,7 +50,7 @@ SMODS.Joker{ --The Pudding
         h = 95 * 1
     },
     cost = 30,
-    rarity = "sholium_peculiar",
+    rarity = "sholextra_peculiar",
     blueprint_compat = true,
     demicoloncompat = true,
     eternal_compat = true,
@@ -95,7 +95,8 @@ SMODS.Joker{ --The Pudding
                     func = function()
                         card.ability.extra.operator = (card.ability.extra.operator) + 1
                         return true
-                    end
+                    end,
+                    message = localize('k_upgrade_ex')
                 }
             end
         end

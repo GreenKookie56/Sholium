@@ -54,7 +54,7 @@ SMODS.Joker{ --Water Tower
                 return false
             end)() then
                 return {
-                    message = "Upgrade!",
+                    message = localize('k_upgrade_ex'),
                     func = function()
                         card.ability.extra.mult = (card.ability.extra.mult) + card.ability.extra.multmod
                         return true

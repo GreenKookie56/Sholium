@@ -61,7 +61,7 @@ SMODS.Joker{ --:squalch:
                     card.ability.extra.squarechips = (card.ability.extra.squarechips) * card.ability.extra.chips
                     return true
                 end,
-                            message = "Upgrade!",
+                            message = localize('k_upgrade_ex'),
                             colour = G.C.MULT
                         }
                         }

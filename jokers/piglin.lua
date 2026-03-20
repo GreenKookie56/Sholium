@@ -3,7 +3,7 @@ SMODS.Joker{ --Piglin
     key = "piglin",
     config = {
         extra = {
-            tarot = 1
+            tarot = 0
         }
     },
     loc_txt = {
@@ -26,7 +26,7 @@ SMODS.Joker{ --Piglin
     },
     cost = 6,
     rarity = 1,
-    blueprint_compat = false,
+    blueprint_compat = true,
     demicoloncompat = true,
     eternal_compat = true,
     perishable_compat = true,
@@ -40,8 +40,13 @@ SMODS.Joker{ --Piglin
     end,
     
     calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.play  then
-            if (SMODS.get_enhancements(context.other_card)["m_gold"] == true and to_big((card.ability.extra.tarot or 0)) == to_big(1)) then
+        if context.individual and context.cardarea == G.play  and not context.blueprint then
+            if (SMODS.get_enhancements(context.other_card)["m_gold"] == true and to_big((card.ability.extra.tarot or 0)) < to_big(1)) then
+                card.ability.extra.tarot = 1
+            end
+        end
+        if context.cardarea == G.jokers and context.joker_main  then
+            if to_big(card.ability.extra.tarot) > to_big(0) then
                 for i = 1, math.min(1, G.consumeables.config.card_limit - #G.consumeables.cards) do
                     G.E_MANAGER:add_event(Event({
                         trigger = 'after',
@@ -55,7 +60,6 @@ SMODS.Joker{ --Piglin
                     }))
                 end
                 delay(0.6)
-                card.ability.extra.tarot = 0
                 return {
                     message = created_consumable and localize('k_plus_tarot') or nil
                 }
@@ -64,7 +68,7 @@ SMODS.Joker{ --Piglin
         if context.after and context.cardarea == G.jokers  and not context.blueprint then
             return {
                 func = function()
-                    card.ability.extra.tarot = 1
+                    card.ability.extra.tarot = 0
                     return true
                 end
             }

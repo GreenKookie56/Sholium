@@ -47,7 +47,7 @@ SMODS.Joker{ --Bloonchipper
                     card.ability.extra.discard = (card.ability.extra.discard) + card.ability.extra.discardmod
                     return true
                 end,
-                    message = "Upgrade!"
+                    message = localize('k_upgrade_ex')
                 }
         end
         if context.setting_blind  then

@@ -52,7 +52,7 @@ SMODS.Joker{ --Glaive Lord
             elseif (card.ability.extra.first or 0) ~= 1 then
                 card.ability.extra.chips = (card.ability.extra.chips) + card.ability.extra.chipsmod
                 return {
-                    message = "Upgrade!"
+                    message = localize('k_upgrade_ex')
                 }
             end
         end

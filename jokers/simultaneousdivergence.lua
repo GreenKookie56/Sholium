@@ -31,7 +31,7 @@ SMODS.Joker{ --Simultaneous Divergence
         h = 95 * 1
     },
     cost = 30,
-    rarity = "sholium_peculiar",
+    rarity = "sholextra_peculiar",
     blueprint_compat = true,
     demicoloncompat = true,
     eternal_compat = true,
@@ -97,6 +97,7 @@ end)() or (function()
     return suitCount >= 1
 end)())) then
                 return {
+                    message = localize('k_upgrade_ex'),
                     func = function()
                     card.ability.extra.mult = (card.ability.extra.mult) + card.ability.extra.scale
                     return true
