@@ -57,11 +57,6 @@ SMODS.Joker{ --tt5
 							    results.jokers.sound = "cry_demitrigger"
 							    return results.jokers
 						    end
-						    return {
-							    message = localize("cry_demicolon"),
-							    colour = G.C.RARITY.cry_epic,
-							    sound = "cry_demitrigger",
-						    }
 						end
 					end
 				end
