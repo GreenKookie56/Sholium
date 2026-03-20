@@ -50,7 +50,7 @@ SMODS.Joker{ --Piglin Brute
                         card.ability.extra.mult = (card.ability.extra.mult) + card.ability.extra.scale
                         return true
                     end,
-                    message = "Upgrade!"
+                    message = localize('k_upgrade_ex')
                 }
             end
         end
