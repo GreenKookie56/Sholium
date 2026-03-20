@@ -6,13 +6,15 @@ an unbalanced GreenKookie mod
 requires [Steamodded](https://github.com/Steamodded/smods/releases/latest), consider downloading [Talisman](https://github.com/SpectralPack/Talisman/releases/latest) or perhaps even [Cryptid](https://github.com/SpectralPack/Cryptid/releases/latest) for a more bizarre experience
 
 # What is this mod about?
-this is a btd6/plague inc related mod about everything I found funny/interesting and decided to add into the game, which includes:
+this is a mod about everything I found funny/interesting and decided to add into the game, which includes:
 - unbalanced ideas
 - inside jokes that are not really funny
-- arts that I drew (Some were made just to be funny, some were just me having nothing to do and deciding to waste 2 hours on a 69x91)
 - towers in btd6 old versions that absolutely peaked/sucked during the period
 - plagues that demonstrate their playstyle in the plague inc game
 - seal jokers that reduce hand size by 1 and have the effect of the original seals
+- math stuff
+- piglins
+- material jokers from tinkers construct
 
 # I prefer vanilla balance but i still want to see bloons content...
 Check out [Bloonalatro](https://github.com/Amphiapple/Bloonlatro) for vanilla+ playstyle 
