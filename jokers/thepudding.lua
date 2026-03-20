@@ -50,7 +50,7 @@ SMODS.Joker{ --The Pudding
         h = 95 * 1
     },
     cost = 30,
-    rarity = "sholextra_peculiar",
+    rarity = "sholium_peculiar",
     blueprint_compat = true,
     demicoloncompat = true,
     eternal_compat = true,
