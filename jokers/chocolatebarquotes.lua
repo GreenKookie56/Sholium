@@ -1,9 +1,6 @@
 SMODS.Joker{ --Chocolatebar Quotes
     key = "chocolatebarquotes",
     config = {
-        extra = {
-            mult = 72
-        }
     },
     loc_txt = {
         ['name'] = 'Chocolatebar Quotes',
@@ -48,7 +45,7 @@ SMODS.Joker{ --Chocolatebar Quotes
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main or context.forcetrigger then
                 return {
-                    mult = card.ability.extra.mult
+                    mult = 72
                 }
         end
     end
