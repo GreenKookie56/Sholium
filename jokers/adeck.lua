@@ -1,8 +1,6 @@
 SMODS.Joker{ --A deck
     key = "adeck",
     config = {
-        extra = {
-        }
     },
     loc_txt = {
         ['name'] = 'A deck',
