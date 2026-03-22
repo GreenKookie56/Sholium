@@ -2,7 +2,6 @@ SMODS.Joker{ --A deck
     key = "adeck",
     config = {
         extra = {
-            chips = 380
         }
     },
     loc_txt = {
@@ -45,7 +44,7 @@ SMODS.Joker{ --A deck
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main or context.forcetrigger then
                 return {
-                    chips = card.ability.extra.chips
+                    chips = 380
                 }
         end
     end
