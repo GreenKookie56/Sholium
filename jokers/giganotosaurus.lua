@@ -36,6 +36,11 @@ SMODS.Joker{ --Giganotosaurus
     discovered = true,
     atlas = 'CustomJokers',
 
+    loc_vars = function(self, info_queue, card)
+        
+        return {vars = {card.ability.extra.hands, card.ability.extra.Xmult}}
+    end,
+    
     calculate = function(self, card, context)
         if context.before and context.cardarea == G.jokers  and not context.blueprint then
                 return {
