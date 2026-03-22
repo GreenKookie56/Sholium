@@ -1,9 +1,6 @@
 SMODS.Joker{ --Iciclez_ alt
     key = "iciclezalt",
     config = {
-        extra = {
-            Xmult = 1.1
-        }
     },
     loc_txt = {
         ['name'] = 'Iciclez_ alt',
@@ -36,7 +33,7 @@ SMODS.Joker{ --Iciclez_ alt
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main or context.forcetrigger then
                 return {
-                    Xmult = card.ability.extra.Xmult
+                    Xmult = 1.1
                 }
         end
     end,
