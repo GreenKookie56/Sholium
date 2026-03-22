@@ -228,7 +228,7 @@ return {
 				name = "地圖砲",
 				text = {
 					"若牌型包含{C:attention}五條{}或{C:attention}同花葫蘆{}",
-					"重新觸發打出的牌{C:attention}六次{}",
+					"重新觸發打出的牌{C:attention}#1#次{}",
 				},
 			},
 			j_sholium_megalodon = {
