@@ -178,8 +178,8 @@ return {
 			j_sholium_giganotosaurus = {
 				name = "南方巨獸龍",
 				text = {
-					"{X:red,C:white}X6{}倍率",
-					"出牌額外占用{C:blue}2{}個出牌次數",
+					"{X:red,C:white}X#2#{}倍率",
+					"出牌額外占用{C:blue}#1#{}個出牌次數",
 				},
 			},
 			j_sholium_glaivelord = {
