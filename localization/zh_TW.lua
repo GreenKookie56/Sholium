@@ -356,7 +356,7 @@ return {
 				name = "白金之星",
 				text = {
 					"{C:attention}-1{}手牌大小",
-					"出牌時獲得{C:gold}$3{}",
+					"出牌時獲得{C:gold}$#1#{}",
 				},
 			},
 			j_sholium_sealblue = {
