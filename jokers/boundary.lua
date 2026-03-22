@@ -2,7 +2,6 @@ SMODS.Joker{ --Boundary
     key = "boundary",
     config = {
         extra = {
-            Xmult = 2.718
         }
     },
     loc_txt = {
@@ -44,7 +43,7 @@ SMODS.Joker{ --Boundary
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main or context.forcetrigger then
                 return {
-                    Xmult = card.ability.extra.Xmult
+                    Xmult = 2.718
                 }
         end
     end
