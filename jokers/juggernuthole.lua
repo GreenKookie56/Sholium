@@ -40,7 +40,12 @@ SMODS.Joker{ --Jugger nut Hole
           )
           and true
       end,
-
+    
+    loc_vars = function(self, info_queue, card)
+        
+        return {vars = {card.ability.extra.repetitions}}
+    end,
+    
     calculate = function(self, card, context)
         if context.repetition and context.cardarea == G.play  then
             if (next(context.poker_hands["Five of a Kind"]) or next(context.poker_hands["Flush House"])) then
