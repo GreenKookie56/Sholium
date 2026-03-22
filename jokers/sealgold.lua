@@ -9,7 +9,7 @@ SMODS.Joker{ --Gold Seal
         ['name'] = 'Gold Seal',
         ['text'] = {
             [1] = '{C:attention}-1{} Hand size',
-            [2] = 'Earn {C:gold}$3{} when a hand is played'
+            [2] = 'Earn {C:gold}$#1#{} when a hand is played'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -32,6 +32,11 @@ SMODS.Joker{ --Gold Seal
     unlocked = true,
     discovered = true,
     atlas = 'CustomJokers',
+
+    loc_vars = function(self, info_queue, card)
+
+        return {vars = {card.ability.extra.dollars}}
+    end,
 
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main or context.forcetrigger then
