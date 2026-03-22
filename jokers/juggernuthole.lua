@@ -10,7 +10,7 @@ SMODS.Joker{ --Jugger nut Hole
         ['text'] = {
             [1] = 'If played hand contains',
             [2] = '{C:attention}Five of a Kind{} or {C:attention}Flush House{},',
-            [3] = '{C:attention}Retrigger{} all played cards {C:attention}6{} times'
+            [3] = '{C:attention}Retrigger{} all played cards {C:attention}#1#{} times'
         },
         ['unlock'] = {
             [1] = ''
