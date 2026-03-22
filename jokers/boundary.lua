@@ -1,8 +1,6 @@
 SMODS.Joker{ --Boundary
     key = "boundary",
     config = {
-        extra = {
-        }
     },
     loc_txt = {
         ['name'] = 'Boundary',
