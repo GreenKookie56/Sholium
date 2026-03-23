@@ -1,9 +1,6 @@
 SMODS.Joker{ --Rosalia (v43)
     key = "rosalia",
     config = {
-        extra = {
-            chips = 43
-        }
     },
     loc_txt = {
         ['name'] = 'Rosalia (v43)',
@@ -35,7 +32,7 @@ SMODS.Joker{ --Rosalia (v43)
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main or context.forcetrigger then
                 return {
-                    chips = card.ability.extra.chips
+                    chips = 43
                 }
         end
     end
