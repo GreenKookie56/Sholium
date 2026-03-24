@@ -26,7 +26,7 @@ SMODS.Joker{ --The Pudding
     config = {
         extra = {
             operator = 0,
-            mult = 17
+            mult = 1.7
         }
     },
     loc_txt = {
