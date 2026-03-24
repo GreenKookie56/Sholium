@@ -1,18 +1,14 @@
-if Talisman then
+
 SMODS.Joker{ --Clubism
     key = "clubism",
     config = {
-        extra = {
-            mult = 1,
-            mod = 3
-        }
     },
     loc_txt = {
         ['name'] = 'Clubism',
         ['text'] = {
-            [1] = 'Each played {C:clubs}Clubs{} gives {X:red,C:white}X#1#{} Mult',
-            [2] = 'and increase {X:red,C:white}XMult{} value by {X:red,C:white}#2#{}',
-            [3] = 'when scored'
+            [1] = 'Increase level of played',
+            [2] = '{C:attention}poker hand{} if played hand',
+            [3] = 'contains a scoring {C:clubs}Clubs{}'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -26,45 +22,40 @@ SMODS.Joker{ --Clubism
         w = 71 * 1, 
         h = 95 * 1
     },
-    cost = 30,
-    rarity = "sholium_peculiar",
+    cost = 5,
+    rarity = 2,
     blueprint_compat = true,
-    demicoloncompat = true,
     eternal_compat = true,
     perishable_compat = false,
     unlocked = true,
     discovered = true,
     atlas = 'CustomJokers',
     in_pool = function(self, args)
-          return (
-          not args 
-          or args.source ~= 'buf' and args.source ~= 'jud' and args.source ~= 'rif' and args.source ~= 'rta' and args.source ~= 'sou' and args.source ~= 'uta' and args.source ~= 'wra' 
-          or args.source == 'sho'
-          )
-          and true
-      end,
-
-    loc_vars = function(self, info_queue, card)
-        return {vars = {card.ability.extra.mult, card.ability.extra.mod}}
+        return (
+            not args 
+            or args.source ~= 'buf' and args.source ~= 'jud' and args.source ~= 'rif' and args.source ~= 'rta' and args.source ~= 'sou' and args.source ~= 'uta' and args.source ~= 'wra' 
+            or args.source == 'sho'
+        )
+        and true
     end,
-
+ 
     calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.play  then
-            if context.other_card:is_suit("Clubs") then
-                local mult_value = card.ability.extra.mult
-                card.ability.extra.mult = (card.ability.extra.mult) + card.ability.extra.mod
+        if context.cardarea == G.jokers and context.before then
+            if (function()
+                local count = 0
+                for _, playing_card in pairs(context.scoring_hand or {}) do
+                    if playing_card:is_suit("Clubs") then
+                        count = count + 1
+                    end
+                end
+                return count >= 1
+            end)() then
+                local target_hand = (context.scoring_name or "High Card")
                 return {
-                    Xmult = mult_value
+                    level_up = true,
+                    message = localize('k_level_up_ex')
                 }
             end
         end
-        if context.forcetrigger then
-            local mult_value = card.ability.extra.mult
-            card.ability.extra.mult = (card.ability.extra.mult) + card.ability.extra.mod
-            return {
-                Xmult = mult_value
-            }
-        end
     end
 }
-end

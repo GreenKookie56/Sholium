@@ -5,7 +5,7 @@ SMODS.Joker{ --Simultaneous Divergence
     config = {
         extra = {
             mult = 1,
-            scale = 1
+            scale = 0.2
         }
     },
     loc_txt = {
