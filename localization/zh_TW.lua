@@ -502,7 +502,7 @@ return {
 					"{C:inactive}(當前{}{X:red,C:white}X#1#{}{C:inactive}倍率，下次成長{}{X:red,C:white}+#2#{}{C:inactive}){}"
 				},
 			},
-			j_sholextra_tt5bug = {
+			j_sholium_tt5bug = {
 				name = "量子糾纏(v38)",
 				text = {
 					"{C:attention}左邊{}的小丑結算時",
