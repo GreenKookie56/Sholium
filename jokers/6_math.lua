@@ -1,6 +1,108 @@
-if not next(SMODS.find_mod("Cryptid")) then
-  return nil
-end
+SMODS.Joker{ --Boundary
+    key = "boundary",
+    config = {
+    },
+    loc_txt = {
+        ['name'] = 'Boundary',
+        ['text'] = {
+            [1] = 'lim {C:attention}n{} -> {X:dark_edition,C:white}+infinity{}',
+            [2] = '{X:red,C:white}X1.444667861^^n{} Mult',
+            [3] = '{C:inactive,s:0.6}Explanation: e^e^-1 has exactly {}',
+            [4] = '{C:inactive,s:0.6}1 fixed point for f(x)=a^x, which is e{}',
+            [5] = '{C:inactive,s:0.6}That means (e^e^-1)^^inf, or {}',
+            [6] = '{C:inactive,s:0.6}(e^e^-1)^(e^e^-1)^... stacking infinite times,{}',
+            [7] = '{C:inactive,s:0.6}does not scale past the fix point{}',
+            [8] = '{C:inactive,s:0.6}1.444667861 is an approximation of e^e^-1{}',
+            [9] = '{C:inactive,s:0.6}which has 2 fixed points for f(x)=a^x, {}',
+            [10] = '{C:inactive,s:0.6}which stacks to around 2.718{}'
+        },
+        ['unlock'] = {
+            [1] = ''
+        }
+    },
+    pos = {
+        x = 9,
+        y = 0
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 6,
+    rarity = 3,
+    blueprint_compat = true,
+    demicoloncompat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+
+    calculate = function(self, card, context)
+        if context.cardarea == G.jokers and context.joker_main or context.forcetrigger then
+                return {
+                    Xmult = 2.718
+                }
+        end
+    end
+}
+SMODS.Joker{ --Normal distribution
+    key = "normaldistribution",
+    config = {
+        extra = {
+            Xmult = 1
+        }
+    },
+    loc_txt = {
+        ['name'] = 'Normal distribution',
+        ['text'] = {
+            [1] = '{X:red,C:white}X#1#{} Mult for each {C:attention}7{}',
+            [2] = 'contained in played hand',
+        },
+        ['unlock'] = {
+            [1] = ''
+        }
+    },
+    pos = {
+        x = 5,
+        y = 5
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 6,
+    rarity = 2,
+    blueprint_compat = true,
+    demicoloncompat = false,
+    eternal_compat = true,
+    perishable_compat = true,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.Xmult } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            local total = 1
+            for k, v in ipairs(context.full_hand) do
+                if v:get_id() == 7 then
+                    total = total + card.ability.extra.Xmult
+                end
+            end
+            if total > 1 then
+                return {
+                    x_mult = total
+                }
+            end
+		end
+    end
+}
+--Cryptid
+
+if next(SMODS.find_mod("Cryptid")) then
 
 SMODS.Joker{ --Rotation Matrix
     key = "rotationmatrix",
@@ -110,3 +212,4 @@ SMODS.Joker{ --Rotation Matrix
         end
     end
 }
+end
