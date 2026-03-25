@@ -269,6 +269,13 @@ return {
 					"並{C:red}自我摧毀{}",				
 				},
 			},
+			j_sholium_manyullynjoker = {
+				name = "瑪玉靈小丑",
+				text = {
+					"打出的牌被計分時，{X:red,C:white}X#1#{}倍率",
+					"然後將{X:red,C:white}X倍率{}數值提升{X:red,C:white}+#2#{}",
+				},
+			},
 			j_sholium_megalodon = {
 				name = "巨齒鯊",
 				text = {
