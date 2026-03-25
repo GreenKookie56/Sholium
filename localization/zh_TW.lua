@@ -31,6 +31,20 @@ return {
 					"的{C:blue}籌碼{}{C:inactive}(+380){}",
 				},
 			},
+			j_shollium_ancientmeme = {
+				text = {
+					"商店重骰時",
+					"{X:attention,C:dark_edition}=$939{}",
+				},
+			},
+			j_sholium_avenger = {
+				name = "復仇者",
+				text = {
+					"若打出的牌型本回合打出過，",
+					"本回合{C:blue}+1{}出牌次數",
+					"{C:inactive}Ah yes 一般稀有度(二周目){}",
+				},
+			},
 			j_sholium_bacteria = {
 				name = "細菌",
 				text = {
@@ -106,6 +120,9 @@ return {
                     "減少至{X:legendary,C:white}0{}以下時永久設為{X:legendary,C:white}^3.57{}倍率",
 				},
 			},
+			j_sholium_cavemonkey = {
+				name = "洞穴猴",
+			},
 			j_sholium_carrierflagship = {
 				name = "航母旗艦",
 				text = {
@@ -157,6 +174,12 @@ return {
 				text = {
 					"每{C:attention}3{}次出牌產生一張{C:spectral}火祭{}",
 					"{C:inactive}剩餘#1#次{}",
+				},
+			},
+			j_sholium_doreostream = {
+				name = "Doreo直播",
+				text = {
+					"所有牌點數均視為{C:attention}7{}",
 				},
 			},
 			j_sholium_ezili = {
@@ -216,6 +239,21 @@ return {
 				text = {
 					"每回合第一次出牌",
 					"{C:blue}+700{}籌碼",
+				},
+			},
+			j_sholium_geraldo = {
+				name = "杰拉爾多(v31.0)",
+				text = {
+					"商店重骰時產生一個隨機標籤",
+					"{C:inactive}Ah yes 一般稀有度{}",
+				},
+			},
+			j_sholium_horseboard = {
+				name = "Horseboard",
+				text = {
+					"{C:dark_edition}Bloonlatro discord{} horseboard 討論串中",
+					"每有一個{C:attention}:horse:{}反應{X:red,C:white}X1{}倍率",
+					"{C:inactive}(當前{}{X:red,C:white}X8{}{C:inactive}倍率){}"
 				},
 			},
 			j_sholium_hepatizonjoker = {
@@ -358,6 +396,12 @@ return {
 					"{C:inactive}(目前{}{X:red,C:white}X#1#{}{C:inactive}倍率){}",
 				},
 			},
+			j_sholium_ploone = {
+				text = {
+					"在結束商店後產生",
+					"一隻{C:dark_edition}負片{}{C:attention}幸運貓{}"
+				},
+			},
 			j_sholium_popandawe = {
 				name = "爆炸中請仰視",
 				text = {
@@ -414,6 +458,13 @@ return {
 					"{C:inactive}不是，這不是綠色的吧...{}",
 				},
 			},
+			j_sholium_redsauda = {
+				name = "紅色蘇打(v46)",
+				text = {
+					"{C:attention}第1張{}打出的牌計分時",
+					"交換{C:blue}籌碼{}和{C:red}倍率{}",
+ 				},
+			},
 			j_sholium_ripchamp = {
 				name = "激流鬥士(v52)",
 				text = {
@@ -452,6 +503,18 @@ return {
 					"一張其他花色的牌，",
 					"這張小丑獲得{X:legendary,C:white}^#2#{}倍率",
 					"{C:inactive}(目前{}{X:legendary,C:white}^#1#{}{C:inactive}倍率){}",
+				},
+			},
+			j_sholium_sheppi = {
+				text = {
+					"打出的{C:hearts}愛心{}被計分時，{X:blue,C:white}X#1#{}籌碼",
+					"然後將{X:blue,C:white}X籌碼{}數值提升{X:blue,C:white}+#2#{}",
+				},
+			},
+			j_sholium_shiniestaward = {
+				text = {
+					"至少打出{C:attention}#1#{}次牌後{C:red}+2000000{}倍率",
+					"{C:inactive}(#2#/#1#){}",
 				},
 			},
 			j_sholium_squalch = {
