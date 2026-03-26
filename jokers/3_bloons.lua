@@ -868,18 +868,29 @@ SMODS.Joker{ --Boss Farming Guide
     end,
 
     calculate = function(self, card, context)
-        if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint or context.forcetrigger then
+        if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
                 return {
                     func = function()
-                    card.ability.extra.eor = (card.ability.extra.eor) + math.floor(lenient_bignum(G.GAME.dollars / 10))
+                    card.ability.extra.eor = lenient_bignum(card.ability.extra.eor) + lenient_bignum(math.floor(math.max(G.GAME.dollars / 10) , 0))
                     return true
                 end,
-                    message = "Farming!",
+                    message = localize('k_upgrade_ex'),
                     extra = {
-                        dollars = card.ability.extra.eor,
                         colour = G.C.MONEY
                         }
                 }
+        end
+        if context.forcetrigger then
+            card.ability.extra.eor = lenient_bignum(card.ability.extra.eor) + lenient_bignum(math.floor(math.max(G.GAME.dollars / 10) , 0))
+                return {
+                    dollars = lenient_bignum(card.ability.extra.eor),
+                }
+        end
+    end,
+
+    calc_dollar_bonus = function(self, card)
+        if to_big(card.ability.extra.eor) > to_big(0) then
+            return lenient_bignum(card.ability.extra.eor)
         end
     end
 }
