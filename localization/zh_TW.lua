@@ -31,7 +31,7 @@ return {
 					"的{C:blue}籌碼{}{C:inactive}(+380){}",
 				},
 			},
-			j_shollium_ancientmeme = {
+			j_sholium_ancientmeme = {
 				text = {
 					"商店重骰時",
 					"{X:attention,C:dark_edition}=$939{}",
