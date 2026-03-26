@@ -14,12 +14,12 @@ this is a mod about everything I found funny/interesting and decided to add into
 - seal jokers that reduce hand size by 1 and have the effect of the original seals
 - math stuff
 - piglins
-- material jokers from tinkers construct
+- materials from tinkers construct
 
 # I prefer vanilla balance but i still want to see bloons content...
 Check out [Bloonalatro](https://github.com/Amphiapple/Bloonlatro) for vanilla+ playstyle 
 
 # Special thanks!
 - 1.2m^2 Fungus Room, iciclez_, i_am_mee and murpgod for playtesting & contributing ideas
-- amphiapple and kanjerlucas for teaching me how to code stuff like postrigger and config tab
+- amphiapple and kanjerlucas for teaching me how to code stuff like post_trigger and config tab
 - jokerforge community and the goat jaydchw, for making the revolutionary balatro mod maker
