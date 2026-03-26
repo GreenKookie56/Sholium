@@ -124,9 +124,9 @@ SMODS.Joker{ --Hepatizon Joker
         ['name'] = 'Hepatizon Joker',
         ['text'] = {
             [1] = 'Retrigger all played cards {C:attention}#1#{} time(s)',
-            [2] = 'Gains {C:attention}+1{} repetition after playing {C:attention}4{}',
+            [2] = 'Gains {C:attention}+1{} repetition after playing {C:attention}3{}',
             [3] = 'consecutive hands that',
-            [4] = 'contains a {C:attention}Straight{} {C:inactive}(#2#/4){}'
+            [4] = 'contains a {C:attention}Straight{} {C:inactive}(#2#/3){}'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
