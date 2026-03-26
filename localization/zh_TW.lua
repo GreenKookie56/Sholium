@@ -260,8 +260,8 @@ return {
 				name = "黑色科林斯青銅小丑",
 				text = {
 					"重新觸發所有打出的牌{C:attention}#1#{}次，",
-					"每連續打出{C:attention}4{}次包含順子的牌型",
-					"重新觸發次數{C:attention}+1{} {C:inactive}(#2#/4){}",
+					"每連續打出{C:attention}3{}次包含順子的牌型",
+					"重新觸發次數{C:attention}+1{} {C:inactive}(#2#/3){}",
 				},
 			},
 			j_sholium_iciclez = {
