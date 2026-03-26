@@ -238,7 +238,7 @@ return {
 				name = "寸草不生(v18-29)",
 				text = {
 					"每回合第一次出牌",
-					"{C:blue}+700{}籌碼",
+					"{C:blue}+#1#{}籌碼",
 				},
 			},
 			j_sholium_geraldo = {
