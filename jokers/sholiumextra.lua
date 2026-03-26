@@ -243,7 +243,7 @@ SMODS.Joker{ --Ground Zero (v18-29)
     loc_txt = {
         ['name'] = 'Ground Zero (v18-29)',
         ['text'] = {
-            [1] = '{C:blue}+700{} Chips for the',
+            [1] = '{C:blue}+#1#{} Chips for the',
             [2] = 'first hand of the round',
             [3] = '{s:0.8,C:inactive}this looks familiar{}'
         },
@@ -268,7 +268,9 @@ SMODS.Joker{ --Ground Zero (v18-29)
     unlocked = true,
     discovered = true,
     atlas = 'CustomJokers',
-
+    loc_vars = function(self, info_queue, card)
+        return {vars = {card.ability.extra.chips}}
+    end,
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main  then
             if G.GAME.current_round.hands_played == 0 then
@@ -550,8 +552,7 @@ SMODS.Joker{ --Shiniest award (v38)
     config = {
         extra = {
             req = 38,
-            played = 0,
-            mult = 2000000
+            played = 0
         }
     },
     loc_txt = {
@@ -591,7 +592,7 @@ SMODS.Joker{ --Shiniest award (v38)
         if context.cardarea == G.jokers and context.joker_main  then
             if (card.ability.extra.played or 0) >= card.ability.extra.req then
                 return {
-                    mult = card.ability.extra.mult
+                    mult = 2000000
                 }
             else
                 card.ability.extra.played = (card.ability.extra.played) + 1
@@ -602,7 +603,7 @@ SMODS.Joker{ --Shiniest award (v38)
         end
         if context.forcetrigger then
             return {
-                mult = card.ability.extra.mult
+                mult = 2000000
             }
         end
     end
