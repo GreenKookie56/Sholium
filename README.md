@@ -21,4 +21,5 @@ Check out [Bloonalatro](https://github.com/Amphiapple/Bloonlatro) for vanilla+ p
 
 # Special thanks!
 - 1.2m^2 Fungus Room, iciclez_, i_am_mee and murpgod for playtesting & contributing ideas
+- amphiapple and kanjerlucas for teaching me how to code stuff like postrigger and config tab
 - jokerforge community and the goat jaydchw, for making the revolutionary balatro mod maker
