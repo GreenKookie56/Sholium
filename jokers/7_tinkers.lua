@@ -157,7 +157,7 @@ SMODS.Joker{ --Hepatizon Joker
     
     calculate = function(self, card, context)
         if context.before and context.cardarea == G.jokers  and not context.blueprint then
-            if (next(context.poker_hands["Straight"]) and to_big(card.ability.extra.current) < to_big(3)) then
+            if (next(context.poker_hands["Straight"]) and to_big(card.ability.extra.current) < to_big(2)) then
                 return {
                     func = function()
                         card.ability.extra.current = (card.ability.extra.current) + 1
@@ -165,7 +165,7 @@ SMODS.Joker{ --Hepatizon Joker
                     end,
                     message = localize('k_upgrade_ex')
                 }
-            elseif (next(context.poker_hands["Straight"]) and to_big(card.ability.extra.current) >= to_big(3)) then
+            elseif (next(context.poker_hands["Straight"]) and to_big(card.ability.extra.current) >= to_big(2)) then
                 return {
                     func = function()
                         card.ability.extra.current = 0
