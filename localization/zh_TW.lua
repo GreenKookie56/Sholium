@@ -274,7 +274,7 @@ return {
 			j_sholium_iciclezalt = {
 				name = "Iciclez_的小帳",
 				text = {
-					"{X:red,C:white}X1.1{}倍率",
+					"{X:red,C:white}X#1#{}倍率",
 					"{C:dark_edition}+1{}小丑牌欄位",
 				},
 			},
@@ -405,8 +405,8 @@ return {
 			j_sholium_popandawe = {
 				name = "爆炸中請仰視",
 				text = {
-					"{C:blue}-8{}籌碼",
-					"{X:blue,C:white}X3{}籌碼",
+					"{C:blue}-#1#{}籌碼",
+					"{X:blue,C:white}X#2#{}籌碼",
 				},
 			},
 			j_sholium_pouakai = {
@@ -477,7 +477,7 @@ return {
 			j_sholium_rosalia = {
 				name = "小橘子(v43)",
 				text = {
-					"{C:blue}+43{}籌碼",
+					"{C:blue}+#1#{}籌碼",
  				},
 			},
 			j_sholium_rosegoldjoker = {
