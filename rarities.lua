@@ -1,4 +1,4 @@
-if Cryptid then
+if next(SMODS.find_mod("Cryptid")) then
   SMODS.load_mod_config(SMODS.Mods.Cryptid)
 end
 
