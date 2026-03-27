@@ -375,6 +375,9 @@ SMODS.Joker{ --Iciclez_
 SMODS.Joker{ --Iciclez_ alt
     key = "iciclezalt",
     config = {
+		extra = {
+			mult = 1.1
+		}
     },
     loc_txt = {
         ['name'] = 'Iciclez_ alt',
@@ -403,11 +406,15 @@ SMODS.Joker{ --Iciclez_ alt
     unlocked = true,
     discovered = true,
     atlas = 'CustomJokers',
-
+	
+    loc_vars = function(self, info_queue, card)
+        return {vars = {card.ability.extra.mult}}
+    end,
+	
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main or context.forcetrigger then
                 return {
-                    Xmult = 1.1
+                    Xmult = lenient_bignum(card.ability.extra.mult)
                 }
         end
     end,
