@@ -382,7 +382,7 @@ SMODS.Joker{ --Iciclez_ alt
     loc_txt = {
         ['name'] = 'Iciclez_ alt',
         ['text'] = {
-            [1] = '{X:red,C:white}X1.1{} Mult',
+            [1] = '{X:red,C:white}X#1#{} Mult',
             [2] = '{C:dark_edition}+1{} Joker slot'
         },
         ['unlock'] = {
