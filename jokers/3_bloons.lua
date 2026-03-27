@@ -391,7 +391,7 @@ SMODS.Joker{ --Pop and Awe
     key = "popandawe",
     config = {
 		extra = {
-			chips = -8
+			chips = 8,
 			xchips = 3
 		}
     },
@@ -431,7 +431,7 @@ SMODS.Joker{ --Pop and Awe
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main or context.forcetrigger then
                 return {
-                    chips = card.ability.extra.chips,
+                    chips = -card.ability.extra.chips,
                     extra = {
                         x_chips = card.ability.extra.xchips,
                         colour = G.C.DARK_EDITION
