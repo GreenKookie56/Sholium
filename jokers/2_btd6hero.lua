@@ -250,11 +250,14 @@ SMODS.Joker{ --Pat Fusty
 SMODS.Joker{ --Rosalia (v43)
     key = "rosalia",
     config = {
+        extra = {
+            chips = 43
+        }
     },
     loc_txt = {
         ['name'] = 'Rosalia (v43)',
         ['text'] = {
-            [1] = '{C:blue}+43{} Chips'
+            [1] = '{C:blue}+#1#{} Chips'
         },
         ['unlock'] = {
             [1] = ''
@@ -277,11 +280,15 @@ SMODS.Joker{ --Rosalia (v43)
     unlocked = true,
     discovered = true,
     atlas = 'CustomJokers',
+    
+    loc_vars = function(self, info_queue, card)
+        return {vars = {card.ability.extra.chips}}
+    end,
 
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main or context.forcetrigger then
                 return {
-                    chips = 43
+                    chips = card.ability.extra.chips
                 }
         end
     end
