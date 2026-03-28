@@ -719,6 +719,7 @@ SMODS.Joker{ --Piglin
     demicoloncompat = true,
     eternal_compat = true,
     perishable_compat = true,
+    enhancement_gate = 'm_gold',
     unlocked = true,
     discovered = true,
     atlas = 'CustomJokers',
