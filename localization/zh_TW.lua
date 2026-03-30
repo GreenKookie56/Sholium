@@ -122,6 +122,10 @@ return {
 			},
 			j_sholium_cavemonkey = {
 				name = "洞穴猴",
+				text = {
+					"進入盲注時，將一張",
+					"{C:dark_edition}負片{}{C:red}紅色封蠟章{}石頭牌加入手牌",
+				},
 			},
 			j_sholium_carrierflagship = {
 				name = "航母旗艦",
