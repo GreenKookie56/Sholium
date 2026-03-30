@@ -276,14 +276,15 @@ SMODS.Joker{ --Rose Gold Joker
     key = "rosegoldjoker",
     config = {
         extra = {
-            slot_change = '2'
+			chips = 0.7,
+            slots = 2
         }
     },
     loc_txt = {
         ['name'] = 'Rose Gold Joker',
         ['text'] = {
-            [1] = '{C:attention}+2{} Consumable slots',
-            [2] = '{X:chips,C:white}X0.7{} Chips'
+            [1] = '{C:attention}+#2#{} Consumable slots',
+            [2] = '{X:chips,C:white}X#1#{} Chips'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -305,25 +306,30 @@ SMODS.Joker{ --Rose Gold Joker
     unlocked = true,
     discovered = true,
     atlas = 'CustomJokers',
+
+    loc_vars = function(self, info_queue, card)
+        
+        return {vars = {card.ability.extra.chips, card.ability.extra.slots}}
+    end,
     
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main and not context.blueprint then
             return {
-                x_chips = 0.7
+                x_chips = card.ability.extra.chips
             }
         end
     end,
     
     add_to_deck = function(self, card, from_debuff)
         G.E_MANAGER:add_event(Event({func = function()
-            G.consumeables.config.card_limit = G.consumeables.config.card_limit + 2
+            G.consumeables.config.card_limit = G.consumeables.config.card_limit + card.ability.extra.slots
             return true
         end }))
     end,
     
     remove_from_deck = function(self, card, from_debuff)
         G.E_MANAGER:add_event(Event({func = function()
-            G.consumeables.config.card_limit = G.consumeables.config.card_limit - 2
+            G.consumeables.config.card_limit = G.consumeables.config.card_limit - card.ability.extra.slots
             return true
         end }))
     end
