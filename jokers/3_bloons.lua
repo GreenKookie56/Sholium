@@ -133,7 +133,8 @@ SMODS.Joker{ --Boss Farming Guide
         ['text'] = {
             [1] = 'Earn {C:gold}$#1#{} at the end of round',
             [2] = 'Payout increases by {C:gold}$1{} for every {C:gold}$10{}',
-            [3] = 'you have at the end of round {C:inactive}Max of +$5 per increasement{}'
+            [3] = 'you have at the end of round'
+			[4] = '{C:inactive}Max of +$5 per increasement{}'
         },
         ['unlock'] = {
             [1] = ''
