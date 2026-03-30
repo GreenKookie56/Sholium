@@ -334,7 +334,7 @@ SMODS.Joker{ --Manyullyn Joker
     config = {
         extra = {
             mult = 1,
-            mod = 0.2
+            mod = 0.05
         }
     },
     loc_txt = {
