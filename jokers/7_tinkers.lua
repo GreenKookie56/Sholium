@@ -277,7 +277,9 @@ SMODS.Joker{ --Rose Gold Joker
     config = {
         extra = {
 			chips = 0.7,
-            slots = 2
+			immutable = {
+                slots = 2
+			}
         }
     },
     loc_txt = {
@@ -309,7 +311,7 @@ SMODS.Joker{ --Rose Gold Joker
 
     loc_vars = function(self, info_queue, card)
         
-        return {vars = {card.ability.extra.chips, card.ability.extra.slots}}
+        return {vars = {card.ability.extra.chips, card.ability.extra.immutable.slots}}
     end,
     
     calculate = function(self, card, context)
@@ -322,14 +324,14 @@ SMODS.Joker{ --Rose Gold Joker
     
     add_to_deck = function(self, card, from_debuff)
         G.E_MANAGER:add_event(Event({func = function()
-            G.consumeables.config.card_limit = G.consumeables.config.card_limit + card.ability.extra.slots
+            G.consumeables.config.card_limit = G.consumeables.config.card_limit + card.ability.extra.immutable.slots
             return true
         end }))
     end,
     
     remove_from_deck = function(self, card, from_debuff)
         G.E_MANAGER:add_event(Event({func = function()
-            G.consumeables.config.card_limit = G.consumeables.config.card_limit - card.ability.extra.slots
+            G.consumeables.config.card_limit = G.consumeables.config.card_limit - card.ability.extra.immutable.slots
             return true
         end }))
     end
