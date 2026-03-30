@@ -38,7 +38,7 @@ return {
 				},
 			},
 			j_sholium_avenger = {
-				name = "復仇者",
+				name = "復仇者(v52)",
 				text = {
 					"若打出的牌型本回合打出過，",
 					"本回合{C:blue}+1{}出牌次數",
@@ -87,6 +87,7 @@ return {
 				text = {
 					"回合結束時，獲得{C:gold}$#1#{}",
 					"並且每擁有{C:gold}$10{}收入{C:gold}+1{}",
+					"{C:inactive}每次成長至多+5{}",
 				},
 			},
 			j_sholium_boundary = {
