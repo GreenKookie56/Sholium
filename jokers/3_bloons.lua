@@ -899,10 +899,10 @@ SMODS.Joker{ --Water Tower
         end
     end
 }
-
---Cryptlib
-
-if Cryptid then
+	
+if Talisman then
+	
+if Cryptid then --Cryptlib
 SMODS.Joker{ --tt5
     key = "tt5bug",
     config = {
@@ -964,11 +964,7 @@ SMODS.Joker{ --tt5
 }
 end
 
--- Cryptid
-
-if next(SMODS.find_mod("Cryptid")) then
-
-if Talisman then
+if next(SMODS.find_mod("Cryptid")) then -- Cryptid
 
 SMODS.Joker{ --Overclock
     key = "overclock",
