@@ -53,7 +53,7 @@ SMODS.Joker{ --Cave Monkey
     loc_txt = {
         ['name'] = 'Cave Monkey',
         ['text'] = {
-            [1] = 'Creates a {C:dark_edition}Negative{} {C:red}Red Seal{} Stone card',
+            [1] = 'Add a {C:dark_edition}Negative{} {C:red}Red Seal{} Stone card to hand',
             [2] = 'when a Blind is selected',
             [3] = '{C:inactive}Me Hit Rock{}'
         },
