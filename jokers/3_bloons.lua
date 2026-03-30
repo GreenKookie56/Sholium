@@ -236,7 +236,9 @@ SMODS.Joker{ --Carrier Flagship
         if context.individual and context.cardarea == G.play then
             if context.other_card:is_suit("Clubs") then
                 if SMODS.pseudorandom_probability(card, 'group_0_86561525', 1, card.ability.extra.odds, 'j_sholium_carrierflagship', false) then
-                    x_chips = card.ability.extra.chips
+                    return {
+                      x_chips = card.ability.extra.chips
+                    }
                 end
             end
         end
