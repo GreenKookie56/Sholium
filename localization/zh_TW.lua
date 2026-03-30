@@ -280,7 +280,7 @@ return {
 				name = "Iciclez_的小帳",
 				text = {
 					"{X:red,C:white}X#1#{}倍率",
-					"{C:dark_edition}+1{}小丑牌欄位",
+					"{C:dark_edition}+#2#{}小丑牌欄位",
 				},
 			},
 			j_sholium_issimo = {
@@ -488,8 +488,8 @@ return {
 			j_sholium_rosegoldjoker = {
 				name = "玫瑰金小丑",
 				text = {
-					"{C:attention}+2{}消耗牌欄位",
-					"{X:chips,C:white}X0.7{}籌碼",
+					"{C:attention}+#2#{}消耗牌欄位",
+					"{X:chips,C:white}X#1#{}籌碼",
  				},
 			},
 			j_sholium_rotationmatrix = {
