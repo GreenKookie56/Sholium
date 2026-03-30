@@ -53,8 +53,9 @@ SMODS.Joker{ --Cave Monkey
     loc_txt = {
         ['name'] = 'Cave Monkey',
         ['text'] = {
-            [1] = 'Me Hit Rock',
-            [2] = '{C:inactive,s:0.6}and it went negative{}'
+            [1] = 'Creates a {C:dark_edition}Negative{} {C:red}Red Seal{} Stone card',
+            [2] = 'when a Blind is selected',
+            [3] = '{C:inactive}Me Hit Rock{}'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -289,15 +290,18 @@ SMODS.Joker{ --Ground Zero (v18-29)
 SMODS.Joker{ --Horseboard
     key = "horseboard",
     config = {
+	    extra = {
+			mult = 1	
+		}
     },
     loc_txt = {
         ['name'] = 'Horseboard',
         ['text'] = {
-            [1] = '{X:red,C:white}X1{} Mult',
+            [1] = '{X:red,C:white}X#1#{} Mult',
             [2] = 'for every {C:attention}horse react{} in',
             [3] = '{C:dark_edition}Bloonlatro horseboard{}',
             [4] = '(in sholatro-ideas, Bloonlatro server)',
-            [5] = '{C:inactive}(Currently{} {X:red,C:white}X8{} {C:inactive}Mult){}'
+            [5] = '{C:inactive}(Currently{} {X:red,C:white}X#2#{} {C:inactive}Mult){}'
         },
         ['unlock'] = {
             [1] = ''
@@ -321,15 +325,19 @@ SMODS.Joker{ --Horseboard
     discovered = true,
     atlas = 'CustomJokers',
 
+    loc_vars = function(self, info_queue, card)
+        return {vars = {card.ability.extra.mult, 8 * card.ability.extra.mult}}
+    end,
+
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main then
                 return {
-                    Xmult = 8
+                    Xmult = lenient_bignum(card.ability.extra.mult * 8)
                 }
         end
         if context.forcetrigger then
                 return {
-                    Xmult = 8
+                    Xmult = lenient_bignum(card.ability.extra.mult * 8)
                 }
         end
     end
