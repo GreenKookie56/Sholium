@@ -133,7 +133,7 @@ SMODS.Joker{ --Boss Farming Guide
         ['text'] = {
             [1] = 'Earn {C:gold}$#1#{} at the end of round',
             [2] = 'Payout increases by {C:gold}$1{} for every {C:gold}$10{}',
-            [3] = 'you have at the end of round {C:inactive}(Max of +$5 per increasement){}'
+            [3] = 'you have at the end of round'
         },
         ['unlock'] = {
             [1] = ''
@@ -165,7 +165,7 @@ SMODS.Joker{ --Boss Farming Guide
         if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
                 return {
                     func = function()
-                    card.ability.extra.eor = lenient_bignum(card.ability.extra.eor) + lenient_bignum(math.min(math.floor(math.max(G.GAME.dollars / 10) , 0) , 5))
+                    card.ability.extra.eor = lenient_bignum(card.ability.extra.eor) + lenient_bignum(math.floor(math.max(G.GAME.dollars / 10) , 0))
                     return true
                 end,
                     message = localize('k_upgrade_ex'),
@@ -175,7 +175,7 @@ SMODS.Joker{ --Boss Farming Guide
                 }
         end
         if context.forcetrigger then
-            card.ability.extra.eor = lenient_bignum(card.ability.extra.eor) + lenient_bignum(math.min(math.floor(math.max(G.GAME.dollars / 10) , 0) , 5))
+            card.ability.extra.eor = lenient_bignum(card.ability.extra.eor) + lenient_bignum(math.floor(math.max(G.GAME.dollars / 10) , 0))
                 return {
                     dollars = lenient_bignum(card.ability.extra.eor),
                 }
@@ -236,8 +236,8 @@ SMODS.Joker{ --Carrier Flagship
         if context.individual and context.cardarea == G.play then
             if context.other_card:is_suit("Clubs") then
                 if SMODS.pseudorandom_probability(card, 'group_0_86561525', 1, card.ability.extra.odds, 'j_sholium_carrierflagship', false) then
-              SMODS.calculate_effect({x_chips = card.ability.extra.chips}, card)
-          end
+                    x_chips = card.ability.extra.chips
+                end
             end
         end
         if context.forcetrigger then
