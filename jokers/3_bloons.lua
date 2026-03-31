@@ -11,7 +11,7 @@ SMODS.Joker{ --Bloon Exclusion Zone (v38+)
         ['name'] = 'Bloon Exclusion Zone (v38+)',
         ['text'] = {
             [1] = 'Every scored {C:spades}Spades{}',
-            [2] = 'permanently gains {C:red}+#2#{} Mult'
+            [2] = 'permanently gains {C:red}+#1#{} Mult'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
