@@ -65,7 +65,7 @@ return {
 				name = "氣球禁區(v38+)",
 				text = {
 					"打出並計分的{C:spades}黑桃{}牌",
-					"永久獲得{C:red}+6{}倍率",
+					"永久獲得{C:red}+#1#{}倍率",
 				},
 			},
 			j_sholium_bioweapon = {
