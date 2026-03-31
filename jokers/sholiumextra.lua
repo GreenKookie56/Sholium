@@ -454,11 +454,14 @@ SMODS.Joker{ --Red Sauda
 SMODS.Joker{ --Avrejer
     key = "avenger",
     config = {
+	    extra = {
+			hands = 1
+		}
     },
     loc_txt = {
         ['name'] = 'Avenger (v52)',
         ['text'] = {
-            [1] = '{C:blue}+1{} hand this round if played',
+            [1] = '{C:blue}+#1#{} hand this round if played',
             [2] = '{C:attention}poker hand{} has already been',
             [3] = 'played this round before',
             [4] = '{C:inactive}Ah yes common pt.2{}'
@@ -484,6 +487,10 @@ SMODS.Joker{ --Avrejer
     unlocked = true,
     discovered = true,
     atlas = 'CustomJokers',
+
+	loc_vars = function(self, info_queue, card)
+        return {vars = {card.ability.extra.hands}}
+    end,
     
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.before or context.forcetrigger then
@@ -491,7 +498,7 @@ SMODS.Joker{ --Avrejer
                 return {
                     func = function()
                         card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = "+"..tostring(1).." Hands", colour = G.C.GREEN})
-                        G.GAME.current_round.hands_left = G.GAME.current_round.hands_left + 1
+                        G.GAME.current_round.hands_left = G.GAME.current_round.hands_left + card.ability.extra.hands
                         return true
                     end
                 }
