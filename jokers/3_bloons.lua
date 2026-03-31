@@ -3,7 +3,7 @@ SMODS.Joker{ --Bloon Exclusion Zone (v38+)
     config = {
         extra = {
             scored = 0,
-            pb_mult_7e6bb471 = 6,
+            pb_mult = 6,
             perma_mult = 0
         }
     },
@@ -11,7 +11,7 @@ SMODS.Joker{ --Bloon Exclusion Zone (v38+)
         ['name'] = 'Bloon Exclusion Zone (v38+)',
         ['text'] = {
             [1] = 'Every scored {C:spades}Spades{}',
-            [2] = 'permanently gains {C:red}+6{} Mult'
+            [2] = 'permanently gains {C:red}+#2#{} Mult'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -34,11 +34,15 @@ SMODS.Joker{ --Bloon Exclusion Zone (v38+)
     discovered = true,
     atlas = 'CustomJokers',
 
+    loc_vars = function(self, info_queue, card)
+        return {vars = {card.ability.extra.pb_mult}}
+    end,
+	
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play  then
             if context.other_card:is_suit("Spades") then
                 context.other_card.ability.perma_mult = context.other_card.ability.perma_mult or 0
-                context.other_card.ability.perma_mult = context.other_card.ability.perma_mult + card.ability.extra.pb_mult_7e6bb471
+                context.other_card.ability.perma_mult = context.other_card.ability.perma_mult + card.ability.extra.pb_mult
                 return {
                     extra = { message = localize('k_upgrade_ex'), colour = G.C.MULT }, card = card
                 }
