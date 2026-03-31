@@ -859,13 +859,13 @@ SMODS.Joker{ --Pudding Egg
     key = "puddingegg",
     config = {
         extra = {
-            joker_slots = 1
+            slots = 1
         }
     },
     loc_txt = {
         ['name'] = 'Pudding Egg',
         ['text'] = {
-            [1] = '{C:dark_edition}+1{} Joker slot',
+            [1] = '{C:dark_edition}+#1#{} Joker slot',
             [2] = 'at end of round'
         },
         ['unlock'] = {
@@ -897,13 +897,17 @@ SMODS.Joker{ --Pudding Egg
           )
           and true
       end,
+		
+	loc_vars = function(self, info_queue, card)
+        return {vars = {card.ability.extra.slots}}
+    end,
 
     calculate = function(self, card, context)
         if context.end_of_round and context.game_over == false and context.main_eval or context.forcetrigger then
                 return {
                     func = function()
                 card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = "+"..tostring(card.ability.extra.joker_slots).." Joker Slot", colour = G.C.DARK_EDITION})
-                G.jokers.config.card_limit = G.jokers.config.card_limit + card.ability.extra.joker_slots
+                G.jokers.config.card_limit = G.jokers.config.card_limit + card.ability.extra.slots
                 return true
             end
                 }
