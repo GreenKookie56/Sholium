@@ -493,7 +493,7 @@ SMODS.Joker{ --Avrejer
     end,
     
     calculate = function(self, card, context)
-        if context.cardarea == G.jokers and context.before or context.forcetrigger then
+        if context.cardarea == G.jokers and context.before then
             if G.GAME.hands[context.scoring_name] and G.GAME.hands[context.scoring_name].played_this_round > 1 then
                 return {
                     func = function()
@@ -504,6 +504,9 @@ SMODS.Joker{ --Avrejer
                 }
             end
         end
+		if context.forcetrigger then
+		    G.GAME.current_round.hands_left = G.GAME.current_round.hands_left + card.ability.extra.hands
+		end
     end
 }
 SMODS.Joker{ --Sheppi
@@ -696,7 +699,7 @@ SMODS.Joker{ --The Pudding
     
     loc_vars = function(self, info_queue, card)
         
-        return {vars = {FormatArrowMult(card.ability.extra.operator, card.ability.extra.mult)}}
+        return {vars = {FormatArrowMult(math.ceil(card.ability.extra.operator), card.ability.extra.mult)}}
     end,
     
     calculate = function(self, card, context)
@@ -744,10 +747,10 @@ SMODS.Joker{ --The Pudding
 				return {
 					eemult = lenient_bignum(card.ability.extra.mult)
 				}
-			elseif to_big(card.ability.extra.operator) >= to_big(3) then
+			elseif to_big(card.ability.extra.operator) > to_big(2) then
 				return {
 					hypermult = {
-						lenient_bignum(card.ability.extra.operator),
+						lenient_bignum(math.ceil(card.ability.extra.operator)),
 						lenient_bignum(card.ability.extra.mult)
 					}
 				}
