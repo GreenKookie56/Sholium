@@ -431,7 +431,7 @@ return {
 			j_sholium_puddingegg = {
 				name = "布丁蛋",
 				text = {
-					"回合結束時{C:dark_edition}+1{}小丑牌欄位",
+					"回合結束時{C:dark_edition}+#1#{}小丑牌欄位",
  				},
 			},
 			j_sholium_sealpurple = {
