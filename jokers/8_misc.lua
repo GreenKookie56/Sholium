@@ -906,7 +906,7 @@ SMODS.Joker{ --Pudding Egg
         if context.end_of_round and context.game_over == false and context.main_eval or context.forcetrigger then
                 return {
                     func = function()
-                card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = "+"..tostring(card.ability.extra.joker_slots).." Joker Slot", colour = G.C.DARK_EDITION})
+                card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = "+"..tostring(card.ability.extra.slots).." Joker Slot", colour = G.C.DARK_EDITION})
                 G.jokers.config.card_limit = G.jokers.config.card_limit + card.ability.extra.slots
                 return true
             end
