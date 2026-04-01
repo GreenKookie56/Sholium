@@ -87,7 +87,6 @@ return {
 				text = {
 					"回合結束時，獲得{C:gold}$#1#{}",
 					"並且每擁有{C:gold}$10{}收入{C:gold}+1{}",
-					"{C:inactive}每次成長至多+5{}",
 				},
 			},
 			j_sholium_boundary = {
