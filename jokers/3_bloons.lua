@@ -459,7 +459,7 @@ SMODS.Joker{ --Glue Storm (v39+)
     key = "gluestorm",
     config = {
         extra = {
-            active = 0,
+            active = 1, -- 1 = inactive and 0 = active, sholl
         }
     },
     loc_txt = {
@@ -491,7 +491,7 @@ SMODS.Joker{ --Glue Storm (v39+)
     
     loc_vars = function(self, info_queue, card)
         local function process_var()
-			if card.ability.extra.active == 0 then
+			if card.ability.extra.active ~= 0 then -- vrej
 				return 'Inactive'
             else
                 return 'Active!'
@@ -505,7 +505,7 @@ SMODS.Joker{ --Glue Storm (v39+)
     end,
     
     calculate = function(self, card, context)
-        if context.cardarea == G.jokers and context.joker_main  and not context.blueprint then
+        if context.before and context.cardarea == G.jokers and not context.blueprint then
             if to_big((card.ability.extra.active or 0)) == to_big(0) then
                 card.ability.extra.active = 1
             elseif to_big((card.ability.extra.active or 0)) ~= to_big(0) then
@@ -513,7 +513,7 @@ SMODS.Joker{ --Glue Storm (v39+)
             end
         end
         if context.repetition and context.cardarea == G.hand and (not context.other_card.debuff) and (next(context.card_effects[1]) or #context.card_effects > 1)  then
-            if to_big((card.ability.extra.active or 0)) ~= to_big(0) then
+            if to_big((card.ability.extra.active or 0)) == to_big(0) then
                 return {
                     repetitions = 2,
                     message = localize('k_again_ex')
