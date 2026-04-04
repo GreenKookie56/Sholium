@@ -259,7 +259,7 @@ SMODS.Joker{ --Cripple MOAB
     config = {
     },
     loc_txt = {
-        ['name'] = 'Cripple MOAB',
+        ['name'] = 'Cripple MOAB (v37-49)',
         ['text'] = {
             [1] = '{C:attention}-28%{} Blind requirement this round',
             [2] = 'when a hand is played'
