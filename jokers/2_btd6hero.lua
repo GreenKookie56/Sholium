@@ -304,9 +304,9 @@ SMODS.Joker{ --Silas (v50)
     loc_txt = {
         ['name'] = 'Silas (v50)',
         ['text'] = {
-            [1] = 'Creates an {C:attention}Icicle{} when',
+            [1] = 'Creates an {C:blue}Icicle{} when',
             [2] = 'a booster pack is skipped',
-            [3] = 'All Icicles and Icicle alts give {C:red}+#1#{} Mult',
+            [3] = 'All {C:blue}Icicles{} and {C:blue}Icicle alts{} give {C:red}+#1#{} Mult',
             [4] = '{C:inactive}ski buddy silas{}'
         },
         ['unlock'] = {
