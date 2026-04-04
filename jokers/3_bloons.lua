@@ -513,7 +513,7 @@ SMODS.Joker{ --Glue Storm (v39+)
             end
         end
         if context.repetition and context.cardarea == G.hand and (not context.other_card.debuff) and (next(context.card_effects[1]) or #context.card_effects > 1)  then
-            if to_big((card.ability.extra.active or 0)) == to_big(0) then
+            if to_big((card.ability.extra.active or 0)) ~= to_big(0) then
                 return {
                     repetitions = 2,
                     message = localize('k_again_ex')
