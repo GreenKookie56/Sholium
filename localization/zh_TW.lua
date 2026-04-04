@@ -238,7 +238,7 @@ return {
 				},
 			},
 			j_sholium_gluestorm = {
-				name = "膠水風暴(39+)",
+				name = "膠水風暴(v39+)",
 				text = {
 					"每兩次出牌重新觸發所有",
 					"手中的牌{C:attention}2{}次{C:inactive}(#1#){}",
