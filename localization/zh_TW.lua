@@ -484,16 +484,15 @@ return {
 			},
 			j_sholium_silas = {
 				text = {
-					"{C:attention}-1{}手牌大小",
-					"回合結束時產生上個{C:attention}牌型{}的{C:planet}星球牌{}",
-					"{C:inactive}不是，這不是綠色的吧...{}",
+					"跳過補充包時產生一張{C:blue}Icicle{}",
+					"所有{C:blue}Icicle{}及{C:blue}Icicle小帳{}提供{C:red}+#1#{}倍率",
 				},
 			},
 			j_sholium_redsauda = {
 				name = "紅色蘇打(v46)",
 				text = {
-					"跳過補充包時產生一張{C:blue}Icicle{}",
-					"所有{C:blue}Icicle{}及{C:blue}Icicle小帳{}提供{C:red}+#1#{}倍率",
+					"{C:attention}第1張{}打出的牌計分時",
+					"交換{C:blue}籌碼{}和{C:red}倍率{}",
  				},
 			},
 			j_sholium_ripchamp = {
