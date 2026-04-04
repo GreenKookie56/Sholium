@@ -137,8 +137,7 @@ SMODS.Joker{ --Boss Farming Guide
         ['text'] = {
             [1] = 'Earn {C:gold}$#1#{} at the end of round',
             [2] = 'Payout increases by {C:gold}$1{} for every {C:gold}$10{}',
-            [3] = 'you have at the end of round',
-			[4] = '{C:inactive}Max of +$5 per increasement{}'
+            [3] = 'you have at the end of round'
         },
         ['unlock'] = {
             [1] = ''
@@ -170,7 +169,7 @@ SMODS.Joker{ --Boss Farming Guide
         if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
                 return {
                     func = function()
-                    card.ability.extra.eor = lenient_bignum(card.ability.extra.eor) + lenient_bignum(math.min(math.floor(math.max(G.GAME.dollars / 10) , 0) , 5))
+                    card.ability.extra.eor = lenient_bignum(card.ability.extra.eor) + lenient_bignum(math.floor(math.max(G.GAME.dollars / 10) , 0))
                     return true
                 end,
                     message = localize('k_upgrade_ex'),
@@ -180,7 +179,7 @@ SMODS.Joker{ --Boss Farming Guide
                 }
         end
         if context.forcetrigger then
-            card.ability.extra.eor = lenient_bignum(card.ability.extra.eor) + lenient_bignum(math.min(math.floor(math.max(G.GAME.dollars / 10) , 0) , 5))
+            card.ability.extra.eor = lenient_bignum(card.ability.extra.eor) + lenient_bignum(math.floor(math.max(G.GAME.dollars / 10) , 0))
                 return {
                     dollars = lenient_bignum(card.ability.extra.eor),
                 }
@@ -250,6 +249,57 @@ SMODS.Joker{ --Carrier Flagship
         if context.forcetrigger then
             return {
                 x_chips = card.ability.extra.chips
+            }
+        end
+    end
+}
+
+SMODS.Joker{ --Cripple MOAB
+    key = "cripplemoab",
+    config = {
+    },
+    loc_txt = {
+        ['name'] = 'Cripple MOAB',
+        ['text'] = {
+            [1] = '{C:attention}-28%{} Blind requirement this round',
+            [2] = 'when a hand is played'
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 6,
+        y = 8
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 7,
+    rarity = 2,
+    blueprint_compat = true,
+    demicoloncompat = true,
+    eternal_compat = false,
+    perishable_compat = false,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+    
+    calculate = function(self, card, context)
+        if context.cardarea == G.jokers and context.joker_main or context.forcetrigger then
+            return {
+                
+                func = function()
+                    if G.GAME.blind.in_blind then
+                        
+                        card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = 'Crippled!', colour = G.C.GREEN})
+                        G.GAME.blind.chips = G.GAME.blind.chips * 0.72
+                        G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+                        G.HUD_blind:recalculate()
+                        return true
+                    end
+                end
             }
         end
     end
@@ -401,6 +451,74 @@ SMODS.Joker{ --Glaive Lord
 	return {
                     chips = card.ability.extra.chips
             }
+        end
+    end
+}
+
+SMODS.Joker{ --Glue Storm (v39+)
+    key = "gluestorm",
+    config = {
+        extra = {
+            active = 0,
+        }
+    },
+    loc_txt = {
+        ['name'] = 'Glue Storm (v39+)',
+        ['text'] = {
+            [1] = 'Retrigger all {C:attention}held in hand{} effect {C:attention}twice{}',
+            [2] = 'every other hand {C:inactive}(#1#){}'
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 8,
+        y = 8
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 4,
+    rarity = 2,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+    
+    loc_vars = function(self, info_queue, card)
+        local function process_var()
+			if card.ability.extra.active == 0 then
+				return 'Inactive'
+            else
+                return 'Active!'
+			end
+		end
+		return {
+			vars = {
+                process_var(card.ability.extra.active),
+			},
+		}
+    end,
+    
+    calculate = function(self, card, context)
+        if context.cardarea == G.jokers and context.joker_main  and not context.blueprint then
+            if to_big((card.ability.extra.active or 0)) == to_big(0) then
+                card.ability.extra.active = 1
+            elseif to_big((card.ability.extra.active or 0)) ~= to_big(0) then
+                card.ability.extra.active = 0
+            end
+        end
+        if context.repetition and context.cardarea == G.hand and (not context.other_card.debuff) and (next(context.card_effects[1]) or #context.card_effects > 1)  then
+            if to_big((card.ability.extra.active or 0)) ~= to_big(0) then
+                return {
+                    repetitions = 2,
+                    message = localize('k_again_ex')
+                }
+            end
         end
     end
 }
@@ -591,6 +709,59 @@ SMODS.Joker{ --Riptide Champion (v52)
 			return {
 				Xchip_mod = lenient_bignum(card.ability.extra.chips),
 			}
+        end
+    end
+}
+SMODS.Joker{ --Super Brittle (v51)
+    key = "sbrit",
+    config = {
+        extra = {
+            chips = 150
+        }
+    },
+    loc_txt = {
+        ['name'] = 'Super Brittle (v51)',
+        ['text'] = {
+            [1] = 'Each held in hand {C:attention}5s{}',
+            [2] = 'give {C:blue}+#1#{} Chips'
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 7,
+        y = 8
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 5,
+    rarity = 2,
+    blueprint_compat = true,
+    demicoloncompat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+    
+    loc_vars = function(self, info_queue, card)
+        
+        return {vars = {card.ability.extra.chips}}
+    end,
+    
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.hand and not context.end_of_round  then
+            if context.other_card:get_id() == 5 then
+                return {
+                    chips = card.ability.extra.chips
+                }
+            end
+        end
+        if context.forcetrigger then
+            chips = card.ability.extra.chips
         end
     end
 }
