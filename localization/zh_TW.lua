@@ -87,7 +87,6 @@ return {
 				text = {
 					"回合結束時，獲得{C:gold}$#1#{}",
 					"並且每擁有{C:gold}$10{}收入{C:gold}+1{}",
-					"{C:inactive}每次成長至多+5{}",
 				},
 			},
 			j_sholium_boundary = {
@@ -181,6 +180,12 @@ return {
 					"{C:inactive}剩餘#1#次{}",
 				},
 			},
+			j_sholium_cripplemoab = {
+				name = "殘廢MOAB (v37-49)",
+				text = {
+					"出牌時{C:attention}-28%{}盲注所需分數",
+				},
+			},
 			j_sholium_doreostream = {
 				name = "Doreo直播",
 				text = {
@@ -230,6 +235,13 @@ return {
 					"每次出牌中{C:attention}非第一次{}計分的牌",
 					"為這張小丑提供{C:blue}+#2#{}籌碼",
 					"{C:inactive}(目前{}{C:blue}+#1#{}{C:inactive}籌碼){}",
+				},
+			},
+			j_sholium_gluestorm = {
+				name = "膠水風暴(39+)",
+				text = {
+					"每兩次出牌重新觸發所有",
+					"手中的牌{C:attention}2{}次{C:inactive}(#1#){}",
 				},
 			},
 			j_sholium_greencookie = {
@@ -434,6 +446,13 @@ return {
 					"回合結束時{C:dark_edition}+#1#{}小丑牌欄位",
  				},
 			},
+			j_sholium_sbrit = {
+				name = "超級脆化(v51)",
+				text = {
+					"手中的{C:attention}5{}",
+					"給予{C:blue}+#1#{}籌碼",
+				},
+			},
 			j_sholium_sealpurple = {
 				name = "紫色隱者",
 				text = {
@@ -461,6 +480,12 @@ return {
 					"{C:attention}-1{}手牌大小",
 					"回合結束時產生上個{C:attention}牌型{}的{C:planet}星球牌{}",
 					"{C:inactive}不是，這不是綠色的吧...{}",
+				},
+			},
+			j_sholium_silas = {
+				text = {
+					"跳過補充包時產生一張{C:blue}Icicle{}",
+					"所有{C:blue}Icicle{}及{C:blue}Icicle小帳{}提供{C:red}+#1#{}倍率",
 				},
 			},
 			j_sholium_redsauda = {
