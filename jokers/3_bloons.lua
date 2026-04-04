@@ -465,7 +465,7 @@ SMODS.Joker{ --Glue Storm (v39+)
     loc_txt = {
         ['name'] = 'Glue Storm (v39+)',
         ['text'] = {
-            [1] = 'Retrigger all {C:attention}held in hand{} effect {C:attention}twice{}',
+            [1] = 'Retrigger all {C:attention}held in hand{} effects {C:attention}twice{}',
             [2] = 'every other hand {C:inactive}(#1#){}'
         },
         ['unlock'] = {
