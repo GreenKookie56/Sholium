@@ -1,4 +1,4 @@
-SMODS.Joker{ --Bloon Exclusion Zone (v38+)
+SMODS.Joker{ --Bloon Exclusion Zone (v38-53)
     key = "bez",
     config = {
         extra = {
@@ -8,7 +8,7 @@ SMODS.Joker{ --Bloon Exclusion Zone (v38+)
         }
     },
     loc_txt = {
-        ['name'] = 'Bloon Exclusion Zone (v38+)',
+        ['name'] = 'Bloon Exclusion Zone (v38-53)',
         ['text'] = {
             [1] = 'Every scored {C:spades}Spades{}',
             [2] = 'permanently gains {C:red}+#1#{} Mult'
