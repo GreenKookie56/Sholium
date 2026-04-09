@@ -18,7 +18,7 @@ return {
                },
 		Joker = {
 			j_sholium_adasaurus = {
-				name = "阿達龍",
+				name = "阿達龍(v36-53)",
 				text = {
 					"當一張牌被計分時，",
 					"{C:red}+#1#{}倍率",
@@ -62,7 +62,7 @@ return {
 				},
 			},
 			j_sholium_bez = {
-				name = "氣球禁區(v38+)",
+				name = "氣球禁區(v38-53)",
 				text = {
 					"打出並計分的{C:spades}黑桃{}牌",
 					"永久獲得{C:red}+#1#{}倍率",
