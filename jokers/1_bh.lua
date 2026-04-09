@@ -6,7 +6,7 @@ SMODS.Joker{ --Adasaurus
         }
     },
     loc_txt = {
-        ['name'] = 'Adasaurus',
+        ['name'] = 'Adasaurus (v36-53)',
         ['text'] = {
             [1] = 'Each played cards',
             [2] = 'give {C:red}+#1#{} Mult when scored'
