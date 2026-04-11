@@ -226,7 +226,7 @@ SMODS.Joker{ --Pat Fusty
         h = 95 * 1
     },
     cost = 7,
-    rarity = 3,
+    rarity = 2,
     blueprint_compat = false,
     eternal_compat = true,
     perishable_compat = true,
