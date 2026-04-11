@@ -300,8 +300,8 @@ SMODS.Joker{ --Rose Gold Joker
         w = 71 * 1, 
         h = 95 * 1
     },
-    cost = 6,
-    rarity = 2,
+    cost = 4,
+    rarity = 1,
     blueprint_compat = false,
     eternal_compat = true,
     perishable_compat = false,
