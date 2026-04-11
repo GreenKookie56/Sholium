@@ -70,7 +70,7 @@ SMODS.Joker{ --Cave Monkey
         h = 95 * 1
     },
     cost = 9,
-    rarity = 3,
+    rarity = 2,
     blueprint_compat = true,
     demicoloncompat = true,
     eternal_compat = true,
