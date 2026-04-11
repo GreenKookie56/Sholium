@@ -105,7 +105,6 @@ return {
 				},
 			},
 			j_sholium_brickell = {
-				name = "海軍上將",
 				text = {
 					"重骰時獲得{X:red,C:white}X#2#{}倍率",
 					"回合結束時重製",
@@ -174,7 +173,6 @@ return {
 				},
 			},
 			j_sholium_corvus = {
-				name = "耐削王牢科 (v43-48)",
 				text = {
 					"每{C:attention}3{}次出牌產生一張{C:spectral}火祭{}",
 					"{C:inactive}剩餘#1#次{}",
@@ -187,7 +185,6 @@ return {
 				},
 			},
 			j_sholium_ezili = {
-				name = "巫毒法師",
 				text = {
 					"{C:purple}平衡{}{C:blue}籌碼{}和{C:red}倍率{}",
 				},
@@ -246,7 +243,6 @@ return {
 				},
 			},
 			j_sholium_geraldo = {
-				name = "杰拉爾多(v31.0)",
 				text = {
 					"商店重骰時產生一個隨機標籤",
 					"{C:inactive}Ah yes 一般稀有度{}",
@@ -379,7 +375,6 @@ return {
 				},
 			},
 			j_sholium_patfusty = {
-				name = "巨猴",
 				text = {
 					"{C:attention}+100{}卡牌選擇上限",
 					"{C:inactive}big monke{}",
@@ -463,7 +458,6 @@ return {
 				},
 			},
 			j_sholium_redsauda = {
-				name = "紅色蘇打(v46)",
 				text = {
 					"{C:attention}第1張{}打出的牌計分時",
 					"交換{C:blue}籌碼{}和{C:red}倍率{}",
