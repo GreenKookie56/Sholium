@@ -1,3 +1,4 @@
 return {
-	sholextra = false
+	sholextra = false,
+	pudding = false,
 }

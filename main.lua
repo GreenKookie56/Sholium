@@ -72,6 +72,18 @@ local function load_functions_folder()
     end
 end
 
+local function load_decks_folder()
+    local mod_path = SMODS.current_mod.path
+    local decks_path = mod_path .. "/decks"
+    local files = NFS.getDirectoryItemsInfo(decks_path)
+    for i = 1, #files do
+        local file_name = files[i].name
+        if file_name:sub(-4) == ".lua" then
+            assert(SMODS.load_file("decks/" .. file_name))()
+        end
+    end
+end
+
 local function load_rarities_file()
     local mod_path = SMODS.current_mod.path
     assert(SMODS.load_file("rarities.lua"))()
@@ -81,3 +93,4 @@ load_rarities_file()
 load_jokers_folder()
 load_consumables_folder()
 load_functions_folder()
+load_decks_folder()
