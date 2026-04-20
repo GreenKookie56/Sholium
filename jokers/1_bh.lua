@@ -447,3 +447,66 @@ SMODS.Joker{ --Stupid Owl Stall
         end
     end
 }
+if Sholium.config.pudding then
+SMODS.Joker{ --T-rex (v44-53)
+    key = "trex",
+    config = {
+        extra = {
+            xmult = 1.3
+        }
+    },
+    loc_txt = {
+        ['name'] = 'T-rex (v44-53)',
+        ['text'] = {
+            [1] = 'Each played card gives',
+            [2] = '{X:red,C:white}X#1#{} Mult when scored',
+            [3] = '{X:red,C:white}X#2#{} Mult instead when',
+            [4] = 'scoring card is a {C:attention}Mult Card{}'
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 9,
+        y = 8
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 6,
+    rarity = 2,
+    blueprint_compat = true,
+    demicoloncompat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+
+    loc_vars = function(self, info_queue, card)
+
+        return {vars = {lenient_bignum(card.ability.extra.xmult), lenient_bignum(card.ability.extra.xmult * 2)}}
+    end,
+
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play  then
+            if SMODS.get_enhancements(context.other_card)["m_mult"] == true then
+                return {
+                    Xmult = lenient_bignum(card.ability.extra.xmult * 2)
+                }
+                else 
+                return {
+                    Xmult = lenient_bignum(card.ability.extra.xmult)
+                }
+            end
+        end
+        if context.forcetrigger then
+            return {
+                Xmult = lenient_bignum(card.ability.extra.xmult * 2)
+            }
+        end
+    end
+}
+end

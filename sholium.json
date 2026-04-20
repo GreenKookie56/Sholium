@@ -7,7 +7,7 @@
   "description": "an unbalanced Greenkookie mod. \nThe numbers in the parentheses are the specific btd6 versions that the joker effects are referring to. \nHave fun.",
   "prefix": "sholium",
   "main_file": "main.lua",
-  "version": "2.6.5d",
+  "version": "2.6.7",
   "priority": 2026,
   "badge_colour": "228922",
   "badge_text_colour": "FFFFFF",

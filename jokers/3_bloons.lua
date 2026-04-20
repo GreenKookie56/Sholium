@@ -253,6 +253,117 @@ SMODS.Joker{ --Carrier Flagship
         end
     end
 }
+SMODS.Joker{ --Cave Monkey
+    key = "cavemonkey",
+    loc_txt = {
+        ['name'] = 'Cave Monkey',
+        ['text'] = {
+            [1] = 'Add a {C:dark_edition}Negative{} {C:red}Red Seal{} Stone card to hand',
+            [2] = 'when a Blind is selected',
+            [3] = '{C:inactive}Me Hit Rock{}'
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 1,
+        y = 6
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 9,
+    rarity = 2,
+    blueprint_compat = true,
+    demicoloncompat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+
+    calculate = function(self, card, context)
+        if context.setting_blind or context.forcetrigger then
+                return {
+                    func = function()
+                local card_front = pseudorandom_element(G.P_CARDS, pseudoseed('add_card_hand'))
+                local new_card = create_playing_card({
+                    front = card_front,
+                    center = G.P_CENTERS.m_stone
+                }, G.discard, true, false, nil, true)
+            new_card:set_seal("Red", true)
+            new_card:set_edition("e_negative", true)
+
+                G.playing_card = (G.playing_card and G.playing_card + 1) or 1
+                new_card.playing_card = G.playing_card
+                table.insert(G.playing_cards, new_card)
+
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        G.hand:emplace(new_card)
+                        new_card:start_materialize()
+                        SMODS.calculate_context({ playing_card_added = true, cards = { new_card } })
+                        return true
+                    end
+                }))
+            end,
+                    message = "Added Card to Hand!"
+                }
+        end
+    end
+}
+SMODS.Joker{ --Cripple MOAB
+    key = "cripplemoab",
+    config = {
+    },
+    loc_txt = {
+        ['name'] = 'Cripple MOAB (v37-49)',
+        ['text'] = {
+            [1] = '{C:attention}-28%{} Blind requirement this round',
+            [2] = 'when a hand is played'
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 6,
+        y = 8
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 7,
+    rarity = 2,
+    blueprint_compat = true,
+    demicoloncompat = true,
+    eternal_compat = false,
+    perishable_compat = false,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+
+    calculate = function(self, card, context)
+        if context.cardarea == G.jokers and context.joker_main or context.forcetrigger then
+            return {
+
+                func = function()
+                    if G.GAME.blind.in_blind then
+
+                        card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = 'Crippled!', colour = G.C.GREEN})
+                        G.GAME.blind.chips = G.GAME.blind.chips * 0.72
+                        G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+                        G.HUD_blind:recalculate()
+                        return true
+                    end
+                end
+            }
+        end
+    end
+}
 SMODS.Joker{ --Free Dart Monkey
     key = "freedartmonkey",
     config = {
@@ -400,6 +511,74 @@ SMODS.Joker{ --Glaive Lord
 	return {
                     chips = card.ability.extra.chips
             }
+        end
+    end
+}
+
+SMODS.Joker{ --Glue Storm (v39+)
+    key = "gluestorm",
+    config = {
+        extra = {
+            active = 1, -- 1 = inactive and 0 = active, sholl
+        }
+    },
+    loc_txt = {
+        ['name'] = 'Glue Storm (v39+)',
+        ['text'] = {
+            [1] = 'Retrigger all {C:attention}held in hand{} effects {C:attention}twice{}',
+            [2] = 'every other hand {C:inactive}(#1#){}'
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 8,
+        y = 8
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 4,
+    rarity = 2,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+
+    loc_vars = function(self, info_queue, card)
+        local function process_var()
+			if card.ability.extra.active ~= 0 then -- vrej
+				return 'Inactive'
+            else
+                return 'Active!'
+			end
+		end
+		return {
+			vars = {
+                process_var(card.ability.extra.active),
+			},
+		}
+    end,
+
+    calculate = function(self, card, context)
+        if context.before and context.cardarea == G.jokers and not context.blueprint then
+            if to_big((card.ability.extra.active or 0)) == to_big(0) then
+                card.ability.extra.active = 1
+            elseif to_big((card.ability.extra.active or 0)) ~= to_big(0) then
+                card.ability.extra.active = 0
+            end
+        end
+        if context.repetition and context.cardarea == G.hand and (not context.other_card.debuff) and (next(context.card_effects[1]) or #context.card_effects > 1)  then
+            if to_big((card.ability.extra.active or 0)) ~= to_big(0) then
+                return {
+                    repetitions = 2,
+                    message = localize('k_again_ex')
+                }
+            end
         end
     end
 }
@@ -590,6 +769,59 @@ SMODS.Joker{ --Riptide Champion (v52)
 			return {
 				Xchip_mod = lenient_bignum(card.ability.extra.chips),
 			}
+        end
+    end
+}
+SMODS.Joker{ --Super Brittle (v51)
+    key = "sbrit",
+    config = {
+        extra = {
+            chips = 100
+        }
+    },
+    loc_txt = {
+        ['name'] = 'Super Brittle (v51)',
+        ['text'] = {
+            [1] = 'Each held in hand {C:attention}5s{}',
+            [2] = 'give {C:blue}+#1#{} Chips'
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 7,
+        y = 8
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 5,
+    rarity = 1,
+    blueprint_compat = true,
+    demicoloncompat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+
+    loc_vars = function(self, info_queue, card)
+
+        return {vars = {card.ability.extra.chips}}
+    end,
+
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.hand and not context.end_of_round  then
+            if context.other_card:get_id() == 5 then
+                return {
+                    chips = card.ability.extra.chips
+                }
+            end
+        end
+        if context.forcetrigger then
+            chips = card.ability.extra.chips
         end
     end
 }

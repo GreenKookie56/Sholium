@@ -14,6 +14,17 @@ SMODS.current_mod.config_tab = function()
                     })
                 }
             },
+            {
+                n = G.UIT.R,
+                config = { padding = 0.2, align = "cm" },
+                nodes = {
+                    create_toggle({
+                        label = "PuddlesofPudding content (requires game restart)",
+                        ref_table = Sholium.config,
+                        ref_value = 'pudding',
+                    })
+                }
+            },
             { n = G.UIT.R, config = { minh = 0.1 } }
         }
     }
