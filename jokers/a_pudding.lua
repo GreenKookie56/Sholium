@@ -89,7 +89,7 @@ SMODS.Joker{ --Mabel
         ['text'] = {
             [1] = 'When a hand is played,',
             [2] = '{C:attention}Randomize{} value of all Jokers',
-            [3] = 'by {C:attention}X0.8{} to {C:attention}X1.25{}'
+            [3] = 'by {C:attention}X0.8{} to {C:attention}X1.3{}'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -115,18 +115,13 @@ SMODS.Joker{ --Mabel
     
     calculate = function(self, card, context)
         if (context.cardarea == G.jokers and context.before) or context.forcetrigger then
-            local result = pseudorandom(pseudoseed("sholium_mabel"), 80, 125)
+            local result = pseudorandom(pseudoseed("sholium_mabel"), 80, 130)
             local check = false
             for i = 1, #G.jokers.cards do
                 if not (G.jokers.cards[i] == card) then
                     if not Card.no(G.jokers.cards[i], "immutable", true) then
                         check = true
-                        Cryptid.with_deck_effects(G.jokers.cards[i], function(cards)
-                            Cryptid.misprintize(cards, {
-                                min = lenient_bignum(result / 100),
-                                max = lenient_bignum(result / 100),
-                            }, nil, true)
-                        end)
+						Cryptid.manipulate(G.jokers.cards[i], { value = result / 100 })
                     end
                 end
             end

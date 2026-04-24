@@ -355,7 +355,7 @@ return {
 				name = "梅寶",
 				text = {
 					"打出牌結算前，所有小丑的數值",
-					"隨機改為目前數值的{C:attention}X0.8{}到{C:attention}X1.25{}倍",
+					"隨機改為目前數值的{C:attention}X0.8{}到{C:attention}X1.3{}倍",
 				},
 			},
 			j_sholium_manyullynjoker = {
