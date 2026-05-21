@@ -560,7 +560,7 @@ SMODS.Joker{ --Neurax worm
     key = "neuraxworm",
     config = {
         extra = {
-            mult = 1.1,
+            mult = 1.2,
             odds = 2
         }
     },
