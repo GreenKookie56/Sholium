@@ -330,7 +330,7 @@ SMODS.Joker{ --King George
     config = {
         extra = {
             eor = 3,
-            eor_mod = 0.5
+            eor_mod = 0.3
         }
     },
     loc_txt = {
