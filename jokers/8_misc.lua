@@ -322,7 +322,7 @@ SMODS.Joker{ --Green Cookie
     key = "greencookie",
     config = {
         extra = {
-            mult = 17,
+            mult = 18,
             multiplier = 1.03
         }
     },
