@@ -50,14 +50,20 @@ SMODS.Joker{ --Normal distribution
     key = "normaldistribution",
     config = {
         extra = {
-            Xmult = 1
+            Xmult7 = 0.68,
+            Xmult68 = 0.13,
+            Xmult59 = 0.03
         }
     },
     loc_txt = {
         ['name'] = 'Normal distribution',
         ['text'] = {
-            [1] = '{X:red,C:white}X#1#{} Mult for each {C:attention}7{}',
-            [2] = 'contained in played hand',
+			[1] = 'Starts from {X:red,C:white}X1{} Mult,',
+            [2] = 'When a hand is played,',
+            [3] = 'gives extra {X:red,C:white}X#1#{} Mult for each {C:attention}7{},',
+            [4] = '{X:red,C:white}X#2#{} Mult for each {C:attention}6 or 8{},',
+            [5] = 'and {X:red,C:white}X#3#{} Mult for each {C:attention}5 or 9{}',
+            [6] = 'contained in played hand',
         },
         ['unlock'] = {
             [1] = ''
@@ -82,14 +88,18 @@ SMODS.Joker{ --Normal distribution
     atlas = 'CustomJokers',
 
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.Xmult } }
+        return { vars = { card.ability.extra.Xmult7, card.ability.extra.Xmult68, card.ability.extra.Xmult59 } }
     end,
     calculate = function(self, card, context)
         if context.joker_main then
             local total = 1
             for k, v in ipairs(context.full_hand) do
                 if v:get_id() == 7 then
-                    total = total + card.ability.extra.Xmult
+                    total = total + card.ability.extra.Xmult7
+                elseif v:get_id() == 6 or v:get_id() == 8 then
+                    total = total + card.ability.extra.Xmult68
+                elseif v:get_id() == 5 or v:get_id() == 9 then
+                    total = total + card.ability.extra.Xmult59
                 end
             end
             if total > 1 then
@@ -100,6 +110,7 @@ SMODS.Joker{ --Normal distribution
 		end
     end
 }
+
 --Cryptid
 
 if next(SMODS.find_mod("Cryptid")) then
