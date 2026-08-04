@@ -510,8 +510,8 @@ return {
 			j_sholium_megalodon = {
 				name = "巨齒鯊",
 				text = {
-					"這張小丑在{C:blue}獎勵牌{}被計分時，",
-					"獲得{X:blue,C:white}X#2#{}籌碼",
+					"{C:blue}獎勵牌{}被計分時，",
+					"這張小丑獲得{X:blue,C:white}X#2#{}籌碼",
 					"{C:inactive}(目前{}{X:blue,C:white}X#1#{}{C:inactive}籌碼){}",
 				},
 			},
