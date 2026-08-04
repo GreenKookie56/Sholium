@@ -157,7 +157,6 @@ SMODS.Joker{ --Megalodon
     key = "megalodon",
     config = {
         extra = {
-            mult = 1,
             chips = 1,
             scale = 1
         }
@@ -165,11 +164,10 @@ SMODS.Joker{ --Megalodon
     loc_txt = {
         ['name'] = 'Megalodon',
         ['text'] = {
-            [1] = 'When a {C:red}Mult Card{} / {C:blue}Bonus Card{}',
-            [2] = 'is scored, this Joker gains',
-            [3] = '{X:red,C:white}X#3#{} Mult / {X:blue,C:white}X#3#{} Chips respectively',
-            [4] = '{C:inactive}(Currently{} {X:red,C:white}X#1#{}{C:inactive} Mult, {}{X:blue,C:white}X#2#{}{C:inactive} Chips){}',
-            [5] = '{C:inactive}Art by 1.2m^2 Fungus Room{}'
+            [1] = 'This Joker gains {X:blue,C:white}X#2#{} Chips',
+            [2] = 'when a {C:blue}Bonus Card{} is scored',
+            [3] = '{C:inactive}(Currently{} {X:blue,C:white}X#1#{}{C:inactive} Chips){}',
+            [4] = '{C:inactive}Art by 1.2m^2 Fungus Room{}'
         },
         ['unlock'] = {
             [1] = ''
@@ -203,17 +201,12 @@ SMODS.Joker{ --Megalodon
     
     loc_vars = function(self, info_queue, card)
         
-        return {vars = {card.ability.extra.mult, card.ability.extra.chips, card.ability.extra.scale}}
+        return {vars = {card.ability.extra.chips, card.ability.extra.scale}}
     end,
     
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play  and not context.blueprint then
-            if SMODS.get_enhancements(context.other_card)["m_mult"] == true then
-                card.ability.extra.mult = (card.ability.extra.mult) + card.ability.extra.scale
-                return {
-                    message = localize('k_upgrade_ex')
-                }
-            elseif SMODS.get_enhancements(context.other_card)["m_bonus"] == true then
+            if SMODS.get_enhancements(context.other_card)["m_bonus"] == true then
                 card.ability.extra.chips = (card.ability.extra.chips) + card.ability.extra.scale
                 return {
                     message = localize('k_upgrade_ex')
@@ -222,13 +215,11 @@ SMODS.Joker{ --Megalodon
         end
         if context.cardarea == G.jokers and context.joker_main  then
             return {
-                Xmult = card.ability.extra.mult,
                 x_chips = card.ability.extra.chips,
             }
         end
         if context.forcetrigger then
             return {
-                Xmult = card.ability.extra.mult,
                 x_chips = card.ability.extra.chips,
             }
         end
@@ -447,7 +438,6 @@ SMODS.Joker{ --Stupid Owl Stall
         end
     end
 }
-if Sholium.config.pudding then
 SMODS.Joker{ --T-rex (v44-53)
     key = "trex",
     config = {
@@ -509,4 +499,3 @@ SMODS.Joker{ --T-rex (v44-53)
         end
     end
 }
-end

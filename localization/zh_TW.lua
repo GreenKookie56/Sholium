@@ -45,12 +45,27 @@ return {
 					"{X:attention,C:dark_edition}=$939{}",
 				},
 			},
+			j_sholium_armorsmith = {
+				name = "製甲師",
+				text = {
+					"每從商店購買",
+					"{C:attention}4{}張{C:inactive}(#1#){}卡牌時，",
+					"這張小丑獲得{X:red,C:white}X#2#{}倍率",
+					"{C:inactive}(目前{}{X:red,C:white}X#3#{}{C:inactive}倍率){}",
+				},
+			},
 			j_sholium_avenger = {
 				name = "復仇者(v52)",
 				text = {
 					"若打出的牌型本回合打出過，",
 					"本回合{C:blue}+#1#{}出牌次數",
 					"{C:inactive}Ah yes 一般稀有度(二周目){}",
+				},
+			},
+			j_sholium_babyzombie = {
+				name = "小殭屍",
+				text = {
+					"打出的牌有{C:green}#1#/#2#{}機率重新觸發",
 				},
 			},
 			j_sholium_bacteria = {
@@ -81,6 +96,13 @@ return {
 				text = {
 					"結束階段，這張小丑獲得{C:red}-#1#{}及{X:red,C:white}X#2#{}倍率",
 					"{C:inactive}(目前{}{C:red}#3#{}{C:inactive}，{}{X:red,C:white}X#4#{}{C:inactive}倍率){}",
+				},
+			},
+			j_sholium_blaze = {
+				name = "烈焰使者",
+				text = {
+					"若打出牌型包含{C:attention}三條{}，",
+					"{C:green}#1#/#2#{}機率產生一張{C:attention}火祭{}",
 				},
 			},
 			j_sholium_bloonchipper = {
@@ -142,6 +164,12 @@ return {
                     "{C:inactive}let's go gambing!{}",
 				},
 			},
+			j_sholium_cartographer = {
+				name = "製圖師",
+				text = {
+					"{C:attention}+2{}商店欄位",
+				},
+			},
 			j_sholium_chocolatebarquotes = {
 				name = "Chocolatebar名言",
 				text = {
@@ -159,6 +187,15 @@ return {
 					"{C:inactive}實際效果:每個cbqpl的Chocolatebar名言提供+1倍率{}",
 				},
 			},
+			j_sholium_cleric = {
+				name = "神職人員",
+				text = {
+					"每張打出的{C:attention}倍率牌{}計分時，",
+					"獲得{X:red,C:white}X#2#{}倍率並",
+					"移除{C:attention}倍率牌{}強化",
+					"{C:inactive}(目前{}{X:red,C:white}X#1#{}{C:inactive}倍率){}",
+				},
+			},
 			j_sholium_clubism = {
 				name = "梅花精神",
 				text = {
@@ -170,6 +207,21 @@ return {
 				name = "鈷小丑",
 				text = {
 					"{C:attention}重新觸發{}右邊的小丑",
+				},
+			},
+			j_sholium_cobble = {
+				name = "鵝卵石製造機",
+				text = {
+					"若打出的牌包含一張計分的黑色牌和紅色牌，",
+					"這張小丑獲得{C:blue}+#1#{}籌碼",
+					"{C:inactive}(目前{}{C:blue}+#2#{}{C:inactive}籌碼){}",
+				},
+			},
+			j_sholium_coconut = {
+				name = "椰子",
+				text = {
+					"{C:blue}+#1#{}籌碼",
+					"{C:attention}-1{}手牌上限",
 				},
 			},
 			j_sholium_copperjoker = {
@@ -184,6 +236,13 @@ return {
 				text = {
 					"每{C:attention}3{}次出牌產生一張{C:spectral}火祭{}",
 					"{C:inactive}剩餘#1#次{}",
+				},
+			},
+			j_sholium_creeper = {
+				name = "苦力怕",
+				text = {
+					"最後一次出牌時，",
+					"{X:red,C:white}X#1#{}倍率並摧毀有計分的牌，然後{C:red}自爆{}",
 				},
 			},
 			j_sholium_cripplemoab = {
@@ -206,9 +265,29 @@ return {
 					"{X:red,C:white}X#1#{}倍率",
 				},
 			},
+			j_sholium_elderguardian = {
+				name = "遠古深海守衛",
+				text = {
+					"打出的{C:attention}3,6{}或{C:attention}9{}計分時{C:money}+$#1#{}",
+				},
+			},
+			j_sholium_enderman = {
+				name = "終界使者",
+				text = {
+					"每個回合首次出牌時，失去所有棄牌，",
+					"每失去1棄牌本回合額外{X:red,C:white}X1{}倍率",
+					"{C:inactive}（目前{}{X:red,C:white}X#1#{}{C:inactive}倍率）{}",
+				},
+			},
 			j_sholium_ezili = {
 				text = {
 					"{C:purple}平衡{}{C:blue}籌碼{}和{C:red}倍率{}",
+				},
+			},
+			j_sholium_farmer = {
+				name = "農夫",
+				text = {
+					"商店的消耗牌便宜{C:money}$2{}",
 				},
 			},
 			j_sholium_flash = {
@@ -218,6 +297,22 @@ return {
 					"當{C:green}商店{}被重骰時，",
 					"產生一張{C:attention}閃卡{}",
 					"然後將{X:red,C:white}X倍率{}數值提升{X:red,C:white}+0.5{}",
+				},
+			},
+			j_sholium_fletcher = {
+				name = "製箭師",
+				text = {
+					"每打出{C:attention}#1#{}張牌{C:inactive}(#2#){}",
+					"賺取{C:gold}$#3#{}",
+				},
+			},
+			j_sholium_fortmilk = {
+				name = "奶白金",
+				text = {
+					"回合結束時",
+					"若分數未達盲注要求，",
+					"{C:attention}防止死亡{}直到本底注結束，",
+					"並在該底注結束時{C:red}自我摧毀{}",
 				},
 			},
 			j_sholium_freedartmonkey = {
@@ -271,10 +366,22 @@ return {
 					"{C:blue}+#1#{}籌碼",
 				},
 			},
+			j_sholium_guardian = {
+				name = "深海守衛",
+				text = {
+					"打出的{C:attention}3,6{}或{C:attention}9{}計分時{C:red}+#1#{}倍率",
+				},
+			},
 			j_sholium_geraldo = {
 				text = {
 					"商店重骰時產生一個隨機標籤",
 					"{C:inactive}Ah yes 一般稀有度{}",
+				},
+			},
+			j_sholium_hightier1 = {
+				text = {
+					"打出的{C:attention}A{}視為擁有{C:dark_edition}負片{}以外",
+					"的所有其他原版版本",
 				},
 			},
 			j_sholium_horseboard = {
@@ -283,6 +390,13 @@ return {
 					"{C:dark_edition}Bloonlatro discord{} horseboard 討論串中",
 					"每有一個{C:attention}:horse:{}反應{X:red,C:white}X1{}倍率",
 					"{C:inactive}(當前{}{X:red,C:white}X8{}{C:inactive}倍率){}"
+				},
+			},
+			j_sholium_hoglin = {
+				name = "豬布獸",
+				text = {
+					"若打出的牌為{C:attention}剛好1張牌{}，",
+					"這張牌計分時點數{C:attention}+2{}",
 				},
 			},
 			j_sholium_hepatizonjoker = {
@@ -327,6 +441,14 @@ return {
 					"打出的{C:diamonds}方塊{}牌計分時此數值{C:gold}+$#2#{}",
 				},
 			},
+			j_sholium_librarian = {
+				name = "圖書管理員",
+				text = {
+					"重骰商店時，",
+					"{C:green}#1#/#2#{}機率產生一張",
+					"隨機{C:spectral}幻靈牌{}",				
+				},
+			},
 			j_sholium_literallycryptid = {
 				name = "很神秘的生物",
 				text = {
@@ -351,6 +473,18 @@ return {
 					"{C:inactive}(目前{}{C:blue}+#2#{}{C:inactive}籌碼){}",		
 				},
 			},
+			j_sholium_lolipop = {
+				name = "棒棒糖",
+				text = {
+					"這張小丑被賣出時，",
+					"賦予兩側的小丑{C:dark_edition}多彩{}及{C:dark_edition}易腐{}",
+				},
+			},
+			j_sholium_lowtier1 = {
+				text = {
+					"重新觸發打出的{C:attention}A{}兩次",
+				},
+			},
 			j_sholium_mabel = {
 				name = "梅寶",
 				text = {
@@ -365,12 +499,20 @@ return {
 					"然後將{X:red,C:white}X倍率{}數值提升{X:red,C:white}+#2#{}",
 				},
 			},
+			j_sholium_mace = {
+				name = "重錘",
+				text = {
+					"打出並計分的牌中",
+					"最高點數和最低點數每差1點",
+					"{X:red,C:white}X0.6{}倍率"
+				},
+			},
 			j_sholium_megalodon = {
 				name = "巨齒鯊",
 				text = {
-					"這張小丑在{C:red}倍率牌{}/{C:blue}獎勵牌{}被計分時，",
-					"分別獲得{X:red,C:white}X#3#{}倍率/{X:blue,C:white}X#3#{}籌碼",
-					"{C:inactive}(目前{}{X:red,C:white}X#1#{}{C:inactive}倍率，{}{X:blue,C:white}X#2#{}{C:inactive}籌碼){}",
+					"這張小丑在{C:blue}獎勵牌{}被計分時，",
+					"獲得{X:blue,C:white}X#2#{}籌碼",
+					"{C:inactive}(目前{}{X:blue,C:white}X#1#{}{C:inactive}籌碼){}",
 				},
 			},
 			j_sholium_nanovirus = {
@@ -395,19 +537,27 @@ return {
 					"給予{X:legendary,C:white}^#1#{}倍率",
 				},
 			},
+			j_sholium_nitwit = {
+				name = "傻子",
+				text = {
+					"請輸入文本",
+				},
+			},
 			j_sholium_nksucks = {
 				name = "Ninja Kiwi 平衡 be like",
 				text = {
 					"回合結束時，若這張小丑兩側的小丑的數值均可調整，",
-					"{C:attention}左邊小丑{}數值{C:attention}砍半{}，{C:attention}右邊小丑{}數值{C:attention}翻倍{}",
+					"{C:attention}左邊小丑{}數值{C:attention}-50%{}，{C:attention}右邊小丑{}數值{C:attention}+50%{}",
 				},
 			},
 			j_sholium_normaldistribution = {
 				name = "常態分佈",
 				text = {
-					"每張打出的{C:attention}7{}",
-					"給予{X:red,C:white}X#1#{}倍率",
-					"{C:inactive,s:0.8}1張7倍率X2，2張X3，以此類推{}",
+					"從{X:red,C:white}X1{}倍率開始",
+					"所有打出的牌中",
+					"每張{C:attention}7{}額外給予{X:red,C:white}X#1#{}倍率",
+					"每張{C:attention}6或8{}額外給予{X:red,C:white}X#2#{}倍率",
+					"每張{C:attention}5或9{}額外給予{X:red,C:white}X#3#{}倍率"
 				},
 			},			
 			j_sholium_orca = {
@@ -430,6 +580,15 @@ return {
 					"這張小丑在最後一次出牌時",
 					"獲得{C:red}+#2#{}倍率",
 					"{C:inactive}(目前{}{C:red}+#1#{}{C:inactive}倍率){}",
+				},
+			},
+			j_sholium_party = {
+				text = {
+					"若打出並計分的牌數量",
+					"{C:attention}大於{}擁有的小丑數量，",
+					"這張小丑獲得{C:blue}3{}倍",
+                    "小丑數量的{C:blue}籌碼{}",
+					"{C:inactive}(目前{}{C:blue}+#1#{}{C:inactive}籌碼){}",
 				},
 			},
 			j_sholium_patfusty = {
@@ -527,6 +686,64 @@ return {
 					"跳過補充包時產生一張{C:blue}Icicle{}",
 					"所有{C:blue}Icicle{}及{C:blue}Icicle小帳{}提供{C:red}+#1#{}倍率",
 				},
+			},
+			j_sholium_skeleton = {
+				name = "骷髏",
+				text = {
+					"每打出3張牌{C:red}+#1#{}倍率",
+					"{C:inactive}(目前#2#/3){}",
+				},
+			},
+			j_sholium_shulker = {
+				name = "界伏蚌",
+				text = {
+					"商店結束時，",
+					"將所有消耗牌欄位中的牌",
+					"改為{C:dark_edition}負片{}",
+				},
+			},
+			j_sholium_solo = {
+				text = {
+					"將本局打出過{C:attention}高牌{}",
+					"的次數加到{C:red}倍率{}",
+					"{C:inactive}(目前{}{C:red}+#1#{}{C:inactive}倍率){}",
+				},
+			},
+			j_sholium_spider = {
+				name = "蜘蛛",
+				text = {
+					"打出的{C:attention}8{}",
+					"永久獲得{C:blue}+#1#{}籌碼",
+				},
+			},
+			j_sholium_sportsdrink = {
+				name = "寶礦力",
+				text = {
+					"若剩餘出牌數小於{C:blue}2{}，",
+					"{X:blue,C:white}X#1#{}籌碼，結算完畢後{X:blue,C:white}-X#2#{}",
+				},
+			},
+			j_sholium_toolsmith = {
+				name = "工具匠",
+				text = {
+					"從商店購買牌時，",
+					"這張小丑獲得{C:red}+#1#{}倍率",
+					"{C:inactive}(目前{}{C:red}+#2#{}{C:inactive}倍率){}",
+				},
+			},
+			j_sholium_trident = {
+				name = "三叉戟",
+				text = {
+					"若打出的牌型包含{C:attention}三條{}，",
+					"提升打出牌型的等級",
+				},
+			},
+			j_sholium_ramen = {
+				name = "拉麵",
+				text = {
+					"將所有被列出機率的",
+					"分子{C:green}X1000000{}",
+ 				},
 			},
 			j_sholium_redsauda = {
 				text = {
@@ -689,6 +906,34 @@ return {
 					"若打出的牌型不為{C:attention}最常打出{}的牌型",
 					"這張小丑獲得{C:red}+#2#{}倍率",
 					"{C:inactive}(目前{}{C:red}+#1#{}{C:inactive}倍率){}"
+				},
+			},
+			j_sholium_witch = {
+				name = "女巫",
+				text = {
+					"每{C:attention}#2#{}次{C:inactive}(#1#){}出牌",
+					"產生一張隨機{C:tarot}塔羅牌{}",
+				},
+			},
+			j_sholium_witherskeleton = {
+				name = "凋零骷髏",
+				text = {
+					"將所有打出並計分的牌",
+					"花色轉換為{C:spades}黑桃{}",
+				},
+			},
+			j_sholium_zombie = {
+				name = "殭屍",
+				text = {
+					"賣掉這張牌時，",
+					"產生兩個{C:attention}皇后{}{C:tarot}塔羅牌{}",
+				},
+			},
+			j_sholium_zombiepigman = { -- ah yes
+				name = "殭屍化豬布林",
+				text = {
+					"賣掉這張牌時，",
+					"產生一張{C:attention}惡魔{}和一張{C:attention}皇后{}",
 				},
 			},
                },
