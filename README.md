@@ -14,7 +14,6 @@ this is a mod about everything I found funny/interesting and decided to add into
 - plagues that demonstrate their playstyle in the plague inc game
 - seal jokers that reduce hand size by 1 and have the effect of the original seals
 - math stuff
-- piglins
 - materials from tinkers construct
 
 # I prefer vanilla balance but i still want to see bloons content...
