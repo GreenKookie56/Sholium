@@ -549,7 +549,9 @@ SMODS.Joker{ --The Tree is Loud
         ['text'] = {
             [1] = 'This Joker gains {C:money}$#1#{} of {C:attention}sell value{}',
             [2] = 'when each played {C:attention}3{} is scored',
-            [3] = '{C:inactive}The Three\'s endowed?{}'
+            [3] = 'Creates a copy of this card if sold',
+            [4] = 'at more than {C:money}$30{} of sell value',
+            [5] = '{C:inactive}The Three\'s endowed?{}'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -567,8 +569,8 @@ SMODS.Joker{ --The Tree is Loud
     rarity = 2,
     blueprint_compat = true,
     demicoloncompat = true,
-    eternal_compat = true,
-    perishable_compat = true,
+    eternal_compat = false,
+    perishable_compat = false,
     unlocked = true,
     discovered = true,
     atlas = 'CustomJokers',
@@ -605,6 +607,21 @@ SMODS.Joker{ --The Tree is Loud
 			end
             end
         end
+
+        if context.selling_self and to_big(card.sell_cost) >= to_big(30) and not context.blueprint then
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    local card = create_card('j_sholium_thetreeisloud', G.jokers, nil, nil, nil, nil, 'j_sholium_thetreeisloud', 'thetreeisloud')
+                    card:set_cost()
+                    card:add_to_deck() 
+                    G.jokers:emplace(card)
+                    card:start_materialize()
+                    return true
+                end
+            }))
+            card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_plus_joker'), colour = G.C.BLUE}) 
+        end -- bloonlatro op
+
         if context.forcetrigger then
             local my_pos = nil
             for i = 1, #G.jokers.cards do

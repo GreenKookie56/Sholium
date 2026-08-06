@@ -713,9 +713,9 @@ return {
 			},
 			j_sholium_solo = {
 				text = {
-					"將本局打出過{C:attention}高牌{}",
-					"的次數加到{C:red}倍率{}",
-					"{C:inactive}(目前{}{C:red}+#1#{}{C:inactive}倍率){}",
+					"若打出的牌型為{C:attention}高牌{}，",
+					"這張小丑獲得{C:red}+#1#{}倍率",
+					"{C:inactive}(目前{}{C:red}+#2#{}{C:inactive}倍率){}",
 				},
 			},
 			j_sholium_soundwavecontroller = {
@@ -752,6 +752,8 @@ return {
 				text = {
 					"打出的{C:attention}3{}計分時，",
 					"這張小丑獲得{C:gold}$3{}的出售價值",
+					"在有{C:gold}$30{}以上出售價值賣出時，",
+					"產生一張額外的本張小丑",
 				},
 			},
 			j_sholium_trident = {

@@ -1878,16 +1878,16 @@ SMODS.Joker{ --Solo
     key = "solo",
     config = {
         extra = {
-            mult_mod = 1,
+            mult_mod = 2,
             mult = 0
         }
     },
     loc_txt = {
-        ['name'] = 'Solo',
+        ['name'] = '1v1',
         ['text'] = {
-            [1] = 'Adds the amount of times {C:attention}High Card{}',
-            [2] = 'has been played this game to {C:red}Mult{}',
-            [3] = '{C:inactive}(Currently {}{C:red}+#1#{}{C:inactive} Mult){}'
+            [1] = 'This Joker gains {C:red}+#1#{} Mult',
+            [2] = 'if played hand is {C:attention}High Card{}',
+            [3] = '{C:inactive}(Currently {}{C:red}+#2#{}{C:inactive} Mult){}'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -1913,24 +1913,35 @@ SMODS.Joker{ --Solo
     
     loc_vars = function(self, info_queue, card)
         
-        return {vars = {(G.GAME.hands['High Card'].played or 0)}}
+        return {vars = {card.ability.extra.mult_mod, card.ability.extra.mult}}
     end,
     
     calculate = function(self, card, context)
         if context.before and context.cardarea == G.jokers  and not context.blueprint then
             if context.scoring_name == "High Card" then
                 return {
+                    func = function()
+                        card.ability.extra.mult = (card.ability.extra.mult) + card.ability.extra.mult_mod
+                        return true
+                    end,
                     message = localize('k_upgrade_ex')
                 }
             end
         end
-        if context.cardarea == G.jokers and context.joker_main or context.forcetrigger then
+        if context.cardarea == G.jokers and context.joker_main  then
             return {
-                mult = G.GAME.hands['High Card'].played
+                mult = card.ability.extra.mult
+            }
+        end
+        if context.forcetrigger then
+            card.ability.extra.mult = (card.ability.extra.mult) + card.ability.extra.mult_mod
+            return {
+                mult = card.ability.extra.mult
             }
         end
     end
 }
+
 
 SMODS.Joker{ --Party
     key = "party",
