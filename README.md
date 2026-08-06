@@ -15,6 +15,7 @@ this is a mod about everything I found funny/interesting and decided to add into
 - seal jokers that reduce hand size by 1 and have the effect of the original seals
 - math stuff
 - materials from tinkers construct
+- minecraft content
 
 # I prefer vanilla balance but i still want to see bloons content...
 Check out [Bloonalatro](https://github.com/Amphiapple/Bloonlatro) for vanilla+ playstyle 
