@@ -2419,7 +2419,229 @@ SMODS.Joker{ --King George
         end
     end
 }
+SMODS.Joker{ --Kings Council
+    key = "kingscouncil",
+    config = {
+        extra = {
+            xmult = 1,
+            xmult_mod = 0.3
+        }
+    },
+    loc_txt = {
+        ['name'] = 'Kings Council',
+        ['text'] = {
+            [1] = 'When a hand is played',
+            [2] = 'with {C:attention}more than 2{} scoring cards,',
+            [3] = 'this Joker gains {X:red,C:white}X#2#{} Mult,',
+            [4] = 'otherwise set {X:red,C:white}XMult{} to {C:red}0{}',
+            [5] = '{C:inactive}(Currently{} {X:red,C:white}X#1#{} {C:inactive}Mult){}'
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 4,
+        y = 13
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 6,
+    rarity = 3,
+    blueprint_compat = true,
+    demicolon_compat = true,
+    eternal_compat = true,
+    perishable_compat = false,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+    
+    loc_vars = function(self, info_queue, card)
+        
+        return {vars = {card.ability.extra.xmult, card.ability.extra.xmult_mod}}
+    end,
+    
+    calculate = function(self, card, context)
+        if context.before and context.cardarea == G.jokers  and not context.blueprint then
+            if to_big(#context.scoring_hand) <= to_big(2) then
+                return {
+                    func = function()
+                        card.ability.extra.xmult = 0
+                        return true
+                    end,
+                    message = localize('k_reset')
+                }
+            elseif to_big(#context.scoring_hand) > to_big(2) then
+                return {
+                    func = function()
+                        card.ability.extra.xmult = (card.ability.extra.xmult) + card.ability.extra.xmult_mod
+                        return true
+                    end,
+                    message = localize('k_upgrade_ex')
+                }
+            end
+        end
+        if context.cardarea == G.jokers and context.joker_main  then
+            if card.ability.extra.xmult > 0 then
+                return {
+                Xmult = card.ability.extra.xmult
+                }
+            else
+                return {
+                    Xmult = 0,
+                    card_eval_status_text(card, "extra", nil, nil, nil, { message = "X0 Mult", colour = G.C.RED })
+                }
+            end
+        end
+        if context.forcetrigger then
+            card.ability.extra.xmult = (card.ability.extra.xmult) + card.ability.extra.xmult_mod
+            if card.ability.extra.xmult > 0 then
+                return {
+                Xmult = card.ability.extra.xmult
+                }
+            else
+                return {
+                    Xmult = 0,
+                    card_eval_status_text(card, "extra", nil, nil, nil, { message = "X0 Mult", colour = G.C.RED })
+                }
+            end
+        end
+    end
+}
+SMODS.Joker{ --Soundwave controller
+    key = "soundwavecontroller",
+    config = {
+        extra = {
+            handsremaining = 0
+        }
+    },
+    loc_txt = {
+        ['name'] = 'Soundwave controller',
+        ['text'] = {
+            [1] = '{C:red}+20X-5X^2{} Mult,',
+            [2] = 'where {C:red}X{} is the value of',
+            [3] = 'remaining hands'
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 5,
+        y = 13
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 4,
+    rarity = 1,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+    
+    loc_vars = function(self, info_queue, card)
+        
+        return {vars = {(G.GAME.current_round.hands_left or 0)}}
+    end,
+    
+    calculate = function(self, card, context)
+        if context.cardarea == G.jokers and context.joker_main  then
+            return {
+                mult = (20 * G.GAME.current_round.hands_left - 5 * (G.GAME.current_round.hands_left ^ 2))
+            }
+        end
+    end
+}
 
+
+SMODS.Joker{ --The Tree is Loud
+    key = "thetreeisloud",
+    config = {
+        extra = {
+            increase = 3
+        }
+    },
+    loc_txt = {
+        ['name'] = 'The Tree is Loud',
+        ['text'] = {
+            [1] = 'This Joker gains {C:money}$#1#{} of {C:attention}sell value{}',
+            [2] = 'when each played {C:attention}3{} is scored',
+            [3] = '{C:inactive}The Three\'s endowed?{}'
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 6,
+        y = 13
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 4,
+    rarity = 2,
+    blueprint_compat = true,
+    demicoloncompat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+    
+    loc_vars = function(self, info_queue, card)
+        
+        return {vars = {card.ability.extra.increase}}
+    end,
+    
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play  and not context.blueprint then
+            if context.other_card:get_id() == 3 then
+                local my_pos = nil
+                local check = false
+                for i = 1, #G.jokers.cards do
+                    if G.jokers.cards[i] == card then
+                        check = true
+                        my_pos = i
+                        break
+                    end
+                end
+                local target_card = G.jokers.cards[my_pos]
+                target_card.ability.extra_value = (card.ability.extra_value or 0) + card.ability.extra.increase
+                target_card:set_cost()
+			if check then
+				card_eval_status_text(
+					card,
+					"extra",
+					nil,
+					nil,
+					nil,
+					{ message = localize('k_upgrade_ex'), colour = G.C.GREEN }
+				)
+			end
+            end
+        end
+        if context.forcetrigger then
+            local my_pos = nil
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i] == card then
+                    my_pos = i
+                    break
+                end
+            end
+            local target_card = G.jokers.cards[my_pos]
+            target_card.ability.extra_value = (card.ability.extra_value or 0) + card.ability.extra.increase
+            target_card:set_cost()
+        end
+    end
+}
 
 if Cryptid then
 SMODS.Joker{ --Ninja Kiwi balance be like

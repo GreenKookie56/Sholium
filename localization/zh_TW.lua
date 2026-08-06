@@ -441,6 +441,15 @@ return {
 					"打出的{C:diamonds}方塊{}牌計分時此數值{C:gold}+$#2#{}",
 				},
 			},
+			j_sholium_kingscouncil = {
+				name = "國王議會",
+				text = {
+					"若打出的牌型包含的計分牌數",
+					">2張，這張小丑獲得{X:red,C:white}X#2#{}倍率，",
+					"<=2張，倍率{C:red}歸零{}",
+					"{C:inactive}(目前{}{X:red,C:white}X#1#{}{C:inactive}倍率){}",
+				},
+			},
 			j_sholium_librarian = {
 				name = "圖書管理員",
 				text = {
@@ -709,6 +718,13 @@ return {
 					"{C:inactive}(目前{}{C:red}+#1#{}{C:inactive}倍率){}",
 				},
 			},
+			j_sholium_soundwavecontroller = {
+				name = "聲波控制器",
+				text = {
+					"{C:red}+20X-5X^2{}倍率，",
+					"其中X為剩餘出牌數",
+				},
+			},
 			j_sholium_spider = {
 				name = "蜘蛛",
 				text = {
@@ -729,6 +745,13 @@ return {
 					"從商店購買牌時，",
 					"這張小丑獲得{C:red}+#1#{}倍率",
 					"{C:inactive}(目前{}{C:red}+#2#{}{C:inactive}倍率){}",
+				},
+			},
+			j_sholium_thetreeisloud = {
+				name = "是樹在吵",
+				text = {
+					"打出的{C:attention}3{}計分時，",
+					"這張小丑獲得{C:gold}$3{}的出售價值",
 				},
 			},
 			j_sholium_trident = {
