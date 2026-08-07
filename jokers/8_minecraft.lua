@@ -149,7 +149,7 @@ SMODS.Joker{ --toolsmith
     end,
     
     calculate = function(self, card, context)
-        if context.buying_card  and not context.blueprint then
+        if context.buying_card  and not context.blueprint and not (context.card == card) then
             return {
                 func = function()
                     card.ability.extra.mult = (card.ability.extra.mult) + card.ability.extra.mult_mod
@@ -406,7 +406,7 @@ SMODS.Joker{ --armorsmith
     end,
     
     calculate = function(self, card, context)
-        if context.buying_card  and not context.blueprint then
+        if context.buying_card  and not context.blueprint and not (context.card == card) then
             if to_big(card.ability.extra.bought) < to_big(3) then
                 return {
                     func = function()
@@ -568,7 +568,7 @@ SMODS.Joker{ --cleric
     blueprint_compat = true,
     demicoloncompat = true,
     eternal_compat = true,
-    perishable_compat = true,
+    perishable_compat = false,
     unlocked = true,
     discovered = true,
     atlas = 'CustomJokers',
