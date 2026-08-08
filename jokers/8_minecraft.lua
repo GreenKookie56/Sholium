@@ -455,7 +455,7 @@ SMODS.Joker{ --librarian
         ['text'] = {
             [1] = 'When shop is rerolled,',
             [2] = '{C:green}#1# in #2#{} chance to create',
-            [3] = 'a random {C:spectral}spectral{} card'
+            [3] = 'a random {C:spectral}Spectral{} card'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -1702,8 +1702,8 @@ SMODS.Joker{ --Cobblestone Generator
         ['name'] = 'Cobblestone Generator',
         ['text'] = {
             [1] = 'This Joker gains {C:blue}+#1#{} Chips',
-            [2] = 'if played hand contains a',
-            [3] = '{C:diamonds}Light suited{} and a {C:clubs}dark suited{} card,',
+            [2] = 'if played hand contains both scoring',
+            [3] = '{C:diamonds}light suited{} and {C:clubs}dark suited{} cards',
             [4] = '{C:inactive}(Currently {}{C:blue}+#2#{}{C:inactive} Chips){}'
         },
         ['unlock'] = {

@@ -1240,14 +1240,14 @@ SMODS.Joker{ --Ancient idol
     end
 }
 
-SMODS.Joker{ --Ramen
+SMODS.Joker{ --Ramen the Cat
     key = "ramen",
     config = {
         extra = {
         }
     },
     loc_txt = {
-        ['name'] = 'Ramen',
+        ['name'] = 'Ramen the Cat',
         ['text'] = {
             [1] = 'All listed {C:green}probabilities{} are',
             [2] = 'Multiplied by {C:green}1000000{}'
