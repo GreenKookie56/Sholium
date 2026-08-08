@@ -21,6 +21,6 @@ this is a mod about everything I found funny/interesting and decided to add into
 Check out [Bloonalatro](https://github.com/Amphiapple/Bloonlatro) for vanilla+ playstyle 
 
 # Special thanks!
-- 1.2m^2 Fungus Room, iciclez_, i_am_mee and murpgod for playtesting & contributing ideas
+- 1.2m^2 Fungus Room, iciclez_, i_am_mee, murpgod and people from mcg for playtesting & contributing ideas
 - amphiapple and kanjerlucas for teaching me how to code stuff like post trigger and config tab
 - jokerforge community and the goat jaydchw, for making the revolutionary balatro mod maker
