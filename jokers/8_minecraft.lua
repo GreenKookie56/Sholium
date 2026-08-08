@@ -1694,7 +1694,7 @@ SMODS.Joker{ --Cobblestone Generator
     key = "cobble",
     config = {
         extra = {
-            chipsmod = 8,
+            chipsmod = 6,
             chips = 0
         }
     },

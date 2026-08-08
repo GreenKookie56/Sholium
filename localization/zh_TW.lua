@@ -405,6 +405,7 @@ return {
 					"重新觸發所有打出的牌{C:attention}#1#{}次，",
 					"每連續打出{C:attention}3{}次包含順子的牌型",
 					"重新觸發次數{C:attention}+1{} {C:inactive}(#2#/3){}",
+					"{C:inactive}最多重新觸發10次{}",
 				},
 			},
 			j_sholium_iciclez = {
@@ -482,7 +483,7 @@ return {
 					"{C:inactive}(目前{}{C:blue}+#2#{}{C:inactive}籌碼){}",		
 				},
 			},
-			j_sholium_lolipop = {
+			j_sholium_lollipop = {
 				name = "棒棒糖",
 				text = {
 					"這張小丑被賣出時，",
@@ -498,7 +499,7 @@ return {
 				name = "梅寶",
 				text = {
 					"打出牌結算前，所有小丑的數值",
-					"隨機改為目前數值的{C:attention}X0.8{}到{C:attention}X1.3{}倍",
+					"隨機改為目前數值的{C:attention}X0.8{}到{C:attention}X1.28{}倍",
 				},
 			},
 			j_sholium_manyullynjoker = {

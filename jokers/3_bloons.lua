@@ -337,7 +337,7 @@ SMODS.Joker{ --Cripple MOAB
         h = 95 * 1
     },
     cost = 7,
-    rarity = 2,
+    rarity = 3,
     blueprint_compat = true,
     demicoloncompat = true,
     eternal_compat = false,
@@ -700,7 +700,7 @@ SMODS.Joker{ --Riptide Champion (v52)
     key = "ripchamp",
     config = {
         extra = {
-            mod = 0.3,
+            mod = 0.2,
             chips = 1
         }
     },

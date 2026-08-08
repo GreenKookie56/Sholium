@@ -126,7 +126,8 @@ SMODS.Joker{ --Hepatizon Joker
             [1] = 'Retrigger all played cards {C:attention}#1#{} time(s)',
             [2] = 'Gains {C:attention}+1{} repetition after playing {C:attention}3{}',
             [3] = 'consecutive hands that',
-            [4] = 'contains a {C:attention}Straight{} {C:inactive}(#2#/3){}'
+            [4] = 'contains a {C:attention}Straight{} {C:inactive}(#2#/3){}',
+            [5] = '{C:inactive}Maximum of 10 retriggers{}'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -174,7 +175,7 @@ SMODS.Joker{ --Hepatizon Joker
                     message = localize('k_upgrade_ex'),
                     extra = {
                         func = function()
-                            card.ability.extra.rep = (card.ability.extra.rep) + 1
+                            card.ability.extra.rep = math.min(10, (card.ability.extra.rep) + 1)
                             return true
                         end,
                         colour = G.C.GREEN
@@ -193,15 +194,15 @@ SMODS.Joker{ --Hepatizon Joker
         if context.forcetrigger then
             return {
             func = function()
-                card.ability.extra.rep = (card.ability.extra.rep) + 1
+                card.ability.extra.rep = math.min(10, (card.ability.extra.rep) + 1)
                 return true
             end,
             message = localize('k_upgrade_ex')
             }
         end
-        if context.repetition and context.cardarea == G.play then
+        if context.repetition and context.cardarea == G.play and to_big(card.ability.extra.rep) > to_big(0) then
             return {
-                repetitions = card.ability.extra.rep,
+                repetitions = math.min(10, (card.ability.extra.rep)),
                 message = localize('k_again_ex')
             }
         end
@@ -342,7 +343,7 @@ SMODS.Joker{ --Manyullyn Joker
     config = {
         extra = {
             mult = 1,
-            mod = 0.05
+            mod = 0.03
         }
     },
     loc_txt = {

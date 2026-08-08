@@ -89,7 +89,7 @@ SMODS.Joker{ --Mabel
         ['text'] = {
             [1] = 'When a hand is played,',
             [2] = '{C:attention}Randomize{} value of all Jokers',
-            [3] = 'by {C:attention}X0.8{} to {C:attention}X1.3{}'
+            [3] = 'by {C:attention}X0.8{} to {C:attention}X1.28{}'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -115,7 +115,7 @@ SMODS.Joker{ --Mabel
     
     calculate = function(self, card, context)
         if (context.cardarea == G.jokers and context.before) or context.forcetrigger then
-            local result = pseudorandom(pseudoseed("sholium_mabel"), 80, 130)
+            local result = pseudorandom(pseudoseed("sholium_mabel"), 80, 128)
             local check = false
             for i = 1, #G.jokers.cards do
                 if not (G.jokers.cards[i] == card) then
@@ -329,7 +329,7 @@ SMODS.Joker{ --King George
     key = "kinggeorge",
     config = {
         extra = {
-            eor = 3,
+            eor = 2,
             eor_mod = 0.3
         }
     },
@@ -904,14 +904,14 @@ SMODS.Joker{ --coconut
     end
 }
 
-SMODS.Joker{ --lolipop
-    key = "lolipop",
+SMODS.Joker{ --lollipop
+    key = "lollipop",
     config = {
         extra = {
         }
     },
     loc_txt = {
-        ['name'] = 'Lolipop',
+        ['name'] = 'Lollipop',
         ['text'] = {
             [1] = 'When this card is sold,',
             [2] = 'apply {C:dark_edition}Polychrome{} and {C:dark_edition}Perishable{}',
@@ -930,7 +930,7 @@ SMODS.Joker{ --lolipop
         h = 95 * 1
     },
     cost = 5,
-    rarity = 1,
+    rarity = 2,
     blueprint_compat = false,
     eternal_compat = false,
     perishable_compat = true,
