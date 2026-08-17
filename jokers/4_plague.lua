@@ -560,15 +560,14 @@ SMODS.Joker{ --Neurax worm
     key = "neuraxworm",
     config = {
         extra = {
-            mult = 1.2,
-            odds = 2
+            mult = 1.2
         }
     },
     loc_txt = {
         ['name'] = 'Neurax worm',
         ['text'] = {
-            [1] = 'Each card held in hand has a',
-            [2] = '{C:green}#2# in #3#{} chance to {X:legendary,C:white}^#1#{} Mult'
+            [1] = 'Each card held in hand card',
+            [2] = 'gives {X:legendary,C:white}^#1#{} Mult'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -605,18 +604,15 @@ SMODS.Joker{ --Neurax worm
       end,
 
     loc_vars = function(self, info_queue, card)
-        local new_numerator, new_denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'j_sholium_neuraxworm') 
-        return {vars = {card.ability.extra.mult, new_numerator, new_denominator}}
+        return {vars = {card.ability.extra.mult}}
     end,
 
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.hand and not context.end_of_round then
             if true then
-                if SMODS.pseudorandom_probability(card, 'group_0_ea22710b', 1, card.ability.extra.odds, 'j_sholium_neuraxworm', false) then
-					return {
-                        e_mult = card.ability.extra.mult
-				    }
-                end
+				return {
+                    e_mult = card.ability.extra.mult
+				}
             end
         end
         if context.forcetrigger then

@@ -551,7 +551,7 @@ SMODS.Joker{ --Literally Cryptid
     atlas = 'CustomJokers',
     
     calculate = function(self, card, context)
-        if context.cardarea == G.jokers and context.joker_main  and not context.blueprint then
+        if context.cardarea == G.jokers and context.before and not context.blueprint then
             if to_big(#context.full_hand) == to_big(1) then
                 local target_joker = card
                 
