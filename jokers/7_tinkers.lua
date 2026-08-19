@@ -331,7 +331,13 @@ SMODS.Joker{ --Rose Gold Joker
         G.jokers.config.card_limit = G.jokers.config.card_limit - card.ability.extra.immutable.slots
     end
 }
-
+local check_for_buy_space_ref = G.FUNCS.check_for_buy_space
+G.FUNCS.check_for_buy_space = function(card)
+    if card.config.center.key == "j_sholium_rosegoldjoker" then -- ignore slot limit when bought
+        return true
+    end
+    return check_for_buy_space_ref(card)
+end
 SMODS.Joker{ --Manyullyn Joker
     key = "manyullynjoker",
     config = {
