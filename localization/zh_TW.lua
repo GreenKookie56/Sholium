@@ -68,6 +68,12 @@ return {
 					"打出的牌有{C:green}#1#/#2#{}機率重新觸發",
 				},
 			},
+			j_sholium_backpack = {
+				name = "背包",
+				text = {
+					"{C:attention}+4{}消耗牌欄位",
+				},
+			},
 			j_sholium_bacteria = {
 				name = "細菌",
 				text = {
@@ -132,6 +138,12 @@ return {
 					"{C:inactive,s:0.6}1.444667861是e^e^-1的近似{}",
 					"{C:inactive,s:0.6}剛好有兩個f(x)=a^x的不動點{}",
 					"{C:inactive,s:0.6}其中數值較小者趨近於2.718{}",
+				},
+			},
+			j_sholium_bow = {
+				name = "弓",
+				text = {
+					"每{C:attention}#2#{}次出牌{X:red,C:white}X#3#{}倍率{C:inactive}(#1#){}",
 				},
 			},
 			j_sholium_brickell = {
@@ -257,6 +269,13 @@ return {
 					"所有牌點數均視為{C:attention}7{}",
 				},
 			},
+			j_sholium_derivative = {
+				name = "微分",
+				text = {
+					"{X:legendary,C:white}^#1#{}倍率",
+					"{X:red,C:white}X#2#{}倍率",
+				},
+			},
 			j_sholium_ellen = {
 				name = "艾倫",
 				text = {
@@ -288,6 +307,19 @@ return {
 				name = "農夫",
 				text = {
 					"商店的消耗牌便宜{C:money}$2{}",
+				},
+			},
+			j_sholium_fannypack = {
+				name = "腰包",
+				text = {
+					"{C:attention}+2{}消耗牌欄位",
+				},
+			},
+			j_sholium_fishingrod = {
+				name = "釣竿",
+				text = {
+					"進入{C:attention}盲注{}時",
+					"產生一張隨機消耗牌",
 				},
 			},
 			j_sholium_flash = {
@@ -715,7 +747,7 @@ return {
 			j_sholium_solo = {
 				text = {
 					"若打出的牌型為{C:attention}高牌{}，",
-					"這張小丑獲得{C:red}+#1#{}倍率",
+					"{C:green}#3#/#4#{}機率獲得{C:red}+#1#{}倍率",
 					"{C:inactive}(目前{}{C:red}+#2#{}{C:inactive}倍率){}",
 				},
 			},
@@ -795,17 +827,17 @@ return {
 			j_sholium_rosegoldjoker = {
 				name = "玫瑰金小丑",
 				text = {
-					"{C:attention}+#2#{}消耗牌欄位",
+					"{C:attention}+#2#{}小丑牌欄位",
 					"{X:chips,C:white}X#1#{}籌碼",
  				},
 			},
 			j_sholium_rotationmatrix = {
 				name = "旋轉矩陣",
 				text = {
-					"使用{C:planet}行星牌{}時產生一張{C:tarot}塔羅牌{}",
-					"使用{C:tarot}塔羅牌{}時產生一張{C:spectral}幻靈牌{}",
-					"使用{C:spectral}幻靈牌{}時產生一張{C:planet}行星牌{}",
-					"{C:inactive,s:0.6}(逆時針旋轉120度){}"
+					"若打出並計分的牌為剛好{C:attention}#1#{}張，",
+					"這張小丑獲得{C:red}+2pi/3{}倍率",
+					"並旋轉所需的牌數{C:inactive}(1->3->5){}",
+					"{C:inactive}(目前大約{}{C:red}+#2#{}{C:inactive}倍率){},
  				},
 			},	
 			j_sholium_samurai = {
@@ -939,6 +971,15 @@ return {
 				text = {
 					"每{C:attention}#2#{}次{C:inactive}(#1#){}出牌",
 					"產生一張隨機{C:tarot}塔羅牌{}",
+				},
+			},
+			j_sholium_wither = {
+				name = "凋零怪",
+				text = {
+					"若打出的牌中有剛好3張",
+					"計分的{C:spades}黑桃{}牌，",
+					"這張小丑獲得{X:red,C:white}X#2#{}倍率",
+					"{C:inactive}(目前{}{X:red,C:white}X#1#{}{C:inactive}倍率){}",
 				},
 			},
 			j_sholium_witherskeleton = {
