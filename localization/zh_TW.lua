@@ -837,7 +837,7 @@ return {
 					"若打出並計分的牌為剛好{C:attention}#1#{}張，",
 					"這張小丑獲得{C:red}+2pi/3{}倍率",
 					"並旋轉所需的牌數{C:inactive}(1->3->5){}",
-					"{C:inactive}(目前大約{}{C:red}+#2#{}{C:inactive}倍率){},
+					"{C:inactive}(目前大約{}{C:red}+#2#{}{C:inactive}倍率){}",
  				},
 			},	
 			j_sholium_samurai = {
