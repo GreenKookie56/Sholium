@@ -111,26 +111,25 @@ SMODS.Joker{ --Normal distribution
     end
 }
 
---Cryptid
-
-if next(SMODS.find_mod("Cryptid")) then
-
 SMODS.Joker{ --Rotation Matrix
     key = "rotationmatrix",
     config = {
         extra = {
-            Spectral = 0,
-            Planet = 0,
-            Tarot = 0
+            mult = 1.0471975512,
+            immutable = {
+                current = 1
+            }
         }
     },
     loc_txt = {
         ['name'] = 'Rotation Matrix',
         ['text'] = {
-            [1] = 'Create a {C:tarot}Tarot{} when using a {C:planet}Planet{}',
-            [2] = 'Create a {C:spectral}Spectral{} when using a {C:tarot}Tarot{}',
-            [3] = 'Create a {C:planet}Planet{} when using a {C:spectral}Spectral{}',
-            [4] = '{C:inactive,s:0.6}(Rotates everything by 120 degrees counterclockwise){}'
+            [1] = 'If played hand has exactly',
+            [2] = '{C:attention}#1#{} scoring card(s),',
+            [3] = 'this Joker gains {C:red}+2pi/3{} Mult',
+            [4] = 'and rotates requirement',
+            [5] = 'to the next option {C:inactive}(1 -> 3 -> 5){}',
+            [6] = '{C:inactive}(Currently approximately{} {C:red}+#2#{} {C:inactive}Mult){}'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -144,82 +143,115 @@ SMODS.Joker{ --Rotation Matrix
         w = 71 * 1, 
         h = 95 * 1
     },
-    cost = 12,
-    rarity = "cry_epic",
+    cost = 5,
+    rarity = 2,
     blueprint_compat = true,
-    demicoloncompat = false,
+    demicoloncompat = true,
     eternal_compat = true,
     perishable_compat = true,
     unlocked = true,
     discovered = true,
     atlas = 'CustomJokers',
-    soul_pos = {
+    
+    loc_vars = function(self, info_queue, card)
+        
+        return {vars = {card.ability.extra.immutable.current, card.ability.extra.mult}}
+    end,
+    
+    calculate = function(self, card, context)
+        if context.cardarea == G.jokers and context.before and not context.blueprint then
+            if (to_big(#context.scoring_hand) == to_big(1) and to_big((card.ability.extra.immutable.current or 0)) == to_big(1)) then -- need to do this since retriggers exist
+                return {
+                    func = function ()
+                        card.ability.extra.immutable.current = 3
+                        card.ability.extra.mult = (card.ability.extra.mult) + 2.09439510239
+                    end,
+                    message = localize('k_upgrade_ex'),
+                }
+            elseif (to_big(#context.scoring_hand) == to_big(3) and to_big((card.ability.extra.immutable.current or 0)) == to_big(3)) then
+                return {
+                    func = function ()
+                        card.ability.extra.immutable.current = 5
+                        card.ability.extra.mult = (card.ability.extra.mult) + 2.09439510239
+                    end,
+                    message = localize('k_upgrade_ex'),
+                }
+            elseif (to_big(#context.scoring_hand) == to_big(5) and to_big((card.ability.extra.immutable.current or 0)) == to_big(5)) then
+                return {
+                    func = function ()
+                        card.ability.extra.immutable.current = 1
+                        card.ability.extra.mult = (card.ability.extra.mult) + 2.09439510239
+                    end,
+                    message = localize('k_upgrade_ex'),
+                }
+            end
+        end
+        if context.cardarea == G.jokers and context.joker_main then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
+        if context.forcetrigger then
+            return {
+                func = function ()
+                    card.ability.extra.mult = (card.ability.extra.mult) + 2.09439510239
+                end,
+                mult = card.ability.extra.mult
+            }
+        end
+    end
+}
+
+if Talisman then
+SMODS.Joker{ --Derivative
+    key = "derivative",
+    config = {
+        extra = {
+            emult = 0.75,
+            xmult = 4
+        }
+    },
+    loc_txt = {
+        ['name'] = 'Derivative',
+        ['text'] = {
+            [1] = '{X:legendary,C:white}^#1#{} Mult',
+            [2] = '{X:red,C:white}X#2#{} Mult'
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
         x = 7,
         y = 5
     },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 3,
+    rarity = 1,
+    blueprint_compat = true,
+    demicoloncompat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+    
+    loc_vars = function(self, info_queue, card)
+        
+        return {vars = {card.ability.extra.emult, card.ability.extra.xmult}}
+    end,
+    
     calculate = function(self, card, context)
-        if context.using_consumeable  then
-            if context.consumeable and context.consumeable.ability.set == 'Tarot' then
-                return {
-                    func = function()local created_consumable = false
-                if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
-                    created_consumable = true
-                    G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
-                    G.E_MANAGER:add_event(Event({
-                        func = function()
-                            SMODS.add_card{set = 'Spectral', key = nil, key_append = 'joker_forge_spectral'}
-                            G.GAME.consumeable_buffer = 0
-                            return true
-                        end
-                    }))
-                end
-                    if created_consumable then
-                        card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_plus_spectral'), colour = G.C.SECONDARY_SET.Spectral})
-                    end
-                    return true
-                end
+        if context.cardarea == G.jokers and context.joker_main or context.forcetrigger then
+            return {
+                e_mult = card.ability.extra.emult,
+                extra = {
+                    Xmult = card.ability.extra.xmult
                 }
-            elseif context.consumeable and context.consumeable.ability.set == 'Spectral' then
-                return {
-                    func = function()local created_consumable = false
-                if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
-                    created_consumable = true
-                    G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
-                    G.E_MANAGER:add_event(Event({
-                        func = function()
-                            SMODS.add_card{set = 'Planet', key = nil, key_append = 'joker_forge_planet'}
-                            G.GAME.consumeable_buffer = 0
-                            return true
-                        end
-                    }))
-                end
-                    if created_consumable then
-                        card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_plus_planet'), colour = G.C.SECONDARY_SET.Planet})
-                    end
-                    return true
-                end
-                }
-            elseif context.consumeable and context.consumeable.ability.set == 'Planet' then
-                return {
-                    func = function()local created_consumable = false
-                if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
-                    created_consumable = true
-                    G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
-                    G.E_MANAGER:add_event(Event({
-                        func = function()
-                            SMODS.add_card{set = 'Tarot', key = nil, key_append = 'joker_forge_tarot'}
-                            G.GAME.consumeable_buffer = 0
-                            return true
-                        end
-                    }))
-                end
-                    if created_consumable then
-                        card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_plus_tarot'), colour = G.C.PURPLE})
-                    end
-                    return true
-                end
-                }
-            end
+            }
         end
     end
 }

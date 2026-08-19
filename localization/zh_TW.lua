@@ -9,7 +9,7 @@ return {
 			},
                },
                 Tarot = {
-			c_sholium_amphication = {
+			c_sholium_ambification = {
 				name = "餛飩之劍",
 				text = {
 					"賦予至多{C:attention}2{}張牌隨機{C:enhanced}強化{}，{C:attention}封蠟章{}",

@@ -286,7 +286,7 @@ SMODS.Joker{ --Rose Gold Joker
     loc_txt = {
         ['name'] = 'Rose Gold Joker',
         ['text'] = {
-            [1] = '{C:attention}+#2#{} Consumable slots',
+            [1] = '{C:attention}+#2#{} Joker slots',
             [2] = '{X:chips,C:white}X#1#{} Chips'
         },
         ['unlock'] = {
@@ -301,8 +301,8 @@ SMODS.Joker{ --Rose Gold Joker
         w = 71 * 1, 
         h = 95 * 1
     },
-    cost = 4,
-    rarity = 1,
+    cost = 6,
+    rarity = 2,
     blueprint_compat = false,
     eternal_compat = true,
     perishable_compat = false,
@@ -322,19 +322,13 @@ SMODS.Joker{ --Rose Gold Joker
             }
         end
     end,
-    
+
     add_to_deck = function(self, card, from_debuff)
-        G.E_MANAGER:add_event(Event({func = function()
-            G.consumeables.config.card_limit = G.consumeables.config.card_limit + card.ability.extra.immutable.slots
-            return true
-        end }))
+        G.jokers.config.card_limit = G.jokers.config.card_limit + card.ability.extra.immutable.slots
     end,
-    
+
     remove_from_deck = function(self, card, from_debuff)
-        G.E_MANAGER:add_event(Event({func = function()
-            G.consumeables.config.card_limit = G.consumeables.config.card_limit - card.ability.extra.immutable.slots
-            return true
-        end }))
+        G.jokers.config.card_limit = G.jokers.config.card_limit - card.ability.extra.immutable.slots
     end
 }
 

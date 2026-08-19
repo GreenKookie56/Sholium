@@ -106,6 +106,139 @@ SMODS.Joker{ --Trident
         end
     end
 }
+SMODS.Joker{ --bow
+    key = "bow",
+    config = {
+        extra = {
+            played = 0,
+            req = 3,
+            xmult = 2
+        }
+    },
+    loc_txt = {
+        ['name'] = 'Bow',
+        ['text'] = {
+            [1] = '{X:red,C:white}X#3#{} Mult',
+            [2] = 'every {C:attention}#2#{} hands {C:inactive}(#1#){}'
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 0,
+        y = 14
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 6,
+    rarity = 2,
+    blueprint_compat = true,
+    demicoloncompat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+    
+    loc_vars = function(self, info_queue, card)
+        
+        return {vars = {card.ability.extra.played, card.ability.extra.req, card.ability.extra.xmult}}
+    end,
+    
+    calculate = function(self, card, context)
+        if context.cardarea == G.jokers and context.joker_main  then
+            if to_big(card.ability.extra.played) < to_big(card.ability.extra.req - 1) then
+                card.ability.extra.played = (card.ability.extra.played) + 1
+            elseif to_big(card.ability.extra.played) >= to_big(card.ability.extra.req - 1) then
+                return {
+                   Xmult = card.ability.extra.xmult
+                }
+            end
+        end
+        if context.after and context.cardarea == G.jokers  and not context.blueprint then
+            if to_big(card.ability.extra.played) >= to_big(card.ability.extra.req - 1) then
+                return {
+                    func = function()
+                        card.ability.extra.played = 0
+                        return true
+                    end
+                }
+            end
+        end
+        if context.forcetrigger then
+            return {
+                Xmult = card.ability.extra.xmult
+            }
+        end
+    end
+}
+SMODS.Joker{ --Fishing rod
+    key = "fishingrod",
+    config = {
+        extra = {
+        }
+    },
+    loc_txt = {
+        ['name'] = 'Fishing rod',
+        ['text'] = {
+            [1] = 'Create a random consumable',
+            [2] = 'when {C:attention}Blind{} is selected'
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 1, y = 14 -- 514
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 4,
+    rarity = 1,
+    blueprint_compat = true,
+    demicoloncompat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+    
+    calculate = function(self, card, context)
+        if context.setting_blind or context.forcetrigger then
+            return {
+                func = function()
+                    
+                    for i = 1, math.min(1, G.consumeables.config.card_limit - #G.consumeables.cards) do
+                        G.E_MANAGER:add_event(Event({
+                            trigger = 'after',
+                            delay = 0.4,
+                            func = function()
+                                play_sound('timpani')
+                                local sets = {'Tarot', 'Planet', 'Spectral'}
+                                local random_set = pseudorandom_element(sets, 'random_consumable_set')
+                                SMODS.add_card({ set = random_set, soulable = true, })                            
+                                card:juice_up(0.3, 0.5)
+                                return true
+                            end
+                        }))
+                    end
+                    delay(0.6)
+                    
+                    if created_consumable then
+                        card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_plus_consumable'), colour = G.C.PURPLE})
+                    end
+                    return true
+                end
+            }
+        end
+    end
+}
+
 SMODS.Joker{ --toolsmith
     key = "toolsmith",
     config = {
@@ -1483,7 +1616,7 @@ SMODS.Joker{ --Piglin Brute
         h = 95 * 1
     },
     cost = 6,
-    rarity = 2,
+    rarity = 3,
     blueprint_compat = true,
     demicoloncompat = true,
     eternal_compat = true,
@@ -1518,9 +1651,9 @@ SMODS.Joker{ --Piglin Brute
             return {
                 func = function()
                     card.ability.extra.mult = (card.ability.extra.mult) + card.ability.extra.scale
-                    Xmult = card.ability.extra.mult
                     return true
-                end
+                end,
+                Xmult = card.ability.extra.mult
             }
         end
     end
@@ -1566,7 +1699,6 @@ SMODS.Joker{ --witherskeleton
                     func = function()
                         
                         assert(SMODS.change_base(scored_card, "Spades", nil))
-                        card_eval_status_text(scored_card, 'extra', nil, nil, nil, {message = "Withered!", colour = G.C.ORANGE})
                         return true
                     end
                 }))
@@ -1684,6 +1816,96 @@ SMODS.Joker{ --shulker
                 }))
 				end
 			end
+        end
+    end
+}
+
+
+SMODS.Joker{ --Wither
+    key = "wither",
+    config = {
+        extra = {
+            xmult = 1,
+            xmult_mod = 4
+        }
+    },
+    loc_txt = {
+        ['name'] = 'Wither',
+        ['text'] = {
+            [1] = 'This Joker gains {X:red,C:white}X#2#{} Mult',
+            [2] = 'if played hand contains exactly',
+            [3] = '3 scoring {C:spades}Spades{}',
+            [4] = '{C:inactive}(Currently{} {X:red,C:white}X#1#{} {C:inactive}Mult){}'
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 7,
+        y = 13
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 20,
+    rarity = 4,
+    blueprint_compat = true,
+    demicoloncompat = true,
+    eternal_compat = true,
+    perishable_compat = false,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+
+    in_pool = function(self, args)
+        return (
+            not args 
+            or args.source ~= 'sho' 
+            or args.source == 'buf' or args.source == 'jud' or args.source == 'rif' or args.source == 'rta' or args.source == 'sou' or args.source == 'uta' or args.source == 'wra'
+        )
+        and true
+    end,
+    
+    loc_vars = function(self, info_queue, card)
+        
+        return {vars = {card.ability.extra.xmult, card.ability.extra.xmult_mod}}
+    end,
+    
+    calculate = function(self, card, context)
+        if context.before and context.cardarea == G.jokers  and not context.blueprint then
+            if (function()
+                local count = 0
+                for _, playing_card in pairs(context.scoring_hand or {}) do
+                    if playing_card:is_suit("Spades") then
+                        count = count + 1
+                    end
+                end
+                return count == 3
+            end)() then
+                return {
+                    func = function()
+                        card.ability.extra.xmult = (card.ability.extra.xmult) + card.ability.extra.xmult_mod
+                        return true
+                    end,
+                    message = localize('k_upgrade_ex')
+                }
+            end
+        end
+        if context.cardarea == G.jokers and context.joker_main  then
+            return {
+                Xmult = card.ability.extra.xmult
+            }
+        end
+        if context.forcetrigger then
+            return {
+                func = function()
+                    card.ability.extra.xmult = (card.ability.extra.xmult) + card.ability.extra.xmult_mod
+                    return true
+                end,
+                Xmult = card.ability.extra.xmult
+            }
         end
     end
 }
@@ -1878,16 +2100,18 @@ SMODS.Joker{ --Solo
     key = "solo",
     config = {
         extra = {
-            mult_mod = 2,
-            mult = 0
+            mult_mod = 3,
+            mult = 0,
+            odds = 2
         }
     },
     loc_txt = {
         ['name'] = '1v1',
         ['text'] = {
-            [1] = 'This Joker gains {C:red}+#1#{} Mult',
-            [2] = 'if played hand is {C:attention}High Card{}',
-            [3] = '{C:inactive}(Currently {}{C:red}+#2#{}{C:inactive} Mult){}'
+            [1] = '{C:green}#3# in #4#{} chance for',
+            [2] = 'this Joker to gain {C:red}+#1#{} Mult',
+            [3] = 'if played hand is {C:attention}High Card{}',
+            [4] = '{C:inactive}(Currently {}{C:red}+#2#{}{C:inactive} Mult){}'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -1913,19 +2137,22 @@ SMODS.Joker{ --Solo
     
     loc_vars = function(self, info_queue, card)
         
-        return {vars = {card.ability.extra.mult_mod, card.ability.extra.mult}}
+        local new_numerator, new_denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'j_sholium_solo') 
+        return {vars = {card.ability.extra.mult_mod, card.ability.extra.mult, new_numerator, new_denominator}}
     end,
     
     calculate = function(self, card, context)
         if context.before and context.cardarea == G.jokers  and not context.blueprint then
             if context.scoring_name == "High Card" then
-                return {
+                if SMODS.pseudorandom_probability(card, 'group_0_5482c4ab', 1, card.ability.extra.odds, 'j_sholium_solo', false) then
+                    return {
                     func = function()
                         card.ability.extra.mult = (card.ability.extra.mult) + card.ability.extra.mult_mod
                         return true
                     end,
                     message = localize('k_upgrade_ex')
-                }
+                    }
+                end
             end
         end
         if context.cardarea == G.jokers and context.joker_main  then

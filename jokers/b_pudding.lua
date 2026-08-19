@@ -845,7 +845,114 @@ SMODS.Joker{ --Bing Bong
         end
     end
 }
+SMODS.Joker{ --Fanny pack
+    key = "fannypack",
+    config = {
+        extra = {
+			immutable = {
+                slots = 2
+			}
+        }
+    },
+    loc_txt = {
+        ['name'] = 'Fanny pack',
+        ['text'] = {
+            [1] = '{C:attention}+#1#{} Consumable slots'
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 8,
+        y = 13
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 4,
+    rarity = 1,
+    blueprint_compat = false,
+    eternal_compat = true,
+    perishable_compat = false,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
 
+    loc_vars = function(self, info_queue, card)
+        
+        return {vars = {card.ability.extra.immutable.slots}}
+    end,
+    
+    add_to_deck = function(self, card, from_debuff)
+        G.E_MANAGER:add_event(Event({func = function()
+            G.consumeables.config.card_limit = G.consumeables.config.card_limit + card.ability.extra.immutable.slots
+            return true
+        end }))
+    end,
+    
+    remove_from_deck = function(self, card, from_debuff)
+        G.E_MANAGER:add_event(Event({func = function()
+            G.consumeables.config.card_limit = G.consumeables.config.card_limit - card.ability.extra.immutable.slots
+            return true
+        end }))
+    end
+}
+SMODS.Joker{ --Backpack
+    key = "backpack",
+    config = {
+        extra = {
+			immutable = {
+                slots = 4
+			}
+        }
+    },
+    loc_txt = {
+        ['name'] = 'Backpack',
+        ['text'] = {
+            [1] = '{C:attention}+#1#{} Consumable slots'
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 9,
+        y = 13
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 7,
+    rarity = 2,
+    blueprint_compat = false,
+    eternal_compat = true,
+    perishable_compat = false,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+
+    loc_vars = function(self, info_queue, card)
+        
+        return {vars = {card.ability.extra.immutable.slots}}
+    end,
+    
+    add_to_deck = function(self, card, from_debuff)
+        G.E_MANAGER:add_event(Event({func = function()
+            G.consumeables.config.card_limit = G.consumeables.config.card_limit + card.ability.extra.immutable.slots
+            return true
+        end }))
+    end,
+    
+    remove_from_deck = function(self, card, from_debuff)
+        G.E_MANAGER:add_event(Event({func = function()
+            G.consumeables.config.card_limit = G.consumeables.config.card_limit - card.ability.extra.immutable.slots
+            return true
+        end }))
+    end
+}
 SMODS.Joker{ --coconut
     key = "coconut",
     config = {
