@@ -133,7 +133,7 @@ SMODS.Joker{ --bow
         w = 71 * 1, 
         h = 95 * 1
     },
-    cost = 6,
+    cost = 4,
     rarity = 1,
     blueprint_compat = true,
     demicoloncompat = true,
@@ -159,7 +159,7 @@ SMODS.Joker{ --bow
             end
         end
         if context.after and context.cardarea == G.jokers  and not context.blueprint then
-            if to_big(card.ability.extra.played) >= to_big(card.ability.extra.req - 1) then
+            if to_big(card.ability.extra.played) >= to_big(card.ability.extra.req) then
                 return {
                     func = function()
                         card.ability.extra.played = 0
@@ -602,7 +602,7 @@ SMODS.Joker{ --librarian
         w = 71 * 1, 
         h = 95 * 1
     },
-    cost = 8,
+    cost = 5,
     rarity = 2,
     blueprint_compat = true,
     demicoloncompat = true,
@@ -1101,7 +1101,7 @@ SMODS.Joker{ --witch
     config = {
         extra = {
             played = 0,
-            req = 3
+            req = 2
         }
     },
     loc_txt = {
@@ -1940,7 +1940,7 @@ SMODS.Joker{ --Cobblestone Generator
         w = 71 * 1, 
         h = 95 * 1
     },
-    cost = 2,
+    cost = 4,
     rarity = 1,
     blueprint_compat = true,
     demicoloncompat = true,
