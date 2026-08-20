@@ -144,7 +144,7 @@ SMODS.Joker{ --Rotation Matrix
         h = 95 * 1
     },
     cost = 5,
-    rarity = 2,
+    rarity = 1,
     blueprint_compat = true,
     demicoloncompat = true,
     eternal_compat = true,
