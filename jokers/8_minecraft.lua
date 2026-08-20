@@ -154,6 +154,7 @@ SMODS.Joker{ --bow
                 card.ability.extra.played = (card.ability.extra.played) + 1
             elseif to_big(card.ability.extra.played) >= to_big(card.ability.extra.req - 1) then
                 return {
+				   card.ability.extra.played = (card.ability.extra.played) + 1
                    Xmult = card.ability.extra.xmult
                 }
             end
