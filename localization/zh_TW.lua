@@ -671,7 +671,7 @@ return {
 				name = "食人鳥(v36-38)",
 				text = {
 					"進入{C:attention}盲注{}時{X:attention,C:white}=#2#{}手牌大小",
-					"出牌時{C:attention}+#1#{}手牌大小",
+					"出牌或棄牌時{C:attention}+#1#{}手牌大小",
 				},
 			},
 			j_sholium_prion = {

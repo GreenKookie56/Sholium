@@ -307,7 +307,7 @@ SMODS.Joker{ --Pouakai (v36-38)
             [1] = '{X:attention,C:white}=#2#{} hand size',
             [2] = 'when {C:attention}Blind{} is selected',
             [3] = '{C:attention}+#1#{} hand size',
-            [4] = 'when a {C:attention}hand{} is played'
+            [4] = 'when a {C:attention}hand{} is played or discarded'
         },
         ['unlock'] = {
             [1] = ''
@@ -344,7 +344,7 @@ SMODS.Joker{ --Pouakai (v36-38)
     end,
 
     calculate = function(self, card, context)
-        if context.cardarea == G.jokers and context.joker_main or context.forcetrigger then
+        if context.cardarea == G.jokers and context.joker_main or context.pre_discard or context.forcetrigger then
                 return {
                     func = function()
                 card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = "+"..tostring(card.ability.extra.handsizemod).." Hand Size", colour = G.C.BLUE})

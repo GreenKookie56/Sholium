@@ -1381,7 +1381,7 @@ SMODS.Joker{ --Piglin
     loc_txt = {
         ['name'] = 'Piglin',
         ['text'] = {
-            [1] = 'Grant a {C:tarot}Tarot{} if played hand',
+            [1] = 'Grant a {C:dark_edition}Negative{} {C:tarot}Tarot{} if played hand',
             [2] = 'contains a scoring {C:attention}Gold Card{}'
         },
         ['unlock'] = {
@@ -1426,7 +1426,7 @@ SMODS.Joker{ --Piglin
                         delay = 0.4,
                         func = function()
                             play_sound('timpani')
-                            SMODS.add_card({ set = 'Tarot', })                            
+                            SMODS.add_card({ set = 'Tarot', edition = 'e_negative' })                            
                             card:juice_up(0.3, 0.5)
                             return true
                         end
@@ -1544,14 +1544,15 @@ SMODS.Joker{ --hoglin
     key = "hoglin",
     config = {
         extra = {
+            mult = 12
         }
     },
     loc_txt = {
         ['name'] = 'Hoglin',
         ['text'] = {
             [1] = 'If played hand is {C:attention}exactly 1{} card,',
-            [2] = 'increase rank of this card by {C:attention}2{}',
-            [3] = 'each time it is scored'
+            [2] = '{C:red}+#1#{} Mult and increase rank',
+            [3] = 'of the played card by {C:attention}2{}'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -1573,18 +1574,29 @@ SMODS.Joker{ --hoglin
     unlocked = true,
     discovered = true,
     atlas = 'CustomJokers',
-    
+
+    loc_vars = function(self, info_queue, card)
+        
+        return {vars = {card.ability.extra.mult}}
+    end,
+
     calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.play  then
+        if context.before then
             if to_big(#context.full_hand) == to_big(1) then
-            local scored_card = context.other_card
-            G.E_MANAGER:add_event(Event({
-                func = function()
-                    assert(SMODS.modify_rank(scored_card, 2))
-                    return true
+                for k, v in ipairs(context.full_hand) do
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            assert(SMODS.modify_rank(v , 2))
+                            return true
+                        end
+                    }))
                 end
-            }))
             end
+        end
+        if context.cardarea == G.jokers and context.joker_main then
+            return {
+                mult = card.ability.extra.mult
+            }
         end
     end
 }
@@ -1711,14 +1723,13 @@ SMODS.Joker{ --blaze
     key = "blaze",
     config = {
         extra = {
-            odds = 2
         }
     },
     loc_txt = {
         ['name'] = 'Blaze',
         ['text'] = {
             [1] = 'if played hand contains a {C:attention}Three of a Kind{},',
-            [2] = '{C:green}#1# in #2#{} chance to create an {C:attention}Immolate{}' -- oops! all 3oak synergies
+            [2] = 'create 3 {C:attention}Strength{} Tarots' -- oops! all 3oak synergies
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -1743,27 +1754,22 @@ SMODS.Joker{ --blaze
     
     loc_vars = function(self, info_queue, card)
         
-        local new_numerator, new_denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'j_sholium_blaze') 
-        return {vars = {new_numerator, new_denominator}}
     end,
     
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main  then
             if next(context.poker_hands["Three of a Kind"]) then
-                if SMODS.pseudorandom_probability(card, 'group_0_22491ffe', 1, card.ability.extra.odds, 'j_sholium_blaze', false) then
-                    for i = 1, math.min(1, G.consumeables.config.card_limit - #G.consumeables.cards) do
-                        G.E_MANAGER:add_event(Event({
-                            trigger = 'after',
-                            delay = 0.4,
-                            func = function()
-                                play_sound('timpani')
-                                SMODS.add_card({ set = 'Spectral', key = 'c_immolate'})                            
-                                card:juice_up(0.3, 0.5)
-                                return true
-                            end
-                        }))
-                    end
-                    card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = created_consumable and localize('k_plus_spectral') or nil, colour = G.C.SECONDARY_SET.Spectral})
+                for i = 1, math.min(3, G.consumeables.config.card_limit - #G.consumeables.cards) do
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.4,
+                        func = function()
+                            play_sound('timpani')
+                            SMODS.add_card({ set = 'Spectral', key = 'c_strength'})                            
+                            card:juice_up(0.3, 0.5)
+                            return true
+                        end
+                    }))
                 end
             end
         end
