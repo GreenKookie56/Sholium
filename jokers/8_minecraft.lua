@@ -1426,7 +1426,7 @@ SMODS.Joker{ --Piglin
                         delay = 0.4,
                         func = function()
                             play_sound('timpani')
-                            SMODS.add_card({ set = 'Tarot', edition = 'e_negative' })                            
+                            SMODS.add_card({ set = 'Tarot', edition = 'e_negative'})                            
                             card:juice_up(0.3, 0.5)
                             return true
                         end
@@ -1453,7 +1453,7 @@ SMODS.Joker{ --Piglin
                     delay = 0.4,
                     func = function()
                         play_sound('timpani')
-                        SMODS.add_card({ set = 'Tarot', })                            
+                        SMODS.add_card({ set = 'Tarot', edition = 'e_negative'})                            
                         card:juice_up(0.3, 0.5)
                         return true
                     end
