@@ -108,7 +108,7 @@ return {
 				name = "烈焰使者",
 				text = {
 					"若打出牌型包含{C:attention}三條{}，",
-					"{C:green}#1#/#2#{}機率產生一張{C:attention}火祭{}",
+					"產生三張{C:attention}力量{}塔羅牌",
 				},
 			},
 			j_sholium_bloonchipper = {
@@ -428,7 +428,7 @@ return {
 				name = "豬布獸",
 				text = {
 					"若打出的牌為{C:attention}剛好1張牌{}，",
-					"這張牌計分時點數{C:attention}+2{}",
+					"{C:red}+#1#{}倍率且該牌點數{C:attention}+2{}",
 				},
 			},
 			j_sholium_hepatizonjoker = {
@@ -643,7 +643,7 @@ return {
 				name = "豬布林",
 				text = {
 					"若打出的牌包含{C:gold}黃金牌{}",
-					"產生一張{C:tarot}塔羅牌{}",
+					"產生一張隨機{C:dark_edition}負片{}{C:tarot}塔羅牌{}",
 				},
 			},
 			j_sholium_piglinbrute = {
