@@ -427,8 +427,9 @@ return {
 			j_sholium_hoglin = {
 				name = "豬布獸",
 				text = {
+					"手牌計分前{C:red}+#1#{}倍率",
 					"若打出的牌為{C:attention}剛好1張牌{}，",
-					"{C:red}+#1#{}倍率且該牌點數{C:attention}+2{}",
+					"該牌點數{C:attention}+2{}",
 				},
 			},
 			j_sholium_hepatizonjoker = {
