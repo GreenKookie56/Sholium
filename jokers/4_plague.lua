@@ -566,7 +566,7 @@ SMODS.Joker{ --Neurax worm
     loc_txt = {
         ['name'] = 'Neurax worm',
         ['text'] = {
-            [1] = 'Each card held in hand card',
+            [1] = 'Each held in hand card',
             [2] = 'gives {X:legendary,C:white}^#1#{} Mult'
         },
         ['unlock'] = {
