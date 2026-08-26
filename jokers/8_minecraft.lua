@@ -1420,7 +1420,7 @@ SMODS.Joker{ --Piglin
         end
         if context.cardarea == G.jokers and context.joker_main  then
             if to_big(card.ability.extra.tarot) > to_big(0) then
-                for i = 1, math.min(1, G.consumeables.config.card_limit - #G.consumeables.cards) do
+                for i = 1, 1 do
                     G.E_MANAGER:add_event(Event({
                         trigger = 'after',
                         delay = 0.4,
@@ -1447,7 +1447,7 @@ SMODS.Joker{ --Piglin
             }
         end
         if context.forcetrigger then
-            for i = 1, math.min(1, G.consumeables.config.card_limit - #G.consumeables.cards) do
+            for i = 1, 1 do
                 G.E_MANAGER:add_event(Event({
                     trigger = 'after',
                     delay = 0.4,
