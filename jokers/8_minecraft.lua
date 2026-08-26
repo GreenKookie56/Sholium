@@ -1550,9 +1550,9 @@ SMODS.Joker{ --hoglin
     loc_txt = {
         ['name'] = 'Hoglin',
         ['text'] = {
-            [1] = 'If played hand is {C:attention}exactly 1{} card,',
-            [2] = '{C:red}+#1#{} Mult and increase rank',
-            [3] = 'of the played card by {C:attention}2{}'
+            [1] = '{C:red}+#1#{} Mult before hand starts scoring',
+            [2] = 'If played hand is {C:attention}exactly 1{} card,',
+            [3] = 'increase rank of the played card by {C:attention}2{}'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -1593,7 +1593,7 @@ SMODS.Joker{ --hoglin
                 end
             end
         end
-        if context.cardarea == G.jokers and context.joker_main then
+        if context.initial_scoring_step then
             return {
                 mult = card.ability.extra.mult
             }
