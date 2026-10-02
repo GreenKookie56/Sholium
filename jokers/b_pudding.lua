@@ -1407,7 +1407,7 @@ SMODS.Joker{ --The Pudding
             [1] = '{X:dark_edition,C:white}#1#{} Mult',
             [2] = '{X:dark_edition,C:white}operator{} increases once if',
             [3] = 'played hand contains a',
-            [4] = '{C:attention}Straight Flush{} and {C:attention}7{} of {C:clubs}Clubs{}',
+            [4] = '{C:attention}Straight Flush{} and a {C:attention}7{}',
         },
         ['unlock'] = {
             [1] = ''
@@ -1450,14 +1450,6 @@ SMODS.Joker{ --The Pudding
                 local count = 0
                 for _, playing_card in pairs(context.full_hand or {}) do
                     if playing_card:get_id() == 7 then
-                        count = count + 1
-                    end
-                end
-                return count >= 1
-            end)() and (function()
-                local count = 0
-                for _, playing_card in pairs(context.full_hand or {}) do
-                    if playing_card:is_suit("Clubs") then
                         count = count + 1
                     end
                 end

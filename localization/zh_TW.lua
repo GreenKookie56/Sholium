@@ -916,7 +916,7 @@ return {
 				name = "小布丁",
 				text = {
 					"{X:dark_edition,C:white}#1#{}倍率",
-					"若打出的牌包含{C:attention}同花順{}和{C:clubs}梅花{}{C:attention}7{}，",
+					"若打出的牌包含{C:attention}同花順{}和{C:attention}7{}，",
 					"{X:dark_edition,C:white}運算符號{}升級一次",
 				},
 			},
