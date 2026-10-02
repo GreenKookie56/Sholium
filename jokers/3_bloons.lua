@@ -128,8 +128,6 @@ SMODS.Joker{ --Boss Farming Guide
     config = {
         extra = {
             eor = 2,
-            thenumerator = 1,
-            money÷10 = 0
         }
     },
     loc_txt = {
@@ -1076,9 +1074,6 @@ SMODS.Joker{ --Water Tower
         end
     end
 }
-	
-if Talisman then
-	
 if Cryptid then --Cryptlib
 SMODS.Joker{ --tt5
     key = "tt5bug",
@@ -1141,8 +1136,8 @@ SMODS.Joker{ --tt5
 }
 end
 
-if next(SMODS.find_mod("Cryptid")) then -- Cryptid
-
+if Talisman then
+	
 SMODS.Joker{ --Overclock
     key = "overclock",
     config = {
@@ -1155,7 +1150,10 @@ SMODS.Joker{ --Overclock
         ['text'] = {
             [1] = 'Create a {C:dark_edition}Negative{}',
             [2] = '{C:attention}Boss Farming Guide{}',
-            [3] = 'at the end of {C:green}shop{}'
+            [3] = 'at the end of {C:green}shop{},',
+            [4] = 'and a {C:dark_edition}Negative perishable{}',
+            [5] = '{C:attention}Cobalt Joker{}',
+            [6] = 'at the start of {C:green}shop{}'
         },
         ['unlock'] = {
             [1] = ''
@@ -1191,27 +1189,51 @@ SMODS.Joker{ --Overclock
         if context.ending_shop or context.forcetrigger then
                 return {
                     func = function()
-            local created_joker = true
-            G.E_MANAGER:add_event(Event({
-                func = function()
-                    local joker_card = SMODS.add_card({ set = 'Joker', key = 'j_sholium_bossfarmingguide' })
-                    if joker_card then
-                        joker_card:set_edition("e_negative", true)
+                        local created_joker = true
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                local joker_card = SMODS.add_card({ set = 'Joker', key = 'j_sholium_bossfarmingguide' })
+                                if joker_card then
+                                    joker_card:set_edition("e_negative", true)
+                                    
+                                end
+                                
+                                return true
+                            end
+                        }))
                         
+                        if created_joker then
+                            card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_plus_joker'), colour = G.C.BLUE})
+                        end
+                        return true
                     end
+                }
+        end
+
+        if context.starting_shop  then
+            return {
+                func = function()
                     
+                    local created_joker = true
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            local joker_card = SMODS.add_card({ set = 'Joker', key = 'j_sholium_cobaltjoker' })
+                            if joker_card then
+                                joker_card:set_edition("e_negative", true)
+                                joker_card:add_sticker('perishable', true)
+                            end
+                            
+                            return true
+                        end
+                    }))
+                    
+                    if created_joker then
+                        card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_plus_joker'), colour = G.C.BLUE})
+                    end
                     return true
                 end
-            }))
-            
-            if created_joker then
-                card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_plus_joker'), colour = G.C.BLUE})
-            end
-            return true
-        end
-                }
+            }
         end
     end
 }
-end
 end
