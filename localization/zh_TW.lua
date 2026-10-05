@@ -161,6 +161,13 @@ return {
                     "減少至{X:legendary,C:white}0{}以下時永久設為{X:legendary,C:white}^3.57{}倍率",
 				},
 			},
+			j_sholium_buggedblitz = {
+				text = {
+					"賣掉這張牌時，",
+					"{C:red}摧毀{}所有手中的牌",
+                    "並產生一張這張牌的複製品",
+				},
+			},
 			j_sholium_cavemonkey = {
 				name = "洞穴猴",
 				text = {
@@ -362,6 +369,15 @@ return {
 					"選擇{C:attention}盲注{}時{C:blue}+#2#{}出牌",
 				},
 			},
+			j_sholium_galvanicconduit = {
+				name = "電導管",
+				text = {
+					"每張打出但不計分的牌",
+					"在本回合提供{C:red}+#1#{}倍率",
+					"{C:inactive}(目前{}{C:red}+#2#{}{C:inactive}倍率){}",
+					"{C:inactive}Ah yes 一般稀有度 pt.3{}",
+				},
+			},
 			j_sholium_giganotosaurus = {
 				name = "南方巨獸龍",
 				text = {
@@ -382,6 +398,13 @@ return {
 				text = {
 					"{C:red}+#1#{}倍率",
 					"出牌時此數值乘以{C:red}#2#{}",
+				},
+			},
+			j_sholium_grilledchicken = {
+				text = {
+					"Instead of owning stuff,",
+					"eat {C:attention}grilled chicken{}",
+					"{C:inactive}(目前擁有{}{X:attention,C:white}#1#{}{C:inactive} Grilled Chicken){}",
 				},
 			},
 			j_sholium_gluestorm = {
@@ -806,7 +829,7 @@ return {
 			},
 			j_sholium_redsauda = {
 				text = {
-					"{C:attention}第1張{}打出的牌計分時",
+					"打出的牌開始計分前",
 					"交換{C:blue}籌碼{}和{C:red}倍率{}",
  				},
 			},
@@ -891,6 +914,24 @@ return {
 					"{C:attention}強制觸發{}右邊的小丑",
 				},
 			},
+			j_sholium_tb1fasterfiring = {
+				name = "520最大的傢伙",
+				text = {
+					"若打出的牌型包含5張計分的牌，",
+					"這張小丑獲得{X:blue,C:white}X0.3{}籌碼",
+					"於本底注結束時重置",
+					"{C:inactive}(目前{}{X:blue,C:white}X#1#{}{C:inactive}籌碼){}",
+				},
+			},
+			j_sholium_tb1burnystuff = {
+				name = "502最大的傢伙",
+				text = {
+					"打出包含5張計分的牌牌型{C:attention}#2#{}次後，",
+					"這張小丑獲得{X:red,C:white}X1.5{}倍率",
+					"於本底注結束時重置",
+					"{C:inactive}(目前{}{X:red,C:white}X#1#{}{C:inactive}倍率){}",
+				},
+			},
 			j_sholium_tenthepurples = {
 				text = {
 					"選擇{C:attention}Boss盲注{}時，",
@@ -908,8 +949,8 @@ return {
 			j_sholium_thefungus = {
 				text = {
 					"選擇{C:attention}盲注{}時，隨機摧毀一張小丑",
-					"並將其{C:attention}售價{}加到{X:planet,C:white}^籌碼{}",
-					"{C:inactive}(目前{}{X:planet,C:white}^#1#{}{C:inactive}籌碼){}",
+					"並將其{C:attention}售價{}加到{X:dark_edition,C:white}運算符號{}",
+					"{C:inactive}(目前{X:dark_edition,C:white}#1#{}{C:inactive}籌碼){}",
 				},
 			},
 			j_sholium_thepudding = {
@@ -957,6 +998,13 @@ return {
 				text = {
 					"回合結束時，",
 					"產生一張{C:rare}稀有{}小丑",
+				},
+			},
+			j_sholium_vrejdilum = {
+				text = {
+					"布丁國伺服器中，每個",
+					"包含\"{C:attention}vrej{}\"的訊息{C:blue}+1{}籌碼",
+					"{C:inactive}(目前{}{C:blue}+781{}{C:inactive}籌碼){}",
 				},
 			},
 			j_sholium_watertower = {
