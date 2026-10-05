@@ -638,6 +638,8 @@ return {
 				text = {
 					"結束商店後上傳",
 					"一期{C:dark_edition}負片{}{C:attention}農錢教學{}",
+					"進入商店時產生",
+					"一個{C:dark_edition}負片易腐{}{C:attention}鈷小丑{}",
 				},
 			},
 			j_sholium_parasite = {
