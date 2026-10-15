@@ -789,7 +789,7 @@ SMODS.Joker{ --tb1 faster firing
     loc_txt = {
         ['name'] = 'tb1 faster firing',
         ['text'] = {
-            [1] = 'This Joker gains {X:blue,C:white}X0.3{} Chips',
+            [1] = 'This Joker gains {X:blue,C:white}X0.4{} Chips',
             [2] = 'if played hand contains',
             [3] = '{C:attention}5{} scoring cards',
             [4] = 'resets at the end of ante',
@@ -826,7 +826,7 @@ SMODS.Joker{ --tb1 faster firing
             if #context.scoring_hand >= 5 then
                 return {
                     func = function()
-                    card.ability.extra.scoring = (card.ability.extra.scoring) + 0.3
+                    card.ability.extra.scoring = (card.ability.extra.scoring) + 0.4
                     return true
                 end,
                     message = localize('k_upgrade_ex'),
@@ -854,7 +854,7 @@ SMODS.Joker{ --tb1 burny stuff
     config = {
         extra = {
             scoring = 1,
-            cd = 4
+            cd = 3
         }
     },
     loc_txt = {
@@ -910,7 +910,7 @@ SMODS.Joker{ --tb1 burny stuff
                     message = localize('k_upgrade_ex'),
                     extra = {
                         func = function()
-                    card.ability.extra.cd = 4
+                    card.ability.extra.cd = 3
                     return true
                 end,
                         colour = G.C.BLUE
