@@ -721,32 +721,31 @@ return {
 				},
 			},
 			j_sholium_sealpurple = {
-				name = "紫色隱者",
+				name = "不死斑海豹桑",
 				text = {
 					"{C:attention}-1{}手牌大小",
 					"棄牌時隨機產生一張{C:tarot}塔羅牌{}",
 				},
 			},
 			j_sholium_sealred = {
-				name = "紅色魔術師",
+				name = "斑海豹桑",
 				text = {
 					"{C:attention}-1{}手牌大小",
 					"重新觸發所有打出的牌",
 				},
 			},
 			j_sholium_sealgold = {
-				name = "白金之星",
+				name = "黃金斑海豹桑",
 				text = {
 					"{C:attention}-1{}手牌大小",
 					"出牌時獲得{C:gold}$#1#{}",
 				},
 			},
 			j_sholium_sealblue = {
-				name = "綠色法皇",
+				name = "斑海星人",
 				text = {
 					"{C:attention}-1{}手牌大小",
 					"回合結束時產生上個{C:attention}牌型{}的{C:planet}星球牌{}",
-					"{C:inactive}不是，這不是綠色的吧...{}",
 				},
 			},
 			j_sholium_silas = {
@@ -920,7 +919,7 @@ return {
 				name = "520最大的傢伙",
 				text = {
 					"若打出的牌型包含5張計分的牌，",
-					"這張小丑獲得{X:blue,C:white}X0.3{}籌碼",
+					"這張小丑獲得{X:blue,C:white}X0.4{}籌碼",
 					"於本底注結束時重置",
 					"{C:inactive}(目前{}{X:blue,C:white}X#1#{}{C:inactive}籌碼){}",
 				},
