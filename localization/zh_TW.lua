@@ -974,7 +974,7 @@ return {
 				name = "暴龍(v44-53)",
 				text = {
 					"打出的牌計分時{X:red,C:white}X#1#{}倍率",
-					"若計分的牌為{C:attention}倍率牌{}，改為{X:red,C:white}X#2#{}倍率",
+					"若計分的牌為{C:attention}萬能牌{}，改為{X:red,C:white}X#2#{}倍率",
 				},
 			},
 			j_sholium_trickytracks = {
