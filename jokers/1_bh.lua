@@ -451,7 +451,7 @@ SMODS.Joker{ --T-rex (v44-53)
             [1] = 'Each played card gives',
             [2] = '{X:red,C:white}X#1#{} Mult when scored',
             [3] = '{X:red,C:white}X#2#{} Mult instead when',
-            [4] = 'scoring card is a {C:attention}Wild Card{}'
+            [4] = 'scoring card is a {C:attention}Mult Card{}'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -482,7 +482,7 @@ SMODS.Joker{ --T-rex (v44-53)
 
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play  then
-            if SMODS.get_enhancements(context.other_card)["m_wild"] == true then
+            if SMODS.get_enhancements(context.other_card)["m_mult"] == true then
                 return {
                     Xmult = lenient_bignum(card.ability.extra.xmult * 2)
                 }

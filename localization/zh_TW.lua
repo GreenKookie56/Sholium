@@ -168,21 +168,6 @@ return {
                     "並產生一張這張牌的複製品",
 				},
 			},
-			j_sholium_cancan = {
-				name = "康康舞貓",
-				text = {
-					"每回合首次出牌{X:red,C:white}X#1#{}倍率",
-					"回合結束時，給予等同於",
-					"盲注獎勵與剩餘手牌之和的{C:money}${}",
-				},
-			},
-			j_sholium_catasaurus = {
-				name = "侏儸恐龍貓",
-				text = {
-					"{C:green}#1#/#2#{}機率{X:red,C:white}X#3#{}倍率",
-					"機率結算{C:attention}5{}次",
-				},
-			},
 			j_sholium_cavemonkey = {
 				name = "洞穴猴",
 				text = {
@@ -270,13 +255,6 @@ return {
 				text = {
 					"每{C:attention}3{}次出牌產生一張{C:spectral}火祭{}",
 					"{C:inactive}剩餘#1#次{}",
-				},
-			},
-			j_sholium_courier = {
-				name = "飛腳貓",
-				text = {
-					"非首張或末張打出的牌",
-					"計分時{X:red,C:white}X#1#{}倍率",
 				},
 			},
 			j_sholium_creeper = {
@@ -400,13 +378,6 @@ return {
 					"{C:inactive}Ah yes 一般稀有度 pt.3{}",
 				},
 			},
-			j_sholium_georgehoppersfan = {
-				name = "河狸王喬治廚",
-				text = {
-					"每張{C:attention}喬治{}有關的小丑{X:red,C:white}X#1#{}倍率",
-					"取消{C:diamonds}窗戶{}的盲注效果",
-				},
-			},
 			j_sholium_giganotosaurus = {
 				name = "南方巨獸龍",
 				text = {
@@ -420,14 +391,6 @@ return {
 					"每次出牌中{C:attention}非第一次{}計分的牌",
 					"為這張小丑提供{C:blue}+#2#{}籌碼",
 					"{C:inactive}(目前{}{C:blue}+#1#{}{C:inactive}籌碼){}",
-				},
-			},
-			j_sholium_gravolodon = {
-				name = "岩石精靈強韌伊瓦",
-				text = {
-					"手牌中每有一張{C:attention}石頭牌{}，",
-					"所有打出的牌計分時",
-					"額外{X:red,C:white}X#1#{}倍率",
 				},
 			},
 			j_sholium_greencookie = {
@@ -757,12 +720,6 @@ return {
 					"給予{C:blue}+#1#{}籌碼",
 				},
 			},
-			j_sholium_scaredface = {
-				text = {
-					"打出的{C:diamonds}方塊{}計分時",
-					"{C:blue}+#1#{}籌碼",
-				},
-			},
 			j_sholium_sealpurple = {
 				name = "不死斑海豹桑",
 				text = {
@@ -875,12 +832,6 @@ return {
 				text = {
 					"打出的牌開始計分前",
 					"交換{C:blue}籌碼{}和{C:red}倍率{}",
- 				},
-			},
-			j_sholium_reconciliation = {
-				name = "和解",
-				text = {
-					"重新觸發打出的{C:diamonds}方塊{}牌",
  				},
 			},
 			j_sholium_ripchamp = {
@@ -1023,7 +974,7 @@ return {
 				name = "暴龍(v44-53)",
 				text = {
 					"打出的牌計分時{X:red,C:white}X#1#{}倍率",
-					"若計分的牌為{C:attention}萬能牌{}，改為{X:red,C:white}X#2#{}倍率",
+					"若計分的牌為{C:attention}倍率牌{}，改為{X:red,C:white}X#2#{}倍率",
 				},
 			},
 			j_sholium_trickytracks = {

@@ -12,7 +12,7 @@ this is a mod about everything I found funny/interesting and decided to add into
 - inside jokes that are not really funny
 - towers in btd6 old versions that absolutely peaked/sucked during the period
 - plagues that demonstrate their playstyle in the plague inc game
-- battle cats content
+- seal jokers that reduce hand size by 1 and have the effect of the original seals
 - math stuff
 - materials from tinkers construct
 - minecraft content
