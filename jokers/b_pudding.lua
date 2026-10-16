@@ -396,6 +396,179 @@ SMODS.Joker{ --King George
         end
     end
 }
+SMODS.Joker{ --:scaredface:
+    key = "scaredface",
+    config = {
+        extra = {
+            chips = 30,
+        }
+    },
+    loc_txt = {
+        ['name'] = ':scaredface:',
+        ['text'] = {
+            [1] = 'Each played {C:diamonds}Diamonds{}',
+            [2] = 'give {C:blue}+#1#{} Chips when scored',
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 2,
+        y = 15
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 4,
+    rarity = 1,
+    blueprint_compat = true,
+    demicoloncompat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+    
+    loc_vars = function(self, info_queue, card)
+        
+        return {vars = {card.ability.extra.chips}}
+    end,
+    
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play  then
+            if context.other_card:is_suit("Diamonds") then
+                return {
+                    chips = card.ability.extra.chips
+                }
+            end
+        end
+        if context.forcetrigger then
+            return {
+                chips = card.ability.extra.chips
+            }
+        end
+    end
+}
+SMODS.Joker{ --Reconciliation
+    key = "reconciliation",
+    config = {
+        extra = {
+        }
+    },
+    loc_txt = {
+        ['name'] = 'Reconciliation',
+        ['text'] = {
+            [1] = 'Retrigger all played {C:diamonds}Diamonds{}'
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 4,
+        y = 15
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 6,
+    rarity = 2,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+    
+    calculate = function(self, card, context)
+        if context.repetition and context.cardarea == G.play  then
+            if context.other_card:is_suit("Diamonds") then
+                return {
+                    repetitions = 1,
+                    message = localize('k_again_ex')
+                }
+            end
+        end
+    end
+}
+SMODS.Joker{ --George Hoppers Fan
+    key = "georgehoppersfan",
+    config = {
+        extra = {
+            xmult = 1.8
+        }
+    },
+    loc_txt = {
+        ['name'] = 'George Hoppers Fan',
+        ['text'] = {
+            [1] = 'All {C:attention}King George Jokers{} give {X:red,C:white}X#1#{} Mult',
+            [2] = '{C:diamonds}The Window{} is debuffed'
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 3,
+        y = 15
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 7,
+    rarity = 3,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = false,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+    pools = { ["thepond_george"] = true },
+    
+    loc_vars = function(self, info_queue, card)
+        
+        return {vars = {card.ability.extra.xmult}}
+    end,
+    
+    calculate = function(self, card, context)
+        if context.other_joker  then
+            if -- why do i have to manually add these??? the joker pool thing sucks
+                context.other_joker.config.center.key == "j_sholium_kinggeorge" or
+                context.other_joker.config.center.key == "j_sholium_georgehoppersfan" or
+                context.other_joker.config.center.key == "j_sholium_scaredface" or
+                context.other_joker.config.center.key == "j_sholium_reconciliation" or
+                context.other_joker.config.center.key == "j_sholium_kingscouncil"
+            then
+                return {
+                    Xmult = card.ability.extra.xmult
+                }
+            end
+        end
+        if context.setting_blind  and not context.blueprint then
+            if to_big(G.GAME.blind.config.blind.key) == to_big("bl_window") then
+                return {
+                    func = function()
+                        if G.GAME.blind and G.GAME.blind.boss and not G.GAME.blind.disabled then
+                            G.E_MANAGER:add_event(Event({
+                                func = function()
+                                    G.GAME.blind:disable()
+                                    play_sound('timpani')
+                                    return true
+                                end
+                            }))
+                            card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('ph_boss_disabled'), colour = G.C.GREEN})
+                        end
+                        return true
+                    end
+                }
+            end
+        end
+    end
+}
 SMODS.Joker{ --Kings Council
     key = "kingscouncil",
     config = {
