@@ -1,4 +1,4 @@
-if Sholium.config.sholextra then
+if Sholium.config.sholatro then
 
 if Talisman then
 SMODS.Joker{ --Ancient meme
