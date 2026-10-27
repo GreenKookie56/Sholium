@@ -1,4 +1,5 @@
 return {
-	sholextra = false,
+	sholatro = false,
 	pudding = false,
+	pudding_gamebreak = true,
 }

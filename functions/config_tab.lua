@@ -8,9 +8,9 @@ SMODS.current_mod.config_tab = function()
                 config = { padding = 0.2, align = "cm" },
                 nodes = {
                     create_toggle({
-                        label = "SholiumExtra content (requires game restart)",
+                        label = "Sholatro content (requires game restart)",
                         ref_table = Sholium.config,
-                        ref_value = 'sholextra',
+                        ref_value = 'sholatro',
                     })
                 }
             },
@@ -22,6 +22,17 @@ SMODS.current_mod.config_tab = function()
                         label = "PuddlesofPudding content (requires game restart)",
                         ref_table = Sholium.config,
                         ref_value = 'pudding',
+                    })
+                }
+            },
+            {
+                n = G.UIT.R,
+                config = { padding = 0.2, align = "cm" },
+                nodes = {
+                    create_toggle({
+                        label = "PuddlesofPudding game-breaking content (requires game restart)",
+                        ref_table = Sholium.config,
+                        ref_value = 'pudding_gamebreak',
                     })
                 }
             },

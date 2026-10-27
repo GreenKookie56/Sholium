@@ -410,8 +410,9 @@ return {
 			j_sholium_giganotosaurus = {
 				name = "南方巨獸龍",
 				text = {
-					"{X:red,C:white}X#2#{}倍率",
-					"出牌額外占用{C:blue}#1#{}個出牌次數",
+					"{X:red,C:white}X#1#{}倍率",
+					"打出手牌中每有一張",
+					"獨特花色的牌，該數值{X:red,C:white}乘三{}",
 				},
 			},
 			j_sholium_glaivelord = {
@@ -698,7 +699,7 @@ return {
 			},
 			j_sholium_patfusty = {
 				text = {
-					"{C:attention}+100{}卡牌選擇上限",
+					"{C:attention}+10000{}卡牌選擇上限",
 					"{C:inactive}big monke{}",
 				},
 			},

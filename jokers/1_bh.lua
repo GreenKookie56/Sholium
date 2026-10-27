@@ -96,17 +96,16 @@ SMODS.Joker{ --Giganotosaurus
     key = "giganotosaurus",
     config = {
         extra = {
-            hands = 2,
-            Xmult = 6,
-            round = 0
+            Xmult_base = 0.1,
+            Xmult = 0.1
         }
     },
     loc_txt = {
         ['name'] = 'Giganotosaurus',
         ['text'] = {
-            [1] = '{X:red,C:white}X#2#{} Mult',
-            [2] = '{C:blue}-#1#{} hands',
-            [3] = 'when a hand is played'
+            [1] = '{X:red,C:white}X#1#{} Mult',
+            [2] = 'every {C:attention}unique{} scoring suit',
+            [3] = 'contained in hand {X:red,C:white}triples{} that'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -120,8 +119,8 @@ SMODS.Joker{ --Giganotosaurus
         w = 71 * 1, 
         h = 95 * 1
     },
-    cost = 9,
-    rarity = 2,
+    cost = 7,
+    rarity = 3,
     blueprint_compat = true,
     demicoloncompat = true,
     eternal_compat = true,
@@ -132,18 +131,32 @@ SMODS.Joker{ --Giganotosaurus
 
     loc_vars = function(self, info_queue, card)
         
-        return {vars = {card.ability.extra.hands, card.ability.extra.Xmult}}
+        return {vars = {card.ability.extra.Xmult_base}}
     end,
     
     calculate = function(self, card, context)
-        if context.before and context.cardarea == G.jokers  and not context.blueprint then
-                return {
-                    func = function()
-                card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = "-"..tostring(card.ability.extra.hands).." Hand", colour = G.C.RED})
-                G.GAME.current_round.hands_left = G.GAME.current_round.hands_left - card.ability.extra.hands
-                return true
+        if context.before and not context.blueprint then
+            local suits = {S = false, H = false, D = false, C = false}
+            local count = 0
+            for _, c in ipairs(context.scoring_hand) do -- if it works it works ahh code
+                if c:is_suit("Spades") and suits["S"] ~= true then
+                    suits["S"] = true
+                    count = count + 1
+                elseif c:is_suit("Hearts") and suits["H"] ~= true then
+                    suits["H"] = true
+                    count = count + 1
+                elseif c:is_suit("Diamonds") and suits["D"] ~= true then
+                    suits["D"] = true
+                    count = count + 1
+                elseif c:is_suit("Clubs") and suits["C"] ~= true then
+                    suits["C"] = true
+                    count = count + 1
+                end
             end
-                }
+            if count > 0 then
+                local mult = card.ability.extra.Xmult_base
+                card.ability.extra.Xmult = mult * (3 ^ count)
+            end
         end
         if context.cardarea == G.jokers and context.joker_main or context.forcetrigger then
                 return {

@@ -210,7 +210,7 @@ SMODS.Joker{ --Pat Fusty
     loc_txt = {
         ['name'] = 'Pat Fusty',
         ['text'] = {
-            [1] = '{C:attention}+100{} Card selection limit',
+            [1] = '{C:attention}+10000{} Card selection limit',
             [2] = '{C:inactive}big monke{}'
         },
         ['unlock'] = {
@@ -238,13 +238,13 @@ SMODS.Joker{ --Pat Fusty
     end,
 
     add_to_deck = function(self, card, from_debuff)
-        SMODS.change_play_limit(100)
-        SMODS.change_discard_limit(100)
+        SMODS.change_play_limit(10000)
+        SMODS.change_discard_limit(10000)
     end,
 
     remove_from_deck = function(self, card, from_debuff)
-        SMODS.change_play_limit(-100)
-        SMODS.change_discard_limit(-100)
+        SMODS.change_play_limit(-10000)
+        SMODS.change_discard_limit(-10000)
     end
 }
 SMODS.Joker{ --Rosalia (v43)
