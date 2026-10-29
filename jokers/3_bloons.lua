@@ -1122,11 +1122,9 @@ SMODS.Joker{ --tt5
             if left_joker and context.other_card == left_joker then
 			    for i = 1, #G.jokers.cards do
 				    if G.jokers.cards[i] == card then
-					    if Cryptid.demicolonGetTriggerable(G.jokers.cards[i + 1])[1] then
-						    local results = Cryptid.forcetrigger(G.jokers.cards[i + 1], context)
-						    if results and results.jokers then
-							    return results.jokers
-						    end
+						local results = Cryptid.forcetrigger(G.jokers.cards[i + 1], context)
+						if results and results.jokers then
+							return results.jokers
 						end
 					end
 				end
