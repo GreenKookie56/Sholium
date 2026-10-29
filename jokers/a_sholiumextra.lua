@@ -653,12 +653,22 @@ SMODS.Joker{ --Sheppi
                 return {
                     x_chips = chips_value,
                     extra = {
-                        message = "Upgrade!",
+                        message = localize('k_upgrade_ex'),
                         colour = G.C.GREEN
                         }
                 }
             end
         end
+		if context.forcetrigger then
+			card.ability.extra.chips = (card.ability.extra.chips) + card.ability.extra.chipscale
+			return {
+                x_chips = card.ability.extra.chips,
+                extra = {
+                    message = localize('k_upgrade_ex'),
+                    colour = G.C.GREEN
+                }
+			}
+		end
     end
 }
 SMODS.Joker{ --Shiniest award (v38)
@@ -776,11 +786,17 @@ SMODS.Joker{ --tb1 faster firing
                 }
             end
         end
-        if context.cardarea == G.jokers and context.joker_main or context.forcetrigger then
+        if context.cardarea == G.jokers and context.joker_main then
                 return {
                     x_chips = card.ability.extra.scoring
                 }
         end
+		if context.forcetrigger then
+				card.ability.extra.scoring = (card.ability.extra.scoring) + 0.4
+                return {
+                    x_chips = card.ability.extra.scoring
+                }
+		end
         if context.end_of_round and context.main_eval and G.GAME.blind.boss and not context.blueprint then
             return {
                 func = function()
@@ -861,11 +877,17 @@ SMODS.Joker{ --tb1 burny stuff
                 }
             end
         end
-        if context.cardarea == G.jokers and context.joker_main or context.forcetrigger then
+        if context.cardarea == G.jokers and context.joker_main then
                 return {
                     Xmult = card.ability.extra.scoring
                 }
         end
+		if context.forcetrigger then
+				card.ability.extra.scoring = (card.ability.extra.scoring) + 1.5
+                return {
+                    Xmult = card.ability.extra.scoring
+                }
+		end
         if context.end_of_round and context.main_eval and G.GAME.blind.boss and not context.blueprint then
             return {
                 func = function()
