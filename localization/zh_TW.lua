@@ -489,8 +489,6 @@ return {
 				name = "豬布獸",
 				text = {
 					"手牌計分前{C:red}+#1#{}倍率",
-					"若打出的牌為{C:attention}剛好1張牌{}，",
-					"該牌點數{C:attention}+2{}",
 				},
 			},
 			j_sholium_hepatizonjoker = {
@@ -564,7 +562,7 @@ return {
 			j_sholium_literallythesoul = {
 				name = "有靈魂的靈魂",
 				text = {
-					"{C:attention}Boss盲注{}被擊敗時，",
+					"{C:attention}2{}個底注後，",
 					"產生一張{C:legendary}傳奇{}小丑",
 					"並{C:red}自我摧毀{}",				
 				},
@@ -637,8 +635,9 @@ return {
 			j_sholium_neuraxworm = {
 				name = "Neurax 蠕蟲",
 				text = {
-					"手中的牌有{C:green}#2#/#3#{}機率",
+					"所有手中的牌",
 					"給予{X:legendary,C:white}^#1#{}倍率",
+					"{X:legendary,C:white}^#2#{}盲注大小"
 				},
 			},
 			j_sholium_nitwit = {
@@ -1047,7 +1046,9 @@ return {
 			j_sholium_virus = {
 				name = "病毒",
 				text = {
-					"回合結束時，",
+					"賣掉這張小丑時",
+					"{C:red}-1{}小丑欄位",
+					"回合結束時",
 					"產生一張{C:rare}稀有{}小丑",
 				},
 			},
@@ -1085,7 +1086,7 @@ return {
 			j_sholium_witherskeleton = {
 				name = "凋零骷髏",
 				text = {
-					"將所有打出並計分的牌",
+					"所有打出的牌",
 					"花色轉換為{C:spades}黑桃{}",
 				},
 			},

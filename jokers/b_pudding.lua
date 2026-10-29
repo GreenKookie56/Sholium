@@ -810,7 +810,7 @@ SMODS.Joker{ --The Tree is Loud
     end
 }
 
-if Sholium.config.pudding_gamebreak then
+if Sholium.config.gamebreak then
 if Cryptid then
 SMODS.Joker{ --Ninja Kiwi balance be like
     key = "nksucks",
@@ -1565,7 +1565,7 @@ SMODS.Joker{ --Ramen the Cat
         end
     end
 }
-if Sholium.config.pudding_gamebreak then
+if Sholium.config.gamebreak then
 if Talisman then
 
 SMODS.Joker{ --The Pudding

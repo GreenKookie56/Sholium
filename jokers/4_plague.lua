@@ -29,7 +29,7 @@ SMODS.Joker{ --Bacteria
         w = 71 * 1, 
         h = 95 * 1
     },
-    cost = 3,
+    cost = 4,
     rarity = 1,
     blueprint_compat = true,
     demicoloncompat = true,
@@ -88,8 +88,8 @@ SMODS.Joker{ --Bioweapon
     key = "bioweapon",
     config = {
         extra = {
-            minusmod = 2,
-            timesmod = 0.4,
+            minusmod = 1,
+            timesmod = 0.25,
             minus = 0,
             times = 1
         }
@@ -464,9 +464,10 @@ SMODS.Joker{ --Virus
     loc_txt = {
         ['name'] = 'Virus',
         ['text'] = {
-            [1] = 'Create a random {C:rare}Rare{} Joker',
-            [2] = 'at the end of round',
-            [3] = '{C:inactive}(Must have room){}'
+            [1] = '{C:red}-1{} Joker Slot when sold',
+            [2] = 'Create a random {C:rare}Rare{} Joker',
+            [3] = 'at the end of round',
+            [4] = '{C:inactive}(Must have room){}'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -499,11 +500,19 @@ SMODS.Joker{ --Virus
       end,
 
     set_ability = function(self, card, initial)
-        card:set_eternal(true)
         card:add_sticker('rental', true)
     end,
 
     calculate = function(self, card, context)
+        if context.selling_self  and not context.blueprint then
+            return {
+                func = function()
+                card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = "-1 Joker Slot", colour = G.C.DARK_EDITION})
+                    G.jokers.config.card_limit = G.jokers.config.card_limit - 1
+                    return true
+                end
+            }
+        end
         if context.end_of_round and context.game_over == false and context.main_eval  then
                 return {
                     func = function()
@@ -560,14 +569,16 @@ SMODS.Joker{ --Neurax worm
     key = "neuraxworm",
     config = {
         extra = {
-            mult = 1.2
+            mult = 1.2,
+            blind_size = 1.1
         }
     },
     loc_txt = {
         ['name'] = 'Neurax worm',
         ['text'] = {
             [1] = 'Each held in hand card',
-            [2] = 'gives {X:legendary,C:white}^#1#{} Mult'
+            [2] = 'gives {X:legendary,C:white}^#1#{} Mult',
+            [3] = '{X:legendary,C:white}^#2#{} Blind Size'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -604,7 +615,7 @@ SMODS.Joker{ --Neurax worm
       end,
 
     loc_vars = function(self, info_queue, card)
-        return {vars = {card.ability.extra.mult}}
+        return {vars = {card.ability.extra.mult, card.ability.extra.blind_size}}
     end,
 
     calculate = function(self, card, context)
@@ -614,6 +625,19 @@ SMODS.Joker{ --Neurax worm
                     e_mult = card.ability.extra.mult
 				}
             end
+        end
+        if context.setting_blind then
+            return {
+                func = function()
+                    if G.GAME.blind.in_blind then
+                        card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = 'Transcend!', colour = G.C.GREEN})
+                        G.GAME.blind.chips = G.GAME.blind.chips ^ card.ability.extra.blind_size
+                        G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+                        G.HUD_blind:recalculate()
+                        return true
+                    end
+                end
+            }
         end
         if context.forcetrigger then
             return {

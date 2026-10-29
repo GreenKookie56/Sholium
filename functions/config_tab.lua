@@ -30,9 +30,9 @@ SMODS.current_mod.config_tab = function()
                 config = { padding = 0.2, align = "cm" },
                 nodes = {
                     create_toggle({
-                        label = "PuddlesofPudding game-breaking content (requires game restart)",
+                        label = "game-breaking content (requires game restart)",
                         ref_table = Sholium.config,
-                        ref_value = 'pudding_gamebreak',
+                        ref_value = 'gamebreak',
                     })
                 }
             },

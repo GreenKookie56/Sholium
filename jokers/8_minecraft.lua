@@ -1257,7 +1257,7 @@ SMODS.Joker{ --guardian
     key = "guardian",
     config = {
         extra = {
-            mult = 9
+            mult = 11
         }
     },
     loc_txt = {
@@ -1550,9 +1550,8 @@ SMODS.Joker{ --hoglin
     loc_txt = {
         ['name'] = 'Hoglin',
         ['text'] = {
-            [1] = '{C:red}+#1#{} Mult before hand starts scoring',
-            [2] = 'If played hand is {C:attention}exactly 1{} card,',
-            [3] = 'increase rank of the played card by {C:attention}2{}'
+            [1] = '{C:red}+#1#{} Mult',
+            [2] = 'before hand starts scoring'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -1581,18 +1580,6 @@ SMODS.Joker{ --hoglin
     end,
 
     calculate = function(self, card, context)
-        if context.before then
-            if to_big(#context.full_hand) == to_big(1) then
-                for k, v in ipairs(context.full_hand) do
-                    G.E_MANAGER:add_event(Event({
-                        func = function()
-                            assert(SMODS.modify_rank(v , 2))
-                            return true
-                        end
-                    }))
-                end
-            end
-        end
         if context.initial_scoring_step then
             return {
                 mult = card.ability.extra.mult
@@ -1680,8 +1667,8 @@ SMODS.Joker{ --witherskeleton
     loc_txt = {
         ['name'] = 'Wither Skeleton',
         ['text'] = {
-            [1] = 'Convert each played and',
-            [2] = 'scoring cards into {C:spades}Spades{}'
+            [1] = 'Convert each played',
+            [2] = 'cards into {C:spades}Spades{}'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -1705,17 +1692,18 @@ SMODS.Joker{ --witherskeleton
     atlas = 'CustomJokers',
     
     calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.play  and not context.blueprint then
-            if context.other_card and not context.other_card:is_suit("Spades") then
-                local scored_card = context.other_card
+        if context.before then
+            for k, v in ipairs(context.full_hand) do
                 G.E_MANAGER:add_event(Event({
                     func = function()
-                        
-                        assert(SMODS.change_base(scored_card, "Spades", nil))
+                        assert(SMODS.change_base(v, "Spades", nil))
                         return true
                     end
-                }))
+                 }))
             end
+            return {
+                message = 'Withered!'
+            }
         end
     end
 }

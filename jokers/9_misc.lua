@@ -597,14 +597,15 @@ SMODS.Joker{ --Literally The Soul
     key = "literallythesoul",
     config = {
         extra = {
+            remaining = 2
         }
     },
     loc_txt = {
         ['name'] = 'Literally The Soul',
         ['text'] = {
-            [1] = 'Creates a {C:legendary}Legendary{} Joker',
-            [2] = 'and {C:red}self-destruct{} when',
-            [3] = '{C:attention}Boss Blind{} is defeated'
+            [1] = 'Create a {C:legendary}Legendary{} Joker',
+            [2] = 'and {C:red}self-destructs{}',
+            [3] = 'after {C:attention}#1#{} Ante(s)'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -628,41 +629,49 @@ SMODS.Joker{ --Literally The Soul
     discovered = true,
     atlas = 'CustomJokers',
 
+    loc_vars = function(self, info_queue, card)
+        return {vars = {card.ability.extra.remaining}}
+    end,
+
     calculate = function(self, card, context)
         if context.end_of_round and context.main_eval and G.GAME.blind.boss and not context.blueprint then
-            return {
-                func = function()
-                    local target_joker = card
-                    if target_joker then
-                        target_joker.getting_sliced = true
-                        G.E_MANAGER:add_event(Event({
-                            func = function()
-                                target_joker:start_dissolve({G.C.RED}, nil, 1.6)
-                                return true
-                            end
-                        }))
-                    end
-                    return true
-                end,
-                extra = {
+            if card.ability.extra.remaining == 2 then
+                card.ability.extra.remaining = 1
+            else
+                return {
                     func = function()
-                        local created_joker = true
-                        G.E_MANAGER:add_event(Event({
-                            func = function()
-                                local joker_card = SMODS.add_card({ set = 'Joker', rarity = 'Legendary' })
-                                if joker_card then
+                        local target_joker = card
+                        if target_joker then
+                            target_joker.getting_sliced = true
+                            G.E_MANAGER:add_event(Event({
+                                func = function()
+                                    target_joker:start_dissolve({G.C.RED}, nil, 1.6)
+                                    return true
                                 end
-                                return true
-                            end
-                        }))
-                        if created_joker then
-                            card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_plus_joker'), colour = G.C.BLUE})
+                            }))
                         end
                         return true
                     end,
-                    colour = G.C.BLUE
+                    extra = {
+                        func = function()
+                            local created_joker = true
+                            G.E_MANAGER:add_event(Event({
+                                func = function()
+                                    local joker_card = SMODS.add_card({ set = 'Joker', rarity = 'Legendary' })
+                                    if joker_card then
+                                    end
+                                    return true
+                                end
+                            }))
+                            if created_joker then
+                                card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_plus_joker'), colour = G.C.BLUE})
+                            end
+                            return true
+                        end,
+                        colour = G.C.BLUE
+                    }
                 }
-            }
+            end
         end
         if context.forcetrigger then
             return {

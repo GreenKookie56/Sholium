@@ -1,6 +1,6 @@
 if Sholium.config.sholatro then
 
-if Talisman then
+if Talisman and Sholium.config.gamebreak then
 SMODS.Joker{ --Ancient meme
     key = "ancientmeme",
     config = {
@@ -929,6 +929,7 @@ SMODS.Joker{ --Vrejdilum
         end
     end
 }
+if Talisman and Sholium.config.gamebreak then
 SMODS.Joker{ --The Fungus
     key = "thefungus",
     config = {
@@ -1029,4 +1030,5 @@ SMODS.Joker{ --The Fungus
         end
     end
 }
+end
 end
