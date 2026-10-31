@@ -910,8 +910,8 @@ SMODS.Joker{ --Vrejdilum
             [2] = 'for every message',
             [3] = 'that contains \"{C:attention}vrej{}\" in',
             [4] = '{C:attention}Puddles of Pudding{} server',
-            [5] = '{C:inactive}latest update: Oct 2 2026{}',
-            [6] = '{C:inactive}(Currently{} {C:blue}+781{} {C:inactive}Chips){}'
+            [5] = '{C:inactive}latest update: Oct 31 2026{}',
+            [6] = '{C:inactive}(Currently{} {C:blue}+821{} {C:inactive}Chips){}'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -946,7 +946,7 @@ SMODS.Joker{ --Vrejdilum
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main or context.forcetrigger then
                 return {
-                    chips = 781
+                    chips = 821
                 }
         end
     end

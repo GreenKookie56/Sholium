@@ -68,7 +68,7 @@ SMODS.Joker{ --Chocolatebar Quotes
             [11] = '{C:attention}Enjoy.{}',
             [12] = '{C:inactive}(Actual effect: add one Mult {}',
             [13] = '{C:inactive}for every quote that\'s sent to cbqpl {}',
-            [14] = '{C:inactive}as of 2025 August 1st 11:45 UTC+8){}'
+            [14] = '{C:inactive}as of 2026 Oct 31st 11:45 UTC+8){}'
         },
         ['unlock'] = {
             [1] = ''
@@ -95,7 +95,7 @@ SMODS.Joker{ --Chocolatebar Quotes
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main or context.forcetrigger then
                 return {
-                    mult = 72
+                    mult = 76
                 }
         end
     end

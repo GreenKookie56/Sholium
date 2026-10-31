@@ -1122,7 +1122,7 @@ SMODS.Joker{ --tt5
             if left_joker and context.other_card == left_joker then
 			    for i = 1, #G.jokers.cards do
 				    if G.jokers.cards[i] == card then
-						local results = Cryptid.forcetrigger(G.jokers.cards[i + 1], context)
+						local results = Cryptid.forcetrigger(G.jokers.cards[i + 1], context) or Spectrallib.get_forcetrigger_results(G.jokers.cards[i + 1], context)
 						if results and results.jokers then
 							return results.jokers
 						end
