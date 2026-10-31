@@ -1056,7 +1056,7 @@ return {
 				text = {
 					"布丁國伺服器中，每個",
 					"包含\"{C:attention}vrej{}\"的訊息{C:blue}+1{}籌碼",
-					"{C:inactive}(目前{}{C:blue}+781{}{C:inactive}籌碼){}",
+					"{C:inactive}(目前{}{C:blue}+821{}{C:inactive}籌碼){}",
 				},
 			},
 			j_sholium_watertower = {
