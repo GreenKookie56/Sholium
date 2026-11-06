@@ -857,7 +857,7 @@ SMODS.Joker{ --nitwit
 }
 
 SMODS.Joker{ --wandering trader
-    key = "wandering_trader",
+    key = "wanderingtrader",
     config = {
         extra = {
             remaining = 10
