@@ -397,7 +397,6 @@ return {
 					"每張打出但不計分的牌",
 					"在本回合提供{C:red}+#1#{}倍率",
 					"{C:inactive}(目前{}{C:red}+#2#{}{C:inactive}倍率){}",
-					"{C:inactive}Ah yes 一般稀有度 pt.3{}",
 				},
 			},
 			j_sholium_georgehoppersfan = {

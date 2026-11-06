@@ -373,6 +373,69 @@ SMODS.Joker{ --fletcher
     end
 }
 
+SMODS.Joker{ --mason
+    key = "mason",
+    config = {
+        extra = {
+            money = 3,
+        }
+    },
+    loc_txt = {
+        ['name'] = 'Mason',
+        ['text'] = {
+            [1] = 'Each played {C:attention}Stone Card{} gives',
+            [2] = '{C:gold}$#1#{} when scored'
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 7,
+        y = 15
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 4,
+    rarity = 1,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    enhancement_gate = 'm_stone',
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+    
+    loc_vars = function(self, info_queue, card)
+        
+        return {vars = {card.ability.extra.money}}
+    end,
+    
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play  then
+            if SMODS.get_enhancements(context.other_card)["m_stone"] == true then
+                return {
+                    func = function()
+                        ease_dollars(card.ability.extra.money)
+                        return true
+                    end,
+                    message = "$"..tostring(card.ability.extra.money), colour = G.C.MONEY
+                }
+            end
+        end
+        if context.forcetrigger then
+            return {
+                func = function()
+                    ease_dollars(card.ability.extra.money)
+                    return true
+                end,
+                message = "$"..tostring(card.ability.extra.money), colour = G.C.MONEY
+            }
+        end
+    end
+}
 
 SMODS.Joker{ --farmer
     key = "farmer",
@@ -384,7 +447,8 @@ SMODS.Joker{ --farmer
     loc_txt = {
         ['name'] = 'Farmer',
         ['text'] = {
-            [1] = 'Discount all consumables by {C:money}$2{}'
+            [1] = 'Discount all consumables',
+            [2] = 'and booster packs in shop by {C:money}$2{}'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -438,7 +502,7 @@ function Card:set_cost()
     card_set_cost_ref(self)
     
     if next(SMODS.find_card("j_sholium_farmer")) then
-        if (self.ability.set == 'Tarot' or self.ability.set == 'Planet' or self.ability.set == 'Spectral') then
+        if (self.ability.set == 'Tarot' or self.ability.set == 'Planet' or self.ability.set == 'Spectral' or self.ability.set == 'Booster') then
             self.cost = math.max(0, self.cost - (2))
         end
     end
@@ -787,6 +851,385 @@ SMODS.Joker{ --nitwit
             end
             return {
                 message = created_joker and localize('k_plus_joker') or nil
+            }
+        end
+    end
+}
+
+SMODS.Joker{ --wandering trader
+    key = "wandering_trader",
+    config = {
+        extra = {
+            remaining = 10
+        }
+    },
+    loc_txt = {
+        ['name'] = 'Wandering Trader',
+        ['text'] = {
+            [1] = 'Create a random consumable',
+            [2] = 'for the next {C:attention}#1#{} cards',
+            [3] = 'purchased from shop'
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 8,
+        y = 15
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 3,
+    rarity = 2,
+    blueprint_compat = false,
+    demicoloncompat = true,
+    eternal_compat = false,
+    perishable_compat = true,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+
+    loc_vars = function(self, info_queue, card)
+        return {vars = {card.ability.extra.remaining}}
+    end,
+    
+    set_ability = function(self, card, initial)
+        card:add_sticker('perishable', true)
+    end,
+
+    calculate = function(self, card, context)
+        if context.buying_card and context.card ~= card and to_big(card.ability.extra.remaining) > to_big(0) or context.forcetrigger then
+            return {
+                func = function()
+                    for i = 1, math.min(1, G.consumeables.config.card_limit - #G.consumeables.cards) do
+                        G.E_MANAGER:add_event(Event({
+                            trigger = 'after',
+                            delay = 0.4,
+                            func = function()
+                                play_sound('timpani')
+                                local sets = {'Tarot', 'Planet', 'Spectral'}
+                                local random_set = pseudorandom_element(sets, 'random_consumable_set')
+                                SMODS.add_card({ set = random_set, soulable = true, })                            
+                                card:juice_up(0.3, 0.5)
+                                return true
+                            end
+                        }))
+                    end
+                    delay(0.6)
+                    
+                    if created_consumable then
+                        card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_plus_consumable'), colour = G.C.PURPLE})
+                    end
+                    return true
+                end,
+                extra = {
+                    func = function()
+                        card.ability.extra.remaining = (card.ability.extra.remaining) - 1
+                        return true
+                    end
+                }
+            }
+        end
+    end
+}
+-- illagers
+
+SMODS.Joker{ --pillager
+    key = "pillager",
+    config = {
+        extra = {
+            retrigger = 2
+        }
+    },
+    loc_txt = {
+        ['name'] = 'Pillager',
+        ['text'] = {
+            [1] = 'Retrigger {C:attention}first{} held in hand',
+            [2] = 'card {C:attention}#1#{} times' -- "borrowed" from bloonlatro
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 0,
+        y = 16
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 5,
+    rarity = 1,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.retrigger } }
+    end,
+    
+    calculate = function(self, card, context)
+        if context.repetition and context.cardarea == G.hand and context.other_card == G.hand.cards[1] and (next(context.card_effects[1]) or #context.card_effects > 1) then
+            return {
+                message = localize('k_again_ex'),
+                repetitions = card.ability.extra.retrigger
+            }
+        end
+    end
+}
+
+SMODS.Joker{ --vindicator
+    key = "vindicator",
+    config = {
+        extra = {
+            xmult = 1,
+            multiplier = 0.2
+        }
+    },
+    loc_txt = {
+        ['name'] = 'Vindicator',
+        ['text'] = {
+            [1] = 'When {C:attention}Blind{} is selected, destroy',
+            [2] = '{C:attention}Joker{} to the left, and add',
+            [3] = '{X:red,C:white}#2#x{} its sell value to {X:red,C:white}XMult{}',
+            [4] = '{C:inactive}(Currently{} {X:red,C:white}X#1#{} {C:inactive}Mult){}'
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 1,
+        y = 16
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 6,
+    rarity = 2,
+    blueprint_compat = true,
+    demicoloncompat = true,
+    eternal_compat = true,
+    perishable_compat = false,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+    
+    loc_vars = function(self, info_queue, card)
+        
+        return {vars = {card.ability.extra.xmult, card.ability.extra.multiplier}}
+    end,
+    
+    calculate = function(self, card, context)
+        if context.cardarea == G.jokers and context.joker_main then
+            return {
+                Xmult = card.ability.extra.xmult
+            }
+        end
+        if context.setting_blind and not context.blueprint then
+            return {
+                func = function()
+                    local my_pos = nil
+                    for i = 1, #G.jokers.cards do
+                        if G.jokers.cards[i] == card then
+                            my_pos = i
+                            break
+                        end
+                    end
+                    local target_joker = nil
+                    if my_pos and my_pos > 1 then
+                        local joker = G.jokers.cards[my_pos - 1]
+                        if not SMODS.is_eternal(joker) and not joker.getting_sliced then
+                            target_joker = joker
+                        end
+                    end
+                    
+                    if target_joker then
+                        local joker_sell_value = target_joker.sell_cost or 0
+                        local sell_value_gain = joker_sell_value * card.ability.extra.multiplier
+                        card.ability.extra.xmult = card.ability.extra.xmult + sell_value_gain
+                        target_joker.getting_sliced = true
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                target_joker:start_dissolve({G.C.RED}, nil, 1.6)
+                                return true
+                            end
+                        }))
+                        card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = "Destroyed!", colour = G.C.RED})
+                    end
+                    return true
+                end
+            }
+        end
+        if context.forcetrigger then
+            return {
+                func = function()
+                    local my_pos = nil
+                    for i = 1, #G.jokers.cards do
+                        if G.jokers.cards[i] == card then
+                            my_pos = i
+                            break
+                        end
+                    end
+                    local target_joker = nil
+                    if my_pos and my_pos > 1 then
+                        local joker = G.jokers.cards[my_pos - 1]
+                        if not SMODS.is_eternal(joker) and not joker.getting_sliced then
+                            target_joker = joker
+                        end
+                    end
+                    
+                    if target_joker then
+                        local joker_sell_value = target_joker.sell_cost or 0
+                        local sell_value_gain = joker_sell_value * card.ability.extra.multiplier
+                        card.ability.extra.xmult = card.ability.extra.xmult + sell_value_gain
+                        target_joker.getting_sliced = true
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                target_joker:start_dissolve({G.C.RED}, nil, 1.6)
+                                return true
+                            end
+                        }))
+                        card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = "Destroyed!", colour = G.C.RED})
+                    end
+                    return true
+                end,
+                Xmult = card.ability.extra.xmult
+            }
+        end
+    end
+}
+
+SMODS.Joker{ --evoker
+    key = "evoker",
+    config = {
+        extra = {
+            mult = 10
+        }
+    },
+    loc_txt = {
+        ['name'] = 'Evoker',
+        ['text'] = {
+            [1] = 'Create 3 {C:attention}Random{}{C:planet} Planets{}',
+            [2] = 'on the first hand of the round',
+            [3] = 'All held in hand {C:clubs}dark-suited{}',
+            [4] = 'cards give {C:red}+#1#{} Mult',
+            [5] = 'on the last hand of the round'
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 2,
+        y = 16
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 7,
+    rarity = 2,
+    blueprint_compat = true,
+    demicoloncompat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+
+    loc_vars = function(self, info_queue, card)
+        return {vars = {card.ability.extra.mult}}
+    end,
+    
+    calculate = function(self, card, context)
+        if context.joker_main then
+            if to_big(G.GAME.current_round.hands_played) == to_big(0) then
+                return {
+                    func = function()
+                        for i = 1, math.min(3, G.consumeables.config.card_limit - #G.consumeables.cards) do
+                            G.E_MANAGER:add_event(Event({
+                                trigger = 'after',
+                                delay = 0.4,
+                                func = function()
+                                    play_sound('timpani')
+                                    SMODS.add_card({ set = 'Planet'})                            
+                                    card:juice_up(0.3, 0.5)
+                                    return true
+                                end
+                            }))
+                        end
+                        delay(0.6)
+                        
+                        if created_consumable then
+                            card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_plus_planet'), colour = G.C.SECONDARY_SET.Planet})
+                        end
+                        return true
+                    end
+                }
+            end
+        end
+        if context.individual and context.cardarea == G.hand and not context.end_of_round then
+            if (context.other_card:is_suit("Clubs") or context.other_card:is_suit("Spades")) and to_big(G.GAME.current_round.hands_left) == to_big(0) then
+                return {
+                    mult = card.ability.extra.mult
+                }
+            end
+        end
+    end
+}
+
+SMODS.Joker{ --ravager
+    key = "ravager",
+    config = {
+        extra = {
+            xmult = 3
+        }
+    },
+    loc_txt = {
+        ['name'] = 'Ravager',
+        ['text'] = {
+            [1] = '{X:red,C:white}X#1#{} Mult',
+            [2] = 'before hand starts scoring'
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 3,
+        y = 16
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 7,
+    rarity = 2,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+
+    loc_vars = function(self, info_queue, card)
+        
+        return {vars = {card.ability.extra.xmult}}
+    end,
+
+    calculate = function(self, card, context)
+        if context.initial_scoring_step then
+            return {
+                Xmult = card.ability.extra.xmult
             }
         end
     end
@@ -1281,6 +1724,7 @@ SMODS.Joker{ --guardian
     cost = 6,
     rarity = 2,
     blueprint_compat = true,
+    demicoloncompat = true,
     eternal_compat = true,
     perishable_compat = true,
     unlocked = true,
@@ -1367,6 +1811,64 @@ SMODS.Joker{ --elderguardian
         if context.forcetrigger then
             return {
                 dollars = card.ability.extra.money
+            }
+        end
+    end
+}
+SMODS.Joker{ --breeze
+    key = "breeze",
+    config = {
+        extra = {
+
+        }
+    },
+    loc_txt = {
+        ['name'] = 'Breeze',
+        ['text'] = {
+            [1] = 'Create a {C:attention}Double Tag{}',
+            [2] = 'when a {C:attention}Blind{} is skipped'
+        },
+        ['unlock'] = {
+            [1] = ''
+        }
+    },
+    pos = {
+        x = 9,
+        y = 15
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 6,
+    rarity = 2,
+    blueprint_compat = true,
+    demicoloncompat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+
+    loc_vars = function(self, info_queue, card)
+        
+    end,
+
+    calculate = function(self, card, context)
+        if context.skip_blind or context.forcetrigger then
+            return {
+                func = function()
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            local tag = Tag("tag_double")
+                            tag:set_ability()
+                            add_tag(tag)
+                            play_sound('holo1', 1.2 + math.random() * 0.1, 0.4)
+                            return true
+                        end
+                    }))
+                    return true
+                end
             }
         end
     end

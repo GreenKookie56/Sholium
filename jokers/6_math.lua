@@ -256,3 +256,81 @@ SMODS.Joker{ --Derivative
     end
 }
 end
+
+SMODS.Joker{ --Time Complexity
+    key = "timecomplexity",
+    config = {
+        extra = {
+            base = 1,
+            eor = 1
+        }
+    },
+    loc_txt = {
+        ['name'] = 'Time Complexity',
+        ['text'] = {
+            [1] = 'Earn {C:gold}$#1#{} at the end of round',
+            [2] = 'every unique hand played this run',
+            [3] = 'multiplies this by {C:gold}1.25x{}',
+            [4] = '{C:inactive}(Currently {C:gold}$#2#{}{C:inactive}){}'
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 8,
+        y = 5
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 5,
+    rarity = 1,
+    blueprint_compat = true,
+    demicoloncompat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+
+    
+    loc_vars = function(self, info_queue, card)
+        return {  
+            vars = {card.ability.extra.base, card.ability.extra.eor}}
+    end,
+    calculate = function(self, card, context)
+        if context.forcetrigger then
+            return {
+                ease_dollars(card.ability.extra.eor)
+            }
+        end
+        if context.cardarea == G.jokers and context.joker_main then
+            local unique_count = 0
+            if G.GAME and G.GAME.hands then
+                for k, v in pairs(G.GAME.hands) do
+                    if v.played > 0 then
+                        unique_count = unique_count + 1
+                    end
+                end
+            end
+            card.ability.extra.eor = card.ability.extra.base * 1.25 ^ unique_count
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    if card and card.hud_item then 
+                        card:juice_up(0.1, 0.1)
+                    end
+                    return true
+                end
+            }))
+        end
+    end,
+    calc_dollar_bonus = function(self, card)
+        if to_big(card.ability.extra.eor) > to_big(0) then
+            return card.ability.extra.eor
+        end
+    end
+}
