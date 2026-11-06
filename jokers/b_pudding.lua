@@ -1284,6 +1284,7 @@ SMODS.Joker{ --purple berryshroom
     cost = 2,
     rarity = 1,
     blueprint_compat = false,
+	demicolon_compat = true,
     eternal_compat = false,
     perishable_compat = true,
     unlocked = true,
@@ -1303,7 +1304,7 @@ SMODS.Joker{ --purple berryshroom
     end,
     calculate = function(self, card, context)
 		if
-			(context.selling_self and not context.retrigger_joker and not context.blueprint_card)
+			(context.selling_self and not context.retrigger_joker and not context.blueprint_card) or context.forcetrigger
 		then
 			for i = 1, #G.jokers.cards do
 				if G.jokers.cards[i] == card then
@@ -1638,15 +1639,15 @@ SMODS.Joker{ -- Fortified Milk
     end
 }
 
-SMODS.Joker{ --Yellow Snowberry
-    key = "yellowsnowberry",
+SMODS.Joker{ --Yellow Winterberry
+    key = "yellowwinterberry",
     config = {
         extra = {
             xmult = 4
         }
     },
     loc_txt = {
-        ['name'] = 'Yellow Snowberry',
+        ['name'] = 'Yellow Winterberry',
         ['text'] = {
             [1] = 'Each held in hand {C:planet}Planets{}',
             [2] = 'give {X:red,C:white}X#1#{} Mult on the',
