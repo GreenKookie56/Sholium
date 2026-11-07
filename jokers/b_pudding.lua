@@ -1257,7 +1257,7 @@ SMODS.Joker{ --lollipop
 }
 
 SMODS.Joker{ --purple berryshroom
-    key = "purple_berryshroom",
+    key = "purpleberryshroom",
     config = {
         extra = {
         }
@@ -1482,12 +1482,10 @@ SMODS.Joker{ --Rescue Claw
         if context.setting_blind or context.forcetrigger then
                 return {
                     func = function()
-                        for i = 1, card.ability.extra.skipped do
-                            card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = 'Glided!', colour = G.C.GREEN})
-                            G.GAME.blind.chips = G.GAME.blind.chips * 0.8
-                            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-                            G.HUD_blind:recalculate()
-                        end
+						card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = 'Glided!', colour = G.C.GREEN})
+						G.GAME.blind.chips = G.GAME.blind.chips * (0.8 ^ card.ability.extra.skipped)
+						G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+						G.HUD_blind:recalculate()
                     end
                 }
         end
