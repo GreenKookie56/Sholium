@@ -195,87 +195,6 @@ SMODS.Joker{ --bugged blitz
     end
 }
 
-SMODS.Joker{ --Galvanic Conduit (v56)
-    key = "galvanicconduit",
-    config = {
-        extra = {
-            multmod = 5,
-            mult = 0
-        }
-    },
-    loc_txt = {
-        ['name'] = 'Galvanic Conduit (v56)',
-        ['text'] = {
-            [1] = 'This Joker gains {C:red}+#1#{} Mult',
-            [2] = '{C:attention}this round{} for every',
-            [3] = '{C:attention}non-scoring{} cards',
-            [4] = 'contained in played hand',
-            [5] = '{C:inactive}(Currently{} {C:red}+#2#{} {C:inactive}Mult){}',
-            [6] = '{C:inactive}ah yes common pt.3{}'
-        },
-        ['unlock'] = {
-            [1] = 'Unlocked by default.'
-        }
-    },
-    pos = {
-        x = 4,
-        y = 14
-    },
-    display_size = {
-        w = 71 * 1, 
-        h = 95 * 1
-    },
-    cost = 4,
-    rarity = 1,
-    blueprint_compat = true,
-    eternal_compat = true,
-    perishable_compat = true,
-    unlocked = true,
-    discovered = true,
-    atlas = 'CustomJokers',
-    
-    loc_vars = function(self, info_queue, card)
-        
-        return {vars = {card.ability.extra.multmod, card.ability.extra.mult}}
-    end,
-    
-    calculate = function(self, card, context)
-        if context.cardarea == G.jokers and context.joker_main or context.forcetrigger then
-            return {
-                mult = card.ability.extra.mult
-            }
-        end
-        if context.cardarea == G.jokers and context.before and not context.blueprint then
-			cards = 0
-			for k, v in ipairs(context.scoring_hand) do
-				v.scoring = true
-			end
-			for k, v in ipairs(context.full_hand) do
-				if not v.scoring then
-					cards = cards + 1
-					G.E_MANAGER:add_event(Event({
-						func = function()
-							v:juice_up()
-							return true
-						end,
-					}))
-				end
-			end
-			for k, v in ipairs(context.scoring_hand) do
-				v.scoring = nil
-			end
-            card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.multmod * cards
-        end
-        if context.end_of_round and context.game_over == false and context.main_eval  and not context.blueprint then
-            return {
-                func = function()
-                    card.ability.extra.mult = 0
-                    return true
-                end
-            }
-        end
-    end
-}
 
 SMODS.Joker{ --Geraldo (v31.0)
     key = "geraldo",
@@ -568,43 +487,6 @@ SMODS.Joker{ --Ploone
     end
 }
 
-SMODS.Joker{ --Red Sauda
-    key = "redsauda",
-    loc_txt = {
-        ['name'] = 'Red Sauda (v46+)',
-        ['text'] = {
-            [1] = 'Swap {C:blue}Chips{} and {C:red}Mult{}',
-            [2] = 'before hand starts scoring',
-        },
-        ['unlock'] = {
-            [1] = 'Unlocked by default.'
-        }
-    },
-    pos = {
-        x = 2, y = 7 -- bulgoe reference!!
-    },
-    display_size = {
-        w = 71 * 1, 
-        h = 95 * 1
-    },
-    cost = 5,
-    rarity = 1,
-    blueprint_compat = true,
-    demicoloncompat = true,
-    eternal_compat = true,
-    perishable_compat = true,
-    unlocked = true,
-    discovered = true,
-    atlas = 'CustomJokers',
-    
-    calculate = function(self, card, context)
-        if context.initial_scoring_step or context.forcetrigger then
-            return {
-                swap = true
-            }
-        end
-    end
-}
 SMODS.Joker{ --Sheppi
     key = "sheppi",
     config = {

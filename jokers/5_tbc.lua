@@ -323,6 +323,62 @@ SMODS.Joker{ --Catasaurus
         end
     end,
 }
+SMODS.Joker{ --Courier Cat
+    key = "courier",
+    config = {
+        extra = {
+            Xmult = 2,
+        }
+    },
+    loc_txt = {
+        ['name'] = 'Courier Cat',
+        ['text'] = {
+            [1] = 'Last played {C:diamonds}light-suited{} card',
+            [2] = 'gives {X:red,C:white}X#1#{} Mult when scored'
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 6,
+        y = 15
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 4,
+    rarity = 1,
+    blueprint_compat = true,
+    demicoloncompat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+
+    loc_vars = function(self, info_queue, card)
+
+        return {vars = {card.ability.extra.Xmult}}
+    end,
+
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play then
+            if context.other_card == context.scoring_hand[#context.scoring_hand] and (context.other_card:is_suit("Hearts") or context.other_card:is_suit("Diamonds")) then
+                return {
+                    Xmult = card.ability.extra.Xmult
+                }
+            end
+        end
+        if context.forcetrigger then
+            return {
+                Xmult = card.ability.extra.Xmult
+            }
+        end
+    end,
+}
+
 SMODS.Joker{ --Cyborg
     key = "cyborg",
     config = {
@@ -385,6 +441,7 @@ SMODS.Joker{ --Cyborg
         end
     end,
 }
+
 SMODS.Joker {
     key = 'cancan',
     config = {
@@ -444,6 +501,60 @@ SMODS.Joker {
             return lenient_bignum(5 + G.GAME.current_round.hands_left or 0)
         end
     end
+}
+SMODS.Joker{ --Awakened Bahamut
+    key = "awakenedbahamut",
+    config = {
+        extra = {
+        }
+    },
+    loc_txt = {
+        ['name'] = 'Awakened Bahamut',
+        ['text'] = {
+            [1] = 'Turns {C:attention}first{} card in played hand',
+            [2] = 'into a {C:attention}Glass Card{}',
+            [3] = 'Retrigger all played {C:attention}Glass Cards{}'
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 5,
+        y = 15
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 7,
+    rarity = 2,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+
+
+    calculate = function(self, card, context)
+        if context.before then
+            for k, v in ipairs(context.full_hand) do
+                if k == 1 then
+                    v:set_ability(G.P_CENTERS["m_glass"])
+                    v:juice_up()
+                end
+            end
+        end
+        if context.repetition and context.cardarea == G.play  then
+            if SMODS.get_enhancements(context.other_card)["m_glass"] == true then
+                return {
+                    repetitions = 1,
+                    message = "Again!"
+                }
+            end
+        end
+    end,
 }
 SMODS.Joker{ --Gravolodon
     key = "gravolodon",

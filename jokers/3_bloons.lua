@@ -1,3 +1,68 @@
+if Cryptid then --Cryptlib
+SMODS.Joker{ --antibloon
+    key = "antibloon",
+    config = {
+        extra = {
+            round = 3
+        }
+    },
+    loc_txt = {
+        ['name'] = 'The Anti-Bloon',
+        ['text'] = {
+            [1] = '{C:attention}Force-trigger{} adjacent Jokers',
+            [2] = 'after {C:attention}#1#{} hands played',
+            [3] = '{C:inactive}best support tower{}'
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 4,
+        y = 7
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 10,
+    rarity = 3,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+	soul_pos = { x = 7, y = 16},
+
+    loc_vars = function(self, info_queue, card)
+        return {vars = {card.ability.extra.round}}
+    end,
+    
+    calculate = function(self, card, context)
+        if context.joker_main then
+            if card.ability.extra.round > 1 then
+                card.ability.extra.round = card.ability.extra.round - 1
+            else
+                card.ability.extra.round = 3
+                for i = 1, #G.jokers.cards do
+                    if G.jokers.cards[i] == card then
+                        local results1 = Cryptid.forcetrigger(G.jokers.cards[i - 1], context) or Spectrallib.get_forcetrigger_results(G.jokers.cards[i - 1], context)
+                        local results2 = Cryptid.forcetrigger(G.jokers.cards[i + 1], context) or Spectrallib.get_forcetrigger_results(G.jokers.cards[i + 1], context) -- spectrallib sucks sholll
+                        if results1 and results1.jokers then
+                            SMODS.calculate_effect(results1.jokers, card) -- holy shit this thing is op
+                        end
+                        if results2 and results2.jokers then
+                            SMODS.calculate_effect(results2.jokers, card)
+                        end
+                    end
+                end
+            end
+        end
+    end
+}
+end
+
 SMODS.Joker{ --Bloon Exclusion Zone (v38-53)
     key = "bez",
     config = {
@@ -256,8 +321,8 @@ SMODS.Joker{ --Cave Monkey
     loc_txt = {
         ['name'] = 'Cave Monkey',
         ['text'] = {
-            [1] = 'Add a {C:dark_edition}Negative{} {C:red}Red Seal{} Stone card to hand',
-            [2] = 'when a Blind is selected',
+            [1] = 'Each {C:attention}Stone Card{}',
+            [2] = 'become {C:dark_edition}Negative{} when played',
             [3] = '{C:inactive}Me Hit Rock{}'
         },
         ['unlock'] = {
@@ -272,43 +337,29 @@ SMODS.Joker{ --Cave Monkey
         w = 71 * 1, 
         h = 95 * 1
     },
-    cost = 9,
+    cost = 5,
     rarity = 2,
-    blueprint_compat = true,
-    demicoloncompat = true,
+    blueprint_compat = false,
     eternal_compat = true,
     perishable_compat = true,
+    enhancement_gate = 'm_stone',
     unlocked = true,
     discovered = true,
     atlas = 'CustomJokers',
 
     calculate = function(self, card, context)
-        if context.setting_blind or context.forcetrigger then
-                return {
-                    func = function()
-                local card_front = pseudorandom_element(G.P_CARDS, pseudoseed('add_card_hand'))
-                local new_card = create_playing_card({
-                    front = card_front,
-                    center = G.P_CENTERS.m_stone
-                }, G.discard, true, false, nil, true)
-            new_card:set_seal("Red", true)
-            new_card:set_edition("e_negative", true)
-
-                G.playing_card = (G.playing_card and G.playing_card + 1) or 1
-                new_card.playing_card = G.playing_card
-                table.insert(G.playing_cards, new_card)
-
-                G.E_MANAGER:add_event(Event({
-                    func = function()
-                        G.hand:emplace(new_card)
-                        new_card:start_materialize()
-                        SMODS.calculate_context({ playing_card_added = true, cards = { new_card } })
-                        return true
-                    end
-                }))
-            end,
-                    message = "Added Card to Hand!"
-                }
+        if context.before then
+            local check = false
+            for k, v in ipairs(context.full_hand) do
+                if SMODS.get_enhancements(v)["m_stone"] == true then
+                    v:set_edition('e_negative', true)
+                    -- v:juice_up()
+                    check = true
+                end
+            end
+            if check then
+                card_eval_status_text(card, "extra", nil, nil, nil, { message = "Petrify!", colour = G.C.DARK_EDITION })
+            end
         end
     end
 }
@@ -428,6 +479,164 @@ SMODS.Joker{ --Free Dart Monkey
         end
     end
 }
+SMODS.Joker{ --Flavored Trades
+    key = "flavoredtrades",
+    config = {
+        extra = {
+            chips = 0,
+        }
+    },
+    loc_txt = {
+        ['name'] = 'Flavored Trades',
+        ['text'] = {
+            [1] = 'This joker gains {C:blue}Chips{} equals',
+            [2] = 'the sell value of all held {C:attention}Jokers{}',
+            [3] = 'at the end of shop',
+            [4] = '{C:inactive}(Currently {}{C:blue}+#1#{} {C:inactive}Chips){}'
+        },
+        ['unlock'] = {
+            [1] = ''
+        }
+    },
+    pos = {
+        x = 5,
+        y = 16
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 6,
+    rarity = 2,
+    blueprint_compat = true,
+    demicoloncompat = true,
+    eternal_compat = true,
+    perishable_compat = false,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+    in_pool = function(self, args)
+          return (
+          not args 
+          or args.source ~= 'buf' and args.source ~= 'jud' and args.source ~= 'rif' and args.source ~= 'rta' and args.source ~= 'sou' and args.source ~= 'uta' and args.source ~= 'wra' 
+          or args.source == 'sho'
+          )
+          and true
+      end,
+
+    loc_vars = function(self, info_queue, card)
+        return {vars = {card.ability.extra.chips}}
+    end,
+
+    calculate = function(self, card, context)
+        if context.ending_shop and not context.blueprint then
+            local total = 0
+            for k, v in ipairs(G.jokers and G.jokers.cards or {}) do
+                total = total + v.sell_cost
+            end
+            card.ability.extra.chips = card.ability.extra.chips + total
+            return {
+                message = localize('k_upgrade_ex'),
+            }
+        end
+        if context.joker_main and context.cardarea == G.jokers then
+            return {
+                chips = card.ability.extra.chips
+            }
+        end
+        if context.forcetrigger then
+            local total = 0
+            for k, v in ipairs(G.jokers and G.jokers.cards or {}) do
+                total = total + v.sell_cost
+            end
+            card.ability.extra.chips = card.ability.extra.chips + total
+            return {
+                chips = card.ability.extra.chips
+            }
+        end
+    end
+}
+SMODS.Joker{ --Galvanic Conduit (v56)
+    key = "galvanicconduit",
+    config = {
+        extra = {
+            multmod = 5,
+            mult = 0
+        }
+    },
+    loc_txt = {
+        ['name'] = 'Galvanic Conduit (v56)',
+        ['text'] = {
+            [1] = 'This Joker gains {C:red}+#1#{} Mult',
+            [2] = '{C:attention}this round{} for every',
+            [3] = '{C:attention}non-scoring{} cards',
+            [4] = 'contained in played hand',
+            [5] = '{C:inactive}(Currently{} {C:red}+#2#{} {C:inactive}Mult){}',
+        },
+        ['unlock'] = {
+            [1] = 'Unlocked by default.'
+        }
+    },
+    pos = {
+        x = 4,
+        y = 14
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 4,
+    rarity = 1,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+    
+    loc_vars = function(self, info_queue, card)
+        
+        return {vars = {card.ability.extra.multmod, card.ability.extra.mult}}
+    end,
+    
+    calculate = function(self, card, context)
+        if context.cardarea == G.jokers and context.joker_main or context.forcetrigger then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
+        if context.cardarea == G.jokers and context.before and not context.blueprint then
+			cards = 0
+			for k, v in ipairs(context.scoring_hand) do
+				v.scoring = true
+			end
+			for k, v in ipairs(context.full_hand) do
+				if not v.scoring then
+					cards = cards + 1
+					G.E_MANAGER:add_event(Event({
+						func = function()
+							v:juice_up()
+							return true
+						end,
+					}))
+				end
+			end
+			for k, v in ipairs(context.scoring_hand) do
+				v.scoring = nil
+			end
+            card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.multmod * cards
+        end
+        if context.end_of_round and context.game_over == false and context.main_eval  and not context.blueprint then
+            return {
+                func = function()
+                    card.ability.extra.mult = 0
+                    return true
+                end
+            }
+        end
+    end
+}
+
 SMODS.Joker{ --Glaive Lord
     key = "glaivelord",
     config = {
@@ -693,7 +902,79 @@ SMODS.Joker{ --Pop and Awe
         end
     end
 }
-
+SMODS.Joker{ -- Quincy NFT
+    key = "quincy_nft",
+    config = {
+		extra = {
+			multiplier = 1.05,
+		}
+    },
+    loc_txt = {
+        ['name'] = 'Quincy Action Figure',
+        ['text'] = {
+            [1] = 'Increase sell value by {C:attention}#1#x{}',
+            [2] = 'when a hand finishes scoring'
+        },
+        ['unlock'] = {
+            [1] = ''
+        }
+    },
+    pos = {
+        x = 6,
+        y = 16
+    },
+    display_size = {
+        w = 71 * 1, 
+        h = 95 * 1
+    },
+    cost = 8,
+    rarity = 1,
+    blueprint_compat = true,
+    demicoloncompat = true,
+    eternal_compat = true,
+    perishable_compat = false,
+    unlocked = true,
+    discovered = true,
+    atlas = 'CustomJokers',
+	
+    loc_vars = function(self, info_queue, card)
+        
+        return {vars = {card.ability.extra.multiplier}}
+    end,
+	
+    calculate = function(self, card, context)
+        if context.after or context.forcetrigger and not context.blueprint then
+            local total = 0
+            for k, v in ipairs(G.jokers and G.jokers.cards or {}) do
+                if v == card then
+                    total = total + v.sell_cost
+                end
+            end
+            local my_pos = nil
+            local check = false
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i] == card then
+                    check = true
+                    my_pos = i
+                    break
+                end
+            end
+            local target_card = G.jokers.cards[my_pos]
+            target_card.ability.extra_value = (card.ability.extra_value or 0) + math.floor(total * (card.ability.extra.multiplier - 1 or 0) * 100 + 0.5) / 100
+            target_card:set_cost()
+            if check then
+            card_eval_status_text(
+                card,
+                "extra",
+                nil,
+                nil,
+                nil,
+                { message = localize('k_upgrade_ex'), colour = G.C.GREEN }
+            )
+            end
+        end
+    end
+}
 SMODS.Joker{ --Riptide Champion (v52)
     key = "ripchamp",
     config = {
