@@ -1256,14 +1256,14 @@ SMODS.Joker{ --lollipop
     end
 }
 
-SMODS.Joker{ --purple berryshroom
-    key = "purpleberryshroom",
+SMODS.Joker{ --purple shroomberry
+    key = "purpleshroomberry",
     config = {
         extra = {
         }
     },
     loc_txt = {
-        ['name'] = 'Purple Berryshroom',
+        ['name'] = 'Purple Shroomberry',
         ['text'] = {
             [1] = 'When this card is sold,',
             [2] = 'apply Random {C:dark_edition}Sticker{} and {C:dark_edition}Edition{}',
