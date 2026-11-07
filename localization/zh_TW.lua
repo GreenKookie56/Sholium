@@ -54,12 +54,26 @@ return {
 					"{C:inactive}(目前{}{X:red,C:white}X#3#{}{C:inactive}倍率){}",
 				},
 			},
+			j_sholium_antibloon = {
+				name = "反氣球者",
+				text = {
+					"{C:attention}#1#{}次出牌後，",
+					"強制觸發相鄰的小丑",
+				},
+			},
 			j_sholium_avenger = {
 				name = "復仇者(v52)",
 				text = {
 					"若打出的牌型本回合打出過，",
 					"本回合{C:blue}+#1#{}出牌次數",
 					"{C:inactive}Ah yes 一般稀有度(二周目){}",
+				},
+			},
+			j_sholium_awakenedbahamut = {
+				name = "覺醒姆特貓",
+				text = {
+					"打出的首張牌變成{C:attention}玻璃牌{}",
+					"重新觸發所有{C:attention}玻璃牌{}",
 				},
 			},
 			j_sholium_babyzombie = {
@@ -144,6 +158,13 @@ return {
 				name = "弓",
 				text = {
 					"每{C:attention}#2#{}次出牌{X:red,C:white}X#3#{}倍率{C:inactive}(#1#){}",
+				},
+			},
+			j_sholium_breeze = {
+				name = "旋風使者",
+				text = {
+					"跳過盲注時，",
+					"產生一個{C:attention}雙倍標籤{}",
 				},
 			},
 			j_sholium_brickell = {
@@ -272,6 +293,13 @@ return {
 					"{C:inactive}剩餘#1#次{}",
 				},
 			},
+			j_sholium_courier = {
+				name = "飛腳貓",
+				text = {
+					"打出末張紅色牌",
+					"計分時{X:red,C:white}X#1#{}倍率",
+				},
+			},
 			j_sholium_creeper = {
 				name = "苦力怕",
 				text = {
@@ -327,6 +355,13 @@ return {
 					"{C:inactive}（目前{}{X:red,C:white}X#1#{}{C:inactive}倍率）{}",
 				},
 			},
+			j_sholium_evoker = {
+				name = "喚魔者",
+				text = {
+					"每個回合首次出牌時產生3個{C:planet}星球牌{}，",
+					"末次出牌時手中黑色牌{C:red}+#1#{}倍率",
+				},
+			},
 			j_sholium_ezili = {
 				text = {
 					"{C:purple}平衡{}{C:blue}籌碼{}和{C:red}倍率{}",
@@ -335,7 +370,7 @@ return {
 			j_sholium_farmer = {
 				name = "農夫",
 				text = {
-					"商店的消耗牌便宜{C:money}$2{}",
+					"商店的消耗牌和補充包便宜{C:money}$2{}",
 				},
 			},
 			j_sholium_fannypack = {
@@ -358,6 +393,14 @@ return {
 					"當{C:green}商店{}被重骰時，",
 					"產生一張{C:attention}閃卡{}",
 					"然後將{X:red,C:white}X倍率{}數值提升{X:red,C:white}+0.5{}",
+				},
+			},
+			j_sholium_flavoredtrades = {
+				text = {
+					"離開商店時，這張小丑",
+					"獲得等同於所有",
+					"小丑出售價值的{C:blue}籌碼{}",
+					"{C:inactive}(目前{}{C:blue}+#1#{}{C:inactive}籌碼){}",
 				},
 			},
 			j_sholium_fletcher = {
@@ -593,6 +636,13 @@ return {
 					"隨機改為目前數值的{C:attention}X0.8{}到{C:attention}X1.28{}倍",
 				},
 			},
+			j_sholium_mason = {
+				name = "石匠",
+				text = {
+					"打出的石頭牌計分時",
+					"獲得{C:gold}$#1#{}",
+				},
+			},
 			j_sholium_manyullynjoker = {
 				name = "瑪玉靈小丑",
 				text = {
@@ -716,6 +766,13 @@ return {
 					"{C:inactive}(目前{}{X:red,C:white}X#1#{}{C:inactive}倍率){}",
 				},
 			},
+			j_sholium_pillager = {
+				name = "掠奪者",
+				text = {
+					"重新觸發手中",
+					"第一張牌{C:attention}#1#{}次",
+				},
+			},
 			j_sholium_ploone = {
 				text = {
 					"在結束商店後產生",
@@ -747,6 +804,13 @@ return {
 				name = "布丁蛋",
 				text = {
 					"回合結束時{C:dark_edition}+#1#{}小丑牌欄位",
+ 				},
+			},
+			j_sholium_quincy_nft = {
+				name = "Qunicy公仔",
+				text = {
+					"手牌結算結束後，",
+					"這張小丑出售價格乘以{C:attention}#1#{}",
  				},
 			},
 			j_sholium_sbrit = {
@@ -839,6 +903,15 @@ return {
 					"{X:blue,C:white}X#1#{}籌碼，結算完畢後{X:blue,C:white}-X#2#{}",
 				},
 			},
+			j_sholium_timecomplexity = {
+				name = "時間複雜度",
+				text = {
+					"回合結束時獲得{C:gold}$#1#{}",
+					"本局每個打出的獨特牌型",
+					"將此數值乘以{C:gold}1.25{}",
+					"{C:inactive}(目前{C:gold}$#2#{}{C:inactive}){}",
+				},
+			},
 			j_sholium_toolsmith = {
 				name = "工具匠",
 				text = {
@@ -868,6 +941,13 @@ return {
 				text = {
 					"將所有被列出機率的",
 					"分子{C:green}X1000000{}",
+ 				},
+			},			
+			j_sholium_ravager = {
+				name = "劫毀獸",
+				text = {
+					"打出的牌計分前",
+					"{X:red,C:white}X#1#{}倍率",
  				},
 			},
 			j_sholium_redsauda = {
@@ -1042,6 +1122,15 @@ return {
 					"{C:attention}強制觸發右邊{}的小丑",
 				},
 			},
+			j_sholium_vindicator = {
+				name = "衛道士",
+				text = {
+					"進入盲注時，摧毀左邊的小丑",
+					"並將其{X:red,C:white}#2#x{}的出售價值",
+					"加到{X:red,C:white}X倍率{}",
+					"{C:inactive}(目前{}{X:red,C:white}X#1#{}{C:inactive}倍率){}",
+				},
+			},
 			j_sholium_virus = {
 				name = "病毒",
 				text = {
@@ -1064,6 +1153,14 @@ return {
 					"若打出的牌型不為{C:attention}最常打出{}的牌型",
 					"這張小丑獲得{C:red}+#2#{}倍率",
 					"{C:inactive}(目前{}{C:red}+#1#{}{C:inactive}倍率){}"
+				},
+			},
+			j_sholium_wanderingtrader = {
+				name = "流浪商人",
+				text = {
+					"接下來{C:attention}#1#{}次",
+					"從商店購買卡牌時",
+					"產生一張隨機消耗牌"
 				},
 			},
 			j_sholium_witch = {
