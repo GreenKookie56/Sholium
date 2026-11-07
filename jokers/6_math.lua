@@ -295,10 +295,19 @@ SMODS.Joker{ --Time Complexity
     discovered = true,
     atlas = 'CustomJokers',
 
-    
     loc_vars = function(self, info_queue, card)
+
+        local unique_count = 0
+        if G.GAME and G.GAME.hands then
+            for k, v in pairs(G.GAME.hands) do
+                if v.played > 0 then
+                    unique_count = unique_count + 1
+                end
+            end
+        end
+
         return {  
-            vars = {card.ability.extra.base, card.ability.extra.eor}}
+            vars = {card.ability.extra.base, card.ability.extra.base * 1.25 ^ unique_count}}
     end,
     calculate = function(self, card, context)
         if context.forcetrigger then

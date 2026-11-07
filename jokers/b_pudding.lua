@@ -1951,11 +1951,12 @@ SMODS.Joker{ --Pike
 
     
     calculate = function(self, card, context)
-        if context.joker_main and G.GAME.current_round.hands_played == 0 and #context.scoring_hand == 1 then
+        if context.before and G.GAME.current_round.hands_played == 0 and #context.scoring_hand == 1 then
             for k, v in ipairs(context.full_hand) do
                 if k == 1 then
                     v:set_ability(G.P_CENTERS["m_steel"])
                     v:juice_up()
+                    card_eval_status_text(card, "extra", nil, nil, nil, { message = "Pike!"})
                 end
             end
         end

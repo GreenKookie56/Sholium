@@ -214,8 +214,8 @@ return {
 			j_sholium_cavemonkey = {
 				name = "洞穴猴",
 				text = {
-					"進入盲注時，將一張",
-					"{C:dark_edition}負片{}{C:red}紅色封蠟章{}石頭牌加入手牌",
+					"將所有打出{C:attention}石頭牌{}",
+					"版本改為{C:dark_edition}負片{}",
 				},
 			},
 			j_sholium_carrierflagship = {
@@ -323,7 +323,7 @@ return {
 			j_sholium_cureall = {
 				name = "萬靈藥",
 				text = {
-					"避免死亡{C:attention}#1#{}次",
+					"防止死亡{C:attention}#1#{}次",
 					"死亡被防止或此張牌被售出時",
 					"移除所有小丑的貼紙",
 				},
@@ -831,7 +831,8 @@ return {
 			j_sholium_purpleshroomberry = {
 				name = "紫色蕈莓",
 				text = {
-					"出售時給予右側小丑",
+					"這張小丑被賣出時，",
+					"給予右側小丑",
 					"隨機{C:dark_edition}貼紙{}和{C:dark_edition}版本{}",
  				},
 			},
@@ -899,7 +900,7 @@ return {
 			j_sholium_shelffungus = {
 				name = "靈芝",
 				text = {
-					"棄置{C:diamonds}紅色{}牌時",
+					"棄置紅色牌時",
 					"{C:attention}-10%{}盲注大小",
 				},
 			},
@@ -1234,7 +1235,7 @@ return {
 				name = "黃色冬梅",
 				text = {
 					"每回合末次出牌時，",
-					"手中的星球牌{X:red,C:white}X#1#{}倍率",
+					"手中的{C:planet}星球牌{}{X:red,C:white}X#1#{}倍率",
 				},
 			},
 			j_sholium_zombie = {

@@ -321,8 +321,8 @@ SMODS.Joker{ --Cave Monkey
     loc_txt = {
         ['name'] = 'Cave Monkey',
         ['text'] = {
-            [1] = 'Add a {C:dark_edition}Negative{} {C:red}Red Seal{} Stone card to hand',
-            [2] = 'when a Blind is selected',
+            [1] = 'Each {C:attention}Stone Card{}',
+            [2] = 'become {C:dark_edition}Negative{} when played',
             [3] = '{C:inactive}Me Hit Rock{}'
         },
         ['unlock'] = {
@@ -337,43 +337,29 @@ SMODS.Joker{ --Cave Monkey
         w = 71 * 1, 
         h = 95 * 1
     },
-    cost = 9,
+    cost = 5,
     rarity = 2,
-    blueprint_compat = true,
-    demicoloncompat = true,
+    blueprint_compat = false,
     eternal_compat = true,
     perishable_compat = true,
+    enhancement_gate = 'm_stone',
     unlocked = true,
     discovered = true,
     atlas = 'CustomJokers',
 
     calculate = function(self, card, context)
-        if context.setting_blind or context.forcetrigger then
-                return {
-                    func = function()
-                local card_front = pseudorandom_element(G.P_CARDS, pseudoseed('add_card_hand'))
-                local new_card = create_playing_card({
-                    front = card_front,
-                    center = G.P_CENTERS.m_stone
-                }, G.discard, true, false, nil, true)
-            new_card:set_seal("Red", true)
-            new_card:set_edition("e_negative", true)
-
-                G.playing_card = (G.playing_card and G.playing_card + 1) or 1
-                new_card.playing_card = G.playing_card
-                table.insert(G.playing_cards, new_card)
-
-                G.E_MANAGER:add_event(Event({
-                    func = function()
-                        G.hand:emplace(new_card)
-                        new_card:start_materialize()
-                        SMODS.calculate_context({ playing_card_added = true, cards = { new_card } })
-                        return true
-                    end
-                }))
-            end,
-                    message = "Added Card to Hand!"
-                }
+        if context.before then
+            local check = false
+            for k, v in ipairs(context.full_hand) do
+                if SMODS.get_enhancements(v)["m_stone"] == true then
+                    v:set_edition('e_negative', true)
+                    -- v:juice_up()
+                    check = true
+                end
+            end
+            if check then
+                card_eval_status_text(card, "extra", nil, nil, nil, { message = "Petrify!", colour = G.C.DARK_EDITION })
+            end
         end
     end
 }
