@@ -204,6 +204,13 @@ return {
 					"機率結算{C:attention}5{}次",
 				},
 			},
+			j_sholium_catowl = {
+				name = "\"貓\"頭鷹",
+				text = {
+					"{C:green}機率{}事件成功觸發時",
+					"獲得{C:gold}$#1#{}",
+				},
+			},
 			j_sholium_cavemonkey = {
 				name = "洞穴猴",
 				text = {
@@ -311,6 +318,14 @@ return {
 				name = "殘廢MOAB (v37-49)",
 				text = {
 					"出牌時{C:attention}-28%{}盲注所需分數",
+				},
+			},
+			j_sholium_cureall = {
+				name = "萬靈藥",
+				text = {
+					"避免死亡{C:attention}#1#{}次",
+					"死亡被防止或此張牌被售出時",
+					"移除所有小丑的貼紙",
 				},
 			},
 			j_sholium_cyborg = {
@@ -773,6 +788,13 @@ return {
 					"第一張牌{C:attention}#1#{}次",
 				},
 			},
+			j_sholium_pike = {
+				name = "長槍兵",
+				text = {
+					"若每回合首次出牌僅有{C:attention}1{}張牌",
+					"將該張牌改為{C:attention}鋼鐵牌{}",
+				},
+			},
 			j_sholium_ploone = {
 				text = {
 					"在結束商店後產生",
@@ -804,6 +826,13 @@ return {
 				name = "布丁蛋",
 				text = {
 					"回合結束時{C:dark_edition}+#1#{}小丑牌欄位",
+ 				},
+			},
+			j_sholium_purpleshroomberry = {
+				name = "紫色蕈莓",
+				text = {
+					"出售時給予右側小丑",
+					"隨機{C:dark_edition}貼紙{}和{C:dark_edition}版本{}",
  				},
 			},
 			j_sholium_quincy_nft = {
@@ -865,6 +894,13 @@ return {
 				text = {
 					"每打出3張牌{C:red}+#1#{}倍率",
 					"{C:inactive}(目前#2#/3){}",
+				},
+			},
+			j_sholium_shelffungus = {
+				name = "靈芝",
+				text = {
+					"棄置{C:diamonds}紅色{}牌時",
+					"{C:attention}-10%{}盲注大小",
 				},
 			},
 			j_sholium_shulker = {
@@ -960,6 +996,14 @@ return {
 				name = "和解",
 				text = {
 					"重新觸發打出的{C:diamonds}方塊{}牌",
+ 				},
+			},
+			j_sholium_rescueclaw = {
+				name = "救援鉤爪",
+				text = {
+					"每跳過一次盲注",
+					"盲注大小減少{C:attention}20%{}",
+					"{C:inactive}(目前跳過{}{C:attention}#1#{}{C:inactive}個盲注){}",
  				},
 			},
 			j_sholium_ripchamp = {
@@ -1184,6 +1228,13 @@ return {
 				text = {
 					"所有打出的牌",
 					"花色轉換為{C:spades}黑桃{}",
+				},
+			},
+			j_sholium_yellowwinterberry = {
+				name = "黃色冬梅",
+				text = {
+					"每回合末次出牌時，",
+					"手中的星球牌{X:red,C:white}X#1#{}倍率",
 				},
 			},
 			j_sholium_zombie = {
