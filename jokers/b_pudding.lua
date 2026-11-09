@@ -1462,7 +1462,7 @@ SMODS.Joker{ --Rescue Claw
     blueprint_compat = true,
     demicoloncompat = true,
     eternal_compat = false,
-    perishable_compat = true,
+    perishable_compat = false,
     unlocked = true,
     discovered = true,
     atlas = 'CustomJokers',
@@ -1868,7 +1868,7 @@ SMODS.Joker{ --Cat Owl
     key = "catowl",
     config = {
         extra = {
-            money = 2
+            money = 4
         }
     },
     loc_txt = {

@@ -990,7 +990,7 @@ SMODS.Joker{ --vindicator
     config = {
         extra = {
             xmult = 1,
-            multiplier = 0.2
+            multiplier = 0.1 -- yes it's 0.2 in cryptid but 0.2 is extremely op
         }
     },
     loc_txt = {
