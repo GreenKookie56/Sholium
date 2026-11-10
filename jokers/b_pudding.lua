@@ -1266,7 +1266,7 @@ SMODS.Joker{ --purple shroomberry
         ['name'] = 'Purple Shroomberry',
         ['text'] = {
             [1] = 'When this card is sold,',
-            [2] = 'apply Random {C:dark_edition}Sticker{} and {C:dark_edition}Edition{}',
+            [2] = 'randomize {C:dark_edition}Sticker{} and {C:dark_edition}Edition{}',
             [3] = 'to Joker to the {C:attention}right{}'
         },
         ['unlock'] = {
@@ -1925,7 +1925,7 @@ SMODS.Joker{ --Pike
     loc_txt = {
         ['name'] = 'Pike',
         ['text'] = {
-            [1] = 'If first played hand is exactly {C:attention}1{} card,',
+            [1] = 'If first hand has exactly {C:attention}1{} scoring card,',
             [2] = 'turn that card into a {C:attention}Steel Card{}'
         },
         ['unlock'] = {

@@ -791,7 +791,7 @@ return {
 			j_sholium_pike = {
 				name = "長槍兵",
 				text = {
-					"若每回合首次出牌僅有{C:attention}1{}張牌",
+					"若回合首次出牌僅有{C:attention}1{}張計分牌",
 					"將該張牌改為{C:attention}鋼鐵牌{}",
 				},
 			},
