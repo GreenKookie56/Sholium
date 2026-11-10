@@ -1569,6 +1569,7 @@ SMODS.Joker{ -- Fortified Milk
     key = "fortmilk",
     config = {
         extra = {
+			active = 0
         }
     },
     loc_txt = {
