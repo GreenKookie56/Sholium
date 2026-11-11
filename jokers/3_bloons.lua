@@ -18,8 +18,8 @@ SMODS.Joker{ --antibloon
         }
     },
     pos = {
-        x = 4,
-        y = 7
+        x = 7,
+        y = 16
     },
     display_size = {
         w = 71 * 1, 
@@ -33,7 +33,6 @@ SMODS.Joker{ --antibloon
     unlocked = true,
     discovered = true,
     atlas = 'CustomJokers',
-	soul_pos = { x = 7, y = 16},
 
     loc_vars = function(self, info_queue, card)
         return {vars = {card.ability.extra.round}}
