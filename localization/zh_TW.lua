@@ -839,6 +839,7 @@ return {
 			j_sholium_quincy_nft = {
 				name = "Qunicy公仔",
 				text = {
+					"基礎出售價格改為原價",
 					"手牌結算結束後，",
 					"這張小丑出售價格乘以{C:attention}#1#{}",
  				},

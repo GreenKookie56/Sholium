@@ -912,8 +912,9 @@ SMODS.Joker{ -- Quincy NFT
     loc_txt = {
         ['name'] = 'Quincy Action Figure',
         ['text'] = {
-            [1] = 'Increase sell value by {C:attention}#1#x{}',
-            [2] = 'when a hand finishes scoring'
+            [1] = 'Initial sell value is its cost',
+            [2] = 'Increase sell value by {C:attention}#1#x{}',
+            [3] = 'when a hand finishes scoring'
         },
         ['unlock'] = {
             [1] = ''
@@ -929,7 +930,7 @@ SMODS.Joker{ -- Quincy NFT
     },
     cost = 8,
     rarity = 1,
-    blueprint_compat = true,
+    blueprint_compat = false,
     demicoloncompat = true,
     eternal_compat = true,
     perishable_compat = false,
@@ -941,7 +942,14 @@ SMODS.Joker{ -- Quincy NFT
         
         return {vars = {card.ability.extra.multiplier}}
     end,
-	
+
+    add_to_deck = function(self, card, context)
+        if not from_debuff then
+            card.ability.extra_value = (card.ability.extra_value or 0) + 4
+            card.sell_cost = 8
+        end -- bruh who made extra_value and sell_cost different things
+    end,
+
     calculate = function(self, card, context)
         if context.after or context.forcetrigger and not context.blueprint then
             local total = 0
