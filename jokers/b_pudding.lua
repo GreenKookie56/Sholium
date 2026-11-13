@@ -1869,7 +1869,7 @@ SMODS.Joker{ --Cat Owl
     key = "catowl",
     config = {
         extra = {
-            money = 4
+            money = 7
         }
     },
     loc_txt = {
@@ -1891,7 +1891,7 @@ SMODS.Joker{ --Cat Owl
         h = 95 * 1
     },
     cost = 5,
-    rarity = 1,
+    rarity = 2,
     blueprint_compat = false,
     demicoloncompat = true,
     eternal_compat = true,
