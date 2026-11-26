@@ -46,13 +46,19 @@ SMODS.Joker{ --antibloon
                 card.ability.extra.round = 3
                 for i = 1, #G.jokers.cards do
                     if G.jokers.cards[i] == card then
-                        local results1 = Cryptid.forcetrigger(G.jokers.cards[i - 1], context) or Spectrallib.get_forcetrigger_results(G.jokers.cards[i - 1], context)
-                        local results2 = Cryptid.forcetrigger(G.jokers.cards[i + 1], context) or Spectrallib.get_forcetrigger_results(G.jokers.cards[i + 1], context) -- spectrallib sucks sholll
-                        if results1 and results1.jokers then
-                            SMODS.calculate_effect(results1.jokers, card) -- holy shit this thing is op
+                        local left = G.jokers.cards[i - 1]
+                        local right = G.jokers.cards[i + 1]
+                        if left then
+                            local results1 = Cryptid.forcetrigger(G.jokers.cards[i - 1], context) or Spectrallib.get_forcetrigger_results(G.jokers.cards[i - 1], context) or nil
+                            if results1 and results1.jokers then
+                                SMODS.calculate_effect(results1.jokers, card)
+                            end
                         end
-                        if results2 and results2.jokers then
-                            SMODS.calculate_effect(results2.jokers, card)
+                        if right then
+                            local results2 = Cryptid.forcetrigger(G.jokers.cards[i + 1], context) or Spectrallib.get_forcetrigger_results(G.jokers.cards[i + 1], context) or nil
+                            if results2 and results2.jokers then
+                                SMODS.calculate_effect(results2.jokers, card)
+                            end
                         end
                     end
                 end
@@ -1409,7 +1415,7 @@ SMODS.Joker{ --tt5
             end
             if left_joker and context.other_card == left_joker then
 			    for i = 1, #G.jokers.cards do
-				    if G.jokers.cards[i] == card then
+				    if G.jokers.cards[i] == card and G.jokers.cards[i + 1] then
 						local results = Cryptid.forcetrigger(G.jokers.cards[i + 1], context) or Spectrallib.get_forcetrigger_results(G.jokers.cards[i + 1], context)
 						if results and results.jokers then
 							return results.jokers

@@ -324,11 +324,11 @@ SMODS.Joker{ --Rose Gold Joker
     end,
 
     add_to_deck = function(self, card, from_debuff)
-        G.jokers.config.card_limit = G.jokers.config.card_limit + card.ability.extra.immutable.slots
+        G.jokers.config.card_limits.mod = G.jokers.config.card_limits.mod + card.ability.extra.immutable.slots
     end,
 
     remove_from_deck = function(self, card, from_debuff)
-        G.jokers.config.card_limit = G.jokers.config.card_limit - card.ability.extra.immutable.slots
+        G.jokers.config.card_limits.mod = G.jokers.config.card_limits.mod - card.ability.extra.immutable.slots
     end
 }
 local check_for_buy_space_ref = G.FUNCS.check_for_buy_space
