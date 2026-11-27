@@ -1825,8 +1825,8 @@ SMODS.Joker{ --breeze
     loc_txt = {
         ['name'] = 'Breeze',
         ['text'] = {
-            [1] = 'when a {C:attention}Blind{} is skipped,',
-            [2] = 'Create a copy of gained {C:attention}Tag{}'
+            [1] = 'When a {C:attention}Blind{} is skipped,',
+            [2] = 'create a copy of gained {C:attention}Tag{}'
         },
         ['unlock'] = {
             [1] = ''
