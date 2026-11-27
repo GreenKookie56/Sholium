@@ -247,8 +247,8 @@ SMODS.Joker{ --Nano-virus
     loc_txt = {
         ['name'] = 'Nano-virus',
         ['text'] = {
-            [1] = 'Everything in shop',
-            [2] = 'costs {C:money}$1{} less'
+            [1] = 'Rerolls and Items in shop',
+            [2] = 'cost {C:money}$1{} less'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -283,6 +283,14 @@ SMODS.Joker{ --Nano-virus
                 return true
             end
         }))
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                G.GAME.round_resets.reroll_cost = G.GAME.round_resets.reroll_cost - 1
+                G.GAME.current_round.reroll_cost = math.max(0,
+                G.GAME.current_round.reroll_cost - 1)
+                return true
+            end
+        }))
     end,
     
     remove_from_deck = function(self, card, from_debuff)
@@ -291,6 +299,14 @@ SMODS.Joker{ --Nano-virus
                 for k, v in pairs(G.I.CARD) do
                 if v.set_cost then v:set_cost() end
                 end
+                return true
+            end
+        }))
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                G.GAME.round_resets.reroll_cost = G.GAME.round_resets.reroll_cost + 1
+                G.GAME.current_round.reroll_cost = math.max(0,
+                G.GAME.current_round.reroll_cost + 1)
                 return true
             end
         }))

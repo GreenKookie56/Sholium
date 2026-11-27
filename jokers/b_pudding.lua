@@ -1344,8 +1344,8 @@ SMODS.Joker{ --Sports drink
     key = "sportsdrink",
     config = {
         extra = {
-            xchips = 3.5,
-            xchipsmod = 0.1
+            xchips = 2.5,
+            xchipsmod = 0.05
         }
     },
     loc_txt = {

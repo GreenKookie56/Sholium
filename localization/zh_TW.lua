@@ -164,7 +164,7 @@ return {
 				name = "旋風使者",
 				text = {
 					"跳過盲注時，",
-					"產生一個{C:attention}雙倍標籤{}",
+					"產生一個該盲注的{C:attention}標籤{}",
 				},
 			},
 			j_sholium_brickell = {
@@ -684,7 +684,8 @@ return {
 			j_sholium_nanovirus = {
 				name = "奈米病毒",
 				text = {
-					"商店商品價格均便宜{C:gold}$1{}",
+					"商店重骰和商品價格",
+					"均便宜{C:gold}$1{}",
 				},
 			},
 			j_sholium_nahuatljoker = {

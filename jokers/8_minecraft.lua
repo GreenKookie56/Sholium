@@ -1819,14 +1819,14 @@ SMODS.Joker{ --breeze
     key = "breeze",
     config = {
         extra = {
-
+            tags = "tag_double" -- code "borrowed" from Fusion Force
         }
     },
     loc_txt = {
         ['name'] = 'Breeze',
         ['text'] = {
-            [1] = 'Create a {C:attention}Double Tag{}',
-            [2] = 'when a {C:attention}Blind{} is skipped'
+            [1] = 'when a {C:attention}Blind{} is skipped,',
+            [2] = 'Create a copy of gained {C:attention}Tag{}'
         },
         ['unlock'] = {
             [1] = ''
@@ -1855,21 +1855,17 @@ SMODS.Joker{ --breeze
     end,
 
     calculate = function(self, card, context)
+        if context.tag_added and not context.blueprint and not context.retrigger_joker then
+            card.ability.extra.tag = context.tag_added.key
+        end
         if context.skip_blind or context.forcetrigger then
-            return {
-                func = function()
-                    G.E_MANAGER:add_event(Event({
-                        func = function()
-                            local tag = Tag("tag_double")
-                            tag:set_ability()
-                            add_tag(tag)
-                            play_sound('holo1', 1.2 + math.random() * 0.1, 0.4)
-                            return true
-                        end
-                    }))
+            G.E_MANAGER:add_event(Event({
+                func = (function() 
+                    add_tag(Tag(card.ability.extra.tag))
                     return true
-                end
-            }
+                end)
+            }))
+            return nil, true
         end
     end
 }
